@@ -18,9 +18,11 @@ let package = Package(
         .target(
             name: "CodetwelveUI",
             dependencies: [],
+            path: "Sources/CodetwelveUI",
             resources: [.process("Resources")]),
         .testTarget(
             name: "CodetwelveUITests",
-            dependencies: ["CodetwelveUI"]),
+            dependencies: ["CodetwelveUI"],
+            path: "Tests/CodetwelveUITests"),
     ]
 )

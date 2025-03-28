@@ -1,0 +1,83 @@
+name: CodetwelveUI
+options:
+  bundleIdPrefix: com.codetwelve
+  deploymentTarget:
+    iOS: 16.0
+  indentWidth: 2
+  tabWidth: 2
+packages:
+  # No external dependencies initially
+
+targets:
+  CodetwelveUI:
+    type: framework
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: Sources/CodetwelveUI
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.codetwelve.CodetwelveUI
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 1
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+        SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+    scheme:
+      testTargets:
+        - CodetwelveUITests
+      gatherCoverageData: true
+
+  CodetwelveUITests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: Tests/CodetwelveUITests
+    dependencies:
+      - target: CodetwelveUI
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.codetwelve.CodetwelveUITests
+        GENERATE_INFOPLIST_FILE: YES
+
+  CodeTwelveExamples:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - path: Examples/CodeTwelveExamples
+    dependencies:
+      - target: CodetwelveUI
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.codetwelve.CodeTwelveExamples
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 1
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_OPTIMIZATION_LEVEL: "-Onone"
+        SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+
+schemes:
+  CodeTwelve-iOS-UIKit:
+    build:
+      targets:
+        CodeTwelve-iOS-UIKit: all
+    run:
+      config: Debug
+
+  CodetwelveUI:
+    build:
+      targets:
+        CodetwelveUI: all
+    test:
+      targets:
+        - CodetwelveUITests
+      gatherCoverageData: true
+
+  CodeTwelveExamples:
+    build:
+      targets:
+        CodeTwelveExamples: all
+    run:
+      config: Debug 
