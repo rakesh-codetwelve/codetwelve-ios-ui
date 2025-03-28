@@ -355,14 +355,12 @@ struct CheckboxExamples: View {
                 
                 CTCheckbox(
                     "I have read and accept the Privacy Policy",
-                    isChecked: $privacyPolicyAccepted,
-                    isRequired: true
+                    isChecked: $privacyPolicyAccepted
                 )
                 
                 CTCheckbox(
                     "I have read and accept the Terms of Service",
-                    isChecked: $termsAccepted,
-                    isRequired: true
+                    isChecked: $termsAccepted
                 )
                 
                 CTCheckbox(
@@ -399,14 +397,12 @@ struct CheckboxExamples: View {
                             
                             CTCheckbox(
                                 "I have read and accept the Privacy Policy",
-                                isChecked: $privacyPolicyAccepted,
-                                isRequired: true
+                                isChecked: $privacyPolicyAccepted
                             )
                             
                             CTCheckbox(
                                 "I have read and accept the Terms of Service",
-                                isChecked: $termsAccepted,
-                                isRequired: true
+                                isChecked: $termsAccepted
                             )
                             
                             CTCheckbox(

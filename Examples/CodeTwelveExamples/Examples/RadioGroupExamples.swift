@@ -21,11 +21,11 @@ struct RadioGroupExamples: View {
     
     // Numeric radio group options
     private let numericOptions = [
-        1: "One",
-        2: "Two",
-        3: "Three",
-        4: "Four",
-        5: "Five"
+        "1": "One",
+        "2": "Two",
+        "3": "Three",
+        "4": "Four",
+        "5": "Five"
     ]
     
     // Style demonstration states
