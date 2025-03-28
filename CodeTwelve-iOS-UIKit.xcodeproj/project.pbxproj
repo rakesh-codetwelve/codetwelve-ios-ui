@@ -202,6 +202,10 @@
 		50066C1F2D966BDB00757359 /* CTAlertDialogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066BB92D966BDB00757359 /* CTAlertDialogTests.swift */; };
 		50066C212D966C2600757359 /* CodetwelveUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F295CA8ED85DB00ED081A2D0 /* CodetwelveUI.framework */; };
 		50066C222D966C2600757359 /* CodetwelveUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F295CA8ED85DB00ED081A2D0 /* CodetwelveUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		50066C2B2D967E3F00757359 /* TextExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066C292D967E3F00757359 /* TextExamples.swift */; };
+		50066C2C2D967E3F00757359 /* ButtonExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066C262D967E3F00757359 /* ButtonExamples.swift */; };
+		50066C2D2D967E3F00757359 /* IconExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066C282D967E3F00757359 /* IconExamples.swift */; };
+		50066C2E2D967E3F00757359 /* DividerExamples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066C272D967E3F00757359 /* DividerExamples.swift */; };
 		ACB51FAA050C340A5B2500A6 /* CodetwelveUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F295CA8ED85DB00ED081A2D0 /* CodetwelveUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -378,6 +382,10 @@
 		50066BE52D966BDB00757359 /* CTNavigationIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTNavigationIntegrationTests.swift; sourceTree = "<group>"; };
 		50066BE72D966BDB00757359 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		50066BE92D966BDB00757359 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
+		50066C262D967E3F00757359 /* ButtonExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExamples.swift; sourceTree = "<group>"; };
+		50066C272D967E3F00757359 /* DividerExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DividerExamples.swift; sourceTree = "<group>"; };
+		50066C282D967E3F00757359 /* IconExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconExamples.swift; sourceTree = "<group>"; };
+		50066C292D967E3F00757359 /* TextExamples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExamples.swift; sourceTree = "<group>"; };
 		C4068C39461A7FB5386762DD /* CodeTwelveExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodeTwelveExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C9F5E80C71DF7A393812B4 /* CodetwelveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CodetwelveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F295CA8ED85DB00ED081A2D0 /* CodetwelveUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CodetwelveUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -609,6 +617,7 @@
 		50066BA72D966BCC00757359 /* CodeTwelveExamples */ = {
 			isa = PBXGroup;
 			children = (
+				50066C2A2D967E3F00757359 /* Examples */,
 				50066BA12D966BCC00757359 /* Assets.xcassets */,
 				50066BA22D966BCC00757359 /* CodeTwelveExamplesApp.swift */,
 				50066BA32D966BCC00757359 /* ComponentCatalog.swift */,
@@ -742,6 +751,17 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		50066C2A2D967E3F00757359 /* Examples */ = {
+			isa = PBXGroup;
+			children = (
+				50066C262D967E3F00757359 /* ButtonExamples.swift */,
+				50066C272D967E3F00757359 /* DividerExamples.swift */,
+				50066C282D967E3F00757359 /* IconExamples.swift */,
+				50066C292D967E3F00757359 /* TextExamples.swift */,
+			);
+			path = Examples;
 			sourceTree = "<group>";
 		};
 		9C5D24453033C2714181874D = {
@@ -1107,6 +1127,10 @@
 			files = (
 				50066BA92D966BCC00757359 /* ComponentCatalog.swift in Sources */,
 				50066BAA2D966BCC00757359 /* CodeTwelveExamplesApp.swift in Sources */,
+				50066C2B2D967E3F00757359 /* TextExamples.swift in Sources */,
+				50066C2C2D967E3F00757359 /* ButtonExamples.swift in Sources */,
+				50066C2D2D967E3F00757359 /* IconExamples.swift in Sources */,
+				50066C2E2D967E3F00757359 /* DividerExamples.swift in Sources */,
 				50066BAB2D966BCC00757359 /* ContentView.swift in Sources */,
 				50066BAC2D966BCC00757359 /* ThemeExplorer.swift in Sources */,
 			);
