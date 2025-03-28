@@ -57,6 +57,16 @@ struct ComponentCatalog: View {
         Component(name: "Switch", destination: ToggleExamples())
     ]
     
+    // MARK: - Navigation Components
+    private let navigationComponents = [
+        Component(name: "Popover", destination: PopoverExamples()),
+        Component(name: "Command Palette", destination: CommandPaletteExamples()),
+        Component(name: "Pagination", destination: PaginationExamples()),
+        Component(name: "Drawer", destination: DrawerExamples()),
+        Component(name: "Navigation Menu", destination: NavigationMenuExamples()),
+        Component(name: "Tab Bar", destination: TabBarExamples())
+    ]
+    
     // MARK: - Feedback Components
     var feedbackComponents: [Component] {
         [
@@ -76,6 +86,7 @@ struct ComponentCatalog: View {
                 sectionView(title: "Basic Components", components: basicComponents)
                 sectionView(title: "Layout Components", components: layoutComponents)
                 sectionView(title: "Form Components", components: formComponents)
+                sectionView(title: "Navigation Components", components: navigationComponents)
                 sectionView(title: "Feedback Components", components: feedbackComponents)
                 
                 Section(header: Text("Theme")) {
