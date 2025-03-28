@@ -45,6 +45,7 @@ struct ToastExamples: View {
         }
         .navigationTitle("Toast")
         .modifier(ToastPresenter(showToast: $showCustomToast, message: toastMessage, type: selectedToastType, duration: toastDuration, hasCloseButton: showCloseButton))
+        .ctToastContainer()
     }
     
     // MARK: - Sections
