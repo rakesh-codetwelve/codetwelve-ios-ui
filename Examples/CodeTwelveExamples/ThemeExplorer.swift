@@ -120,17 +120,19 @@ struct ThemeExplorer: View {
                     .ctHeading3()
                     .foregroundColor(Color.ctText)
                 
-                CTAccordion(headerContent: {
-                    Text("Expandable Content")
-                        .ctBody()
-                }, content: {
-                    Text("This accordion content shows how nested components inherit the current theme.")
-                        .ctBodySmall()
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color.ctBackground)
-                        .cornerRadius(8)
-                }, initiallyExpanded: true)
+                CTAccordion(
+                    initiallyExpanded: true,
+                    headerContent: {
+                        Text("Expandable Content")
+                            .ctBody()
+                    }, content: {
+                        Text("This accordion content shows how nested components inherit the current theme.")
+                            .ctBodySmall()
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.ctBackground)
+                            .cornerRadius(8)
+                    })
             }
         }
     }
@@ -144,8 +146,11 @@ struct ThemeExplorer: View {
                     .foregroundColor(Color.ctText)
                 
                 HStack(spacing: CTSpacing.m) {
-                    CTToggle(isOn: .constant(true), label: "Toggle")
-                    CTCheckbox(isChecked: .constant(true), label: "Checkbox")
+                    CTToggle(
+                        "Toggle",
+                        isOn: .constant(true)
+                    )
+                    CTCheckbox("Checkbox", isChecked: .constant(true))
                 }
                 
                 HStack(spacing: CTSpacing.m) {
@@ -153,9 +158,9 @@ struct ThemeExplorer: View {
                         .frame(maxWidth: .infinity)
                     
                     CTTextField(
-                        label: "Input",
-                        text: .constant("Text input"),
-                        error: .constant(nil)
+                        "Custom Field", 
+                        placeholder: "Type something",
+                        text: .constant("")
                     )
                     .frame(maxWidth: .infinity)
                 }
@@ -191,19 +196,21 @@ struct ThemeExplorer: View {
     /// Apply the selected theme to the application
     /// - Parameter theme: The theme option to apply
     private func applyTheme(_ theme: ThemeOption) {
-        switch theme {
+        selectedTheme = theme
+        
+        switch theme.type {
         case .default:
             CTThemeManager.shared.setTheme(CTDefaultTheme())
         case .dark:
             CTThemeManager.shared.setTheme(CTDarkTheme())
         case .light:
             CTThemeManager.shared.setTheme(CTLightTheme())
-        case .custom(_, let color):
-            let customTheme = CTThemeBuilder()
+        case let .custom(name, color):
+            let themeBuilder = CTThemeBuilder()
                 .withPrimaryColor(color)
-                .withName("Custom")
-                .build()
-            CTThemeManager.shared.setTheme(customTheme)
+                .withName(name)
+            
+            CTThemeManager.shared.setTheme(themeBuilder.build())
         }
     }
 }
@@ -211,7 +218,7 @@ struct ThemeExplorer: View {
 // MARK: - Supporting Types
 
 /// Represents a theme option in the explorer
-struct ThemeOption: Identifiable, Equatable {
+struct ThemeOption: Identifiable, Equatable, Hashable {
     /// Unique identifier for the theme option
     let id = UUID()
     
@@ -238,12 +245,17 @@ struct ThemeOption: Identifiable, Equatable {
     ///   - name: The display name of the theme
     ///   - color: The primary color for the theme
     static func custom(name: String, color: Color) -> ThemeOption {
-        ThemeOption(name: name, type: .custom, color: color)
+        ThemeOption(name: name, type: .custom(name: name, color: color), color: color)
     }
     
     /// Equatable implementation
     static func == (lhs: ThemeOption, rhs: ThemeOption) -> Bool {
         lhs.id == rhs.id
+    }
+    
+    /// Hashable implementation
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
     }
 }
 
@@ -252,7 +264,7 @@ enum ThemeType {
     case `default`
     case dark
     case light
-    case custom
+    case custom(name: String, color: Color)
 }
 
 // MARK: - Previews

@@ -1,3 +1,15 @@
+#!/bin/bash
+
+# Clean up
+echo "Cleaning DerivedData folder..."
+rm -rf ~/Library/Developer/Xcode/DerivedData/CodeTwelve-iOS-UIKit-*
+rm -rf ~/Library/Developer/Xcode/DerivedData/CodetwelveUI-*
+
+echo "Removing any existing Info.plist file from Examples directory..."
+rm -f Examples/CodeTwelveExamples/Info.plist
+
+echo "Updating project.yml to exclude Info.plist from build..."
+cat > project.yml << EOF
 name: CodetwelveUI
 options:
   bundleIdPrefix: com.codetwelve
@@ -32,9 +44,9 @@ targets:
         SWIFT_TREAT_WARNINGS_AS_ERRORS: NO
     postBuildScripts:
       - name: "Remove .gitkeep files"
-        script: "find \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodetwelveUI.framework\" -name '.gitkeep' -delete || true"
+        script: "find \"\${BUILT_PRODUCTS_DIR}/\${FRAMEWORKS_FOLDER_PATH}/CodetwelveUI.framework\" -name '.gitkeep' -delete || true"
         outputFiles:
-          - "$(DERIVED_FILE_DIR)/gitkeep_removed"
+          - "\$(DERIVED_FILE_DIR)/gitkeep_removed"
     scheme:
       testTargets:
         - CodetwelveUITests
@@ -93,3 +105,13 @@ schemes:
         CodeTwelveExamples: all
     run:
       config: Debug
+EOF
+
+echo "Regenerating Xcode project..."
+if command -v xcodegen &> /dev/null; then
+    xcodegen
+else
+    echo "Warning: xcodegen not found. Please install it using 'brew install xcodegen' and run it manually."
+fi
+
+echo "Done. Please try building the project in Xcode now." 
