@@ -46,14 +46,15 @@ struct ProgressExamples: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: CTSpacing.l) {
+            VStack(alignment: .leading, spacing: CTSpacing.l) {
                 basicUsageSection
                 progressStylesSection
                 progressStatesSection
                 customProgressSection
                 progressUsageSection
             }
-            .padding()
+            .padding(.vertical, CTSpacing.l)
+            .padding(.horizontal, CTSpacing.m)
         }
         .navigationTitle("Progress")
         .onAppear {
@@ -70,176 +71,179 @@ struct ProgressExamples: View {
     /// Basic usage examples of progress indicators
     private var basicUsageSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Basic Usage").ctHeading2()
-            
-            Text("Progress indicators show the completion status of an operation or task.")
-                .ctBody()
-                .padding(.bottom, CTSpacing.s)
-            
-            // Linear progress examples
             VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Linear Progress:").ctBodyBold()
+                Text("Basic Usage").ctHeading2()
                 
-                CTProgress(value: 0.3)
-                    .padding(.bottom, CTSpacing.xs)
+                Text("Progress indicators show the completion status of an operation or task.")
+                    .ctBody()
+                    .padding(.bottom, CTSpacing.s)
                 
-                CTProgress(value: 0.5, label: "Loading...")
-                    .padding(.bottom, CTSpacing.xs)
+                // Linear progress examples
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Linear Progress:").ctBodyBold()
+                    
+                    CTProgress(value: 0.3)
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    CTProgress(value: 0.5, label: "Loading...")
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    CTProgress(value: 0.7, showPercentage: true)
+                }
+                .padding(.bottom, CTSpacing.m)
                 
-                CTProgress(value: 0.7, showPercentage: true)
-            }
-            .padding(.bottom, CTSpacing.m)
-            
-            // Circular progress examples
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Circular Progress:").ctBodyBold()
+                // Circular progress examples
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Circular Progress:").ctBodyBold()
+                    
+                    HStack(spacing: CTSpacing.l) {
+                        CTProgress(value: 0.3, style: .circular)
+                        CTProgress(value: 0.5, style: .circular, label: "Loading...")
+                        CTProgress(value: 0.7, style: .circular, showPercentage: true, labelPosition: .center)
+                    }
+                }
                 
-                HStack(spacing: CTSpacing.l) {
+                ToggleCodeButton(isExpanded: $showBasicCode)
+                    .padding(Edge.Set.top, CTSpacing.s)
+                
+                if showBasicCode {
+                    codeExample("""
+                    // Basic linear progress
+                    CTProgress(value: 0.3)
+                    
+                    // Linear progress with label
+                    CTProgress(value: 0.5, label: "Loading...")
+                    
+                    // Linear progress with percentage
+                    CTProgress(value: 0.7, showPercentage: true)
+                    
+                    // Basic circular progress
                     CTProgress(value: 0.3, style: .circular)
-                    CTProgress(value: 0.5, style: .circular, label: "Loading...")
-                    CTProgress(value: 0.7, style: .circular, showPercentage: true, labelPosition: .center)
+                    
+                    // Circular progress with centered percentage
+                    CTProgress(
+                        value: 0.7,
+                        style: .circular,
+                        showPercentage: true,
+                        labelPosition: .center
+                    )
+                    """)
                 }
             }
-            
-            ToggleCodeButton(isExpanded: $showBasicCode)
-                .padding(Edge.Set.top, CTSpacing.s)
-            
-            if showBasicCode {
-                codeExample("""
-                // Basic linear progress
-                CTProgress(value: 0.3)
-                
-                // Linear progress with label
-                CTProgress(value: 0.5, label: "Loading...")
-                
-                // Linear progress with percentage
-                CTProgress(value: 0.7, showPercentage: true)
-                
-                // Basic circular progress
-                CTProgress(value: 0.3, style: .circular)
-                
-                // Circular progress with centered percentage
-                CTProgress(
-                    value: 0.7,
-                    style: .circular,
-                    showPercentage: true,
-                    labelPosition: .center
-                )
-                """)
-            }
         }
-        .padding()
+        .padding(CTSpacing.m)
         .background(Color(.systemBackground))
         .cornerRadius(12)
-        .shadow(radius: 2)
     }
     
     /// Examples of different progress styles and sizes
     private var progressStylesSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Progress Styles").ctHeading2()
-            
-            Text("Progress indicators come in different styles and sizes to fit your layout needs.")
-                .ctBody()
-                .padding(.bottom, CTSpacing.s)
-            
-            // Sizes
             VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Sizes:").ctBodyBold()
+                Text("Progress Styles").ctHeading2()
                 
-                CTProgress(value: 0.5, size: .small, label: "Small")
-                    .padding(.bottom, CTSpacing.xs)
+                Text("Progress indicators come in different styles and sizes to fit your layout needs.")
+                    .ctBody()
+                    .padding(.bottom, CTSpacing.s)
                 
-                CTProgress(value: 0.5, size: .medium, label: "Medium")
-                    .padding(.bottom, CTSpacing.xs)
+                // Sizes
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Sizes:").ctBodyBold()
+                    
+                    CTProgress(value: 0.5, size: .small, label: "Small")
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    CTProgress(value: 0.5, size: .medium, label: "Medium")
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    CTProgress(value: 0.5, size: .large, label: "Large")
+                }
+                .padding(.bottom, CTSpacing.m)
                 
-                CTProgress(value: 0.5, size: .large, label: "Large")
-            }
-            .padding(.bottom, CTSpacing.m)
-            
-            // Colors
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Colors:").ctBodyBold()
+                // Colors
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Colors:").ctBodyBold()
+                    
+                    CTProgress(value: 0.5, size: .medium, color: .ctPrimary, label: "Primary")
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    CTProgress(value: 0.5, size: .medium, color: .ctSuccess, label: "Success")
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    CTProgress(value: 0.5, size: .medium, color: .ctDestructive, label: "Destructive")
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    CTProgress(value: 0.5, size: .medium, color: .ctWarning, label: "Warning")
+                }
                 
-                CTProgress(value: 0.5, size: .medium, color: .ctPrimary, label: "Primary")
-                    .padding(.bottom, CTSpacing.xs)
+                ToggleCodeButton(isExpanded: $showStylesCode)
+                    .padding(Edge.Set.top, CTSpacing.s)
                 
-                CTProgress(value: 0.5, size: .medium, color: .ctSuccess, label: "Success")
-                    .padding(.bottom, CTSpacing.xs)
-                
-                CTProgress(value: 0.5, size: .medium, color: .ctDestructive, label: "Destructive")
-                    .padding(.bottom, CTSpacing.xs)
-                
-                CTProgress(value: 0.5, size: .medium, color: .ctWarning, label: "Warning")
-            }
-            
-            ToggleCodeButton(isExpanded: $showStylesCode)
-                .padding(Edge.Set.top, CTSpacing.s)
-            
-            if showStylesCode {
-                codeExample("""
-                // Small progress
-                CTProgress(value: 0.5, size: .small, label: "Small")
-                
-                // Medium progress
-                CTProgress(value: 0.5, size: .medium, label: "Medium")
-                
-                // Large progress
-                CTProgress(value: 0.5, size: .large, label: "Large")
-                
-                // Custom color progress
-                CTProgress(value: 0.5, size: .medium, color: .ctSuccess, label: "Success")
-                """)
+                if showStylesCode {
+                    codeExample("""
+                    // Small progress
+                    CTProgress(value: 0.5, size: .small, label: "Small")
+                    
+                    // Medium progress
+                    CTProgress(value: 0.5, size: .medium, label: "Medium")
+                    
+                    // Large progress
+                    CTProgress(value: 0.5, size: .large, label: "Large")
+                    
+                    // Custom color progress
+                    CTProgress(value: 0.5, size: .medium, color: .ctSuccess, label: "Success")
+                    """)
+                }
             }
         }
-        .padding()
+        .padding(CTSpacing.m)
         .background(Color(.systemBackground))
         .cornerRadius(12)
-        .shadow(radius: 2)
     }
     
     /// Examples of different progress states
     private var progressStatesSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Progress States").ctHeading2()
-            
-            Text("Progress indicators can show determinate progress with a specific value or indeterminate progress for unknown completion times.")
-                .ctBody()
-                .padding(.bottom, CTSpacing.s)
-            
-            // Indeterminate progress
             VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Indeterminate Progress:").ctBodyBold()
+                Text("Progress States").ctHeading2()
                 
-                CTProgress(
-                    label: "Loading...",
-                    isIndeterminate: true
-                )
-                .padding(.bottom, CTSpacing.s)
+                Text("Progress indicators can show determinate progress with a specific value or indeterminate progress for unknown completion times.")
+                    .ctBody()
+                    .padding(.bottom, CTSpacing.s)
                 
-                CTProgress(
-                    style: .circular,
-                    label: "Processing...",
-                    isIndeterminate: true
-                )
-            }
-            .padding(.bottom, CTSpacing.m)
-            
-            // Animated progress
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Animated Progress:").ctBodyBold()
+                // Indeterminate progress
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Indeterminate Progress:").ctBodyBold()
+                    
+                    CTProgress(
+                        label: "Loading...",
+                        isIndeterminate: true
+                    )
+                    .padding(.bottom, CTSpacing.s)
+                    
+                    CTProgress(
+                        style: .circular,
+                        label: "Processing...",
+                        isIndeterminate: true
+                    )
+                }
+                .padding(.bottom, CTSpacing.m)
                 
-                CTProgress(
-                    value: animatedProgress,
-                    label: "Uploading...",
-                    showPercentage: true
-                )
+                // Animated progress
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Animated Progress:").ctBodyBold()
+                    
+                    CTProgress(
+                        value: animatedProgress,
+                        label: "Uploading...",
+                        showPercentage: true
+                    )
+                }
             }
         }
-        .padding()
+        .padding(CTSpacing.m)
         .background(Color(.systemBackground))
         .cornerRadius(12)
-        .shadow(radius: 2)
     }
     
     /// Custom progress configuration section
@@ -337,10 +341,9 @@ struct ProgressExamples: View {
                 """)
             }
         }
-        .padding()
+        .padding(CTSpacing.m)
         .background(Color(.systemBackground))
         .cornerRadius(12)
-        .shadow(radius: 2)
     }
     
     /// Usage examples of progress indicators
@@ -421,10 +424,9 @@ struct ProgressExamples: View {
                 .cornerRadius(8)
             }
         }
-        .padding()
+        .padding(CTSpacing.m)
         .background(Color(.systemBackground))
         .cornerRadius(12)
-        .shadow(radius: 2)
     }
     
     // MARK: - Helper Methods

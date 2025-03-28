@@ -192,19 +192,22 @@ struct ToastExamples: View {
                     Text("Do:").ctBodyBold()
                     
                     HStack(alignment: .top, spacing: CTSpacing.s) {
-                        CTIcon("checkmark.circle.fill", color: .ctSuccess)
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.ctSuccess)
                         Text("Use toasts for non-critical information that doesn't require user action")
                             .ctBody()
                     }
                     
                     HStack(alignment: .top, spacing: CTSpacing.s) {
-                        CTIcon("checkmark.circle.fill", color: .ctSuccess)
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.ctSuccess)
                         Text("Keep messages short and to the point")
                             .ctBody()
                     }
                     
                     HStack(alignment: .top, spacing: CTSpacing.s) {
-                        CTIcon("checkmark.circle.fill", color: .ctSuccess)
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.ctSuccess)
                         Text("Use appropriate toast types to match your message (success, error, etc.)")
                             .ctBody()
                     }
@@ -215,19 +218,22 @@ struct ToastExamples: View {
                     Text("Don't:").ctBodyBold()
                     
                     HStack(alignment: .top, spacing: CTSpacing.s) {
-                        CTIcon("xmark.circle.fill", color: .ctDestructive)
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.ctDestructive)
                         Text("Use toasts for critical errors that require user action")
                             .ctBody()
                     }
                     
                     HStack(alignment: .top, spacing: CTSpacing.s) {
-                        CTIcon("xmark.circle.fill", color: .ctDestructive)
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.ctDestructive)
                         Text("Display multiple toasts at the same time (they will queue automatically)")
                             .ctBody()
                     }
                     
                     HStack(alignment: .top, spacing: CTSpacing.s) {
-                        CTIcon("xmark.circle.fill", color: .ctDestructive)
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.ctDestructive)
                         Text("Use toasts for lengthy messages that require careful reading")
                             .ctBody()
                     }

@@ -54,9 +54,10 @@ struct SkeletonLoaderExamples: View {
                 commonPatternsSection
                 usageExampleSection
             }
-            .padding()
+            .padding(.horizontal, CTSpacing.m)
+            .padding(.vertical, CTSpacing.l)
         }
-        .navigationTitle("Skeleton Loader")
+        .navigationTitle("Progress")
         .onAppear {
             // Simulate loading data
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
