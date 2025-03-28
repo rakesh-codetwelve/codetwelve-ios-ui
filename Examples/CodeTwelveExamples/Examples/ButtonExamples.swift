@@ -244,7 +244,7 @@ struct ButtonExamples: View {
                     // Action for demonstration
                 }
                 
-                CTButton(icon: "plus", "Add Item", style: .primary) {
+                CTButton("Add Item", icon: "plus", style: .primary) {
                     // Action for demonstration
                 }
                 

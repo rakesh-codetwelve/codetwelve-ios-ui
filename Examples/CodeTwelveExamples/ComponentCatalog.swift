@@ -57,10 +57,10 @@ struct ComponentCatalog: View {
     private let categories: [ComponentCategory] = [
         // Basic Components
         ComponentCategory(name: "Basic", icon: "square.grid.2x2", components: [
-            Component(name: "Button", destination: Text("Button Examples")),
-            Component(name: "Text", destination: Text("Text Examples")),
-            Component(name: "Icon", destination: Text("Icon Examples")),
-            Component(name: "Divider", destination: Text("Divider Examples"))
+            Component(name: "Button", destination: ButtonExamples()),
+            Component(name: "Text", destination: TextExamples()),
+            Component(name: "Icon", destination: IconExamples()),
+            Component(name: "Divider", destination: DividerExamples())
         ]),
         
         // Layout Components

@@ -148,7 +148,6 @@
 		50066BAB2D966BCC00757359 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066BA42D966BCC00757359 /* ContentView.swift */; };
 		50066BAC2D966BCC00757359 /* ThemeExplorer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066BA62D966BCC00757359 /* ThemeExplorer.swift */; };
 		50066BAD2D966BCC00757359 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50066BA12D966BCC00757359 /* Assets.xcassets */; };
-		50066BAE2D966BCC00757359 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50066BA52D966BCC00757359 /* Info.plist */; };
 		50066BED2D966BDB00757359 /* CTTagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066BDB2D966BDB00757359 /* CTTagTests.swift */; };
 		50066BEE2D966BDB00757359 /* CTSelectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066BD52D966BDB00757359 /* CTSelectTests.swift */; };
 		50066BEF2D966BDB00757359 /* CTCommandPaletteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50066BC12D966BDB00757359 /* CTCommandPaletteTests.swift */; };
@@ -325,7 +324,6 @@
 		50066BA22D966BCC00757359 /* CodeTwelveExamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTwelveExamplesApp.swift; sourceTree = "<group>"; };
 		50066BA32D966BCC00757359 /* ComponentCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentCatalog.swift; sourceTree = "<group>"; };
 		50066BA42D966BCC00757359 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		50066BA52D966BCC00757359 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50066BA62D966BCC00757359 /* ThemeExplorer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeExplorer.swift; sourceTree = "<group>"; };
 		50066BAF2D966BDB00757359 /* .gitkeep */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitkeep; sourceTree = "<group>"; };
 		50066BB02D966BDB00757359 /* CTButtonAccessibilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTButtonAccessibilityTests.swift; sourceTree = "<group>"; };
@@ -622,7 +620,6 @@
 				50066BA22D966BCC00757359 /* CodeTwelveExamplesApp.swift */,
 				50066BA32D966BCC00757359 /* ComponentCatalog.swift */,
 				50066BA42D966BCC00757359 /* ContentView.swift */,
-				50066BA52D966BCC00757359 /* Info.plist */,
 				50066BA62D966BCC00757359 /* ThemeExplorer.swift */,
 			);
 			path = CodeTwelveExamples;
@@ -900,7 +897,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				50066BAD2D966BCC00757359 /* Assets.xcassets in Resources */,
-				50066BAE2D966BCC00757359 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

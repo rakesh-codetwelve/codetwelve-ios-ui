@@ -596,8 +596,42 @@ struct IconExamples: View {
             return "multicolor"
         case .palette:
             return "palette"
-        @unknown default:
+        default:
             return "monochrome"
+        }
+    }
+}
+
+// MARK: - SymbolRenderingMode Extensions
+
+extension SymbolRenderingMode: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .monochrome:
+            hasher.combine(0)
+        case .multicolor:
+            hasher.combine(1)
+        case .hierarchical:
+            hasher.combine(2)
+        case .palette:
+            hasher.combine(3)
+        default:
+            hasher.combine(-1)
+        }
+    }
+    
+    public static func == (lhs: SymbolRenderingMode, rhs: SymbolRenderingMode) -> Bool {
+        switch (lhs, rhs) {
+        case (.monochrome, .monochrome):
+            return true
+        case (.multicolor, .multicolor):
+            return true
+        case (.hierarchical, .hierarchical):
+            return true
+        case (.palette, .palette):
+            return true
+        default:
+            return false
         }
     }
 }
