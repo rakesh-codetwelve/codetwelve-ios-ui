@@ -60,11 +60,11 @@ struct ComponentCatalog: View {
     // MARK: - Feedback Components
     var feedbackComponents: [Component] {
         [
-            Component(name: "Toast", destination: Text("Toast Examples").padding()),
+            Component(name: "Toast", destination: ToastExamples()),
             Component(name: "Badge", destination: BadgeExamples()),
-            Component(name: "Alert", destination: Text("Alert Examples").padding()),
-            Component(name: "Progress", destination: Text("Progress Examples").padding()),
-            Component(name: "Skeleton", destination: Text("Skeleton Examples").padding()),
+            Component(name: "Alert", destination: AlertExamples()),
+            Component(name: "Progress", destination: ProgressExamples()),
+            Component(name: "Skeleton", destination: SkeletonLoaderExamples()),
         ]
     }
     
