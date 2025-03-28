@@ -68,7 +68,7 @@ struct PopoverExamples: View {
             )
             
             if showBasicCode {
-                CodePreview(code: """
+                CodePreview("""
                 @State private var isPopoverPresented = false
                 
                 Button("Show Popover") {
@@ -190,7 +190,7 @@ struct PopoverExamples: View {
             }
             
             if showPositionCode {
-                CodePreview(code: """
+                CodePreview("""
                 // Top Arrow
                 .ctPopover(
                     isPresented: $isPopoverPresented,
@@ -271,7 +271,7 @@ struct PopoverExamples: View {
             }
             
             if showStylingCode {
-                CodePreview(code: """
+                CodePreview("""
                 // Default Style
                 .ctPopover(
                     isPresented: $isPopoverPresented,
@@ -368,7 +368,7 @@ struct PopoverExamples: View {
             }
             
             if showDismissalCode {
-                CodePreview(code: """
+                CodePreview("""
                 // With backdrop dismissal
                 .ctPopover(
                     isPresented: $isPopoverPresented,
@@ -467,14 +467,13 @@ struct PopoverExamples: View {
             .cornerRadius(12)
             
             // Preview
-            Button("Show Interactive Popover") {
+            CTButton("Show Interactive Popover", style: .primary) {
                 isInteractivePopoverPresented = true
             }
-            .ctButton(style: .primary)
             .padding(.top, CTSpacing.m)
             
             if showInteractiveCode {
-                CodePreview(code: generateInteractiveCode())
+              CodePreview(generateInteractiveCode())
             } else {
                 Button("Show Code") {
                     showInteractiveCode = true
@@ -482,35 +481,35 @@ struct PopoverExamples: View {
                 .padding(.top, CTSpacing.s)
             }
         }
-        .ctPopover(
-            isPresented: $isInteractivePopoverPresented,
-            arrowPosition: selectedPosition,
-            style: getSelectedStyle(),
-            dismissOnBackgroundTap: backdropDismissal,
-            width: popoverWidth
-        ) {
-            VStack(alignment: .leading, spacing: CTSpacing.m) {
-                Text("Interactive Popover")
-                    .ctHeading3()
-                    .foregroundColor(selectedStyle == 3 ? (isDarkColor(customColor) ? .white : .black) : .ctText)
-                    
-                Text("This popover is configured with your custom settings.")
-                    .ctBody()
-                    .foregroundColor(selectedStyle == 3 ? (isDarkColor(customColor) ? .white : .black) : .ctText)
-                    
-                CTButton("Close", style: selectedStyle == 3 ? .outline : .primary) {
-                    isInteractivePopoverPresented = false
-                }
-                .foregroundColor(selectedStyle == 3 && isDarkColor(customColor) ? .white : nil)
-            }
-            .padding()
-        }
+//        .ctPopover(
+//            isPresented: $isInteractivePopoverPresented,
+//            arrowPosition: selectedPosition,
+//            style: getSelectedStyle(),
+//            dismissOnBackgroundTap: backdropDismissal,
+//            width: popoverWidth
+//        ) {
+//            VStack(alignment: .leading, spacing: CTSpacing.m) {
+//                Text("Interactive Popover")
+//                    .ctHeading3()
+//                    .foregroundColor(selectedStyle == 3 ? (isDarkColor(customColor) ? .white : .black) : .ctText)
+//                    
+//                Text("This popover is configured with your custom settings.")
+//                    .ctBody()
+//                    .foregroundColor(selectedStyle == 3 ? (isDarkColor(customColor) ? .white : .black) : .ctText)
+//                    
+//                CTButton("Close", style: selectedStyle == 3 ? .outline : .primary) {
+//                    isInteractivePopoverPresented = false
+//                }
+//                .foregroundColor(selectedStyle == 3 && isDarkColor(customColor) ? .white : nil)
+//            }
+//            .padding()
+//        }
     }
     
     // MARK: - Helper Methods
     
     /// Get the selected style based on the picker selection
-    private func getSelectedStyle() -> CTPopover<AnyView>.CTPopoverStyle {
+    private func getSelectedStyle() -> CTPopover<PopoverContentExample>.CTPopoverStyle {
         switch selectedStyle {
         case 0:
             return .default
@@ -618,10 +617,9 @@ struct PopoverDemoButton: View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        Button(title) {
+        CTButton(title, style: .secondary) {
             isPresented = true
         }
-        .ctButton(style: .secondary)
     }
 }
 

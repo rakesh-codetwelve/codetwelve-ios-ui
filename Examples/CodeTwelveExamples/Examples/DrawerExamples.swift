@@ -75,7 +75,7 @@ struct DrawerExamples: View {
             }
             
             if showDirectionCode {
-                CodePreview(code: """
+              CodePreview("""
                 // State variables
                 @State private var isLeadingDrawerPresented = false
                 @State private var isTrailingDrawerPresented = false
@@ -151,7 +151,7 @@ struct DrawerExamples: View {
                 .padding(.top, CTSpacing.s)
             
             if showStylingCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Create a custom drawer style
                 let customStyle = CTDrawerStyle(
                     backgroundColor: Color.ctPrimary,
@@ -264,7 +264,7 @@ struct DrawerExamples: View {
             }
             
             if showDismissalCode {
-                CodePreview(code: """
+              CodePreview("""
                 // With backdrop dismissal
                 .ctDrawer(
                     isPresented: $isDrawerPresented,
@@ -336,7 +336,7 @@ struct DrawerExamples: View {
             }
             
             if showCustomSizeCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Small drawer (width: 200pt)
                 .ctDrawer(
                     isPresented: $isDrawerPresented,
@@ -425,14 +425,13 @@ struct DrawerExamples: View {
             .cornerRadius(12)
             
             // Preview button
-            Button("Open Interactive Drawer") {
+            CTButton("Open Interactive Drawer", style: .primary) {
                 isInteractiveDrawerPresented = true
             }
-            .ctButton(style: .primary)
             .padding(.top, CTSpacing.m)
             
             if showInteractiveCode {
-                CodePreview(code: generateInteractiveCode())
+              CodePreview(generateInteractiveCode())
             } else {
                 Button("Show Code") {
                     showInteractiveCode = true
@@ -531,10 +530,9 @@ struct DrawerDemoButton: View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        Button(title) {
+        CTButton(title, style: .primary) {
             isPresented = true
         }
-        .ctButton(style: .secondary, fullWidth: true)
     }
 }
 

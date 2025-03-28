@@ -82,7 +82,7 @@ struct TabBarExamples: View {
             }
             
             if showBasicCode {
-                CodePreview(code: """
+              CodePreview("""
                 @State private var selectedTab = 0
 
                 CTTabBar(
@@ -148,7 +148,7 @@ struct TabBarExamples: View {
             }
             
             if showStylesCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Default Style
                 CTTabBar(
                     selectedTab: $selectedTab,
@@ -211,7 +211,7 @@ struct TabBarExamples: View {
             }
             
             if showLabelsCode {
-                CodePreview(code: """
+              CodePreview("""
                 // With Labels
                 CTTabBar(
                     selectedTab: $selectedTab,
@@ -291,7 +291,7 @@ struct TabBarExamples: View {
             }
             
             if showAlignmentCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Space Evenly
                 CTTabBar(
                     selectedTab: $selectedTab,
@@ -385,7 +385,7 @@ struct TabBarExamples: View {
             }
             
             if showBackgroundCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Standard
                 CTTabBar(
                     selectedTab: $selectedTab,
@@ -521,7 +521,7 @@ struct TabBarExamples: View {
                     )
                 }
                 
-                CodePreview(code: generateInteractiveCode())
+              CodePreview(generateInteractiveCode())
             }
             .padding(.top, CTSpacing.m)
         }

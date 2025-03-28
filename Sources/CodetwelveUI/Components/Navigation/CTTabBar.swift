@@ -369,7 +369,7 @@ public enum CTTabBarAlignment {
 }
 
 /// The background style of the tab bar
-public enum CTTabBarBackgroundStyle {
+public enum CTTabBarBackgroundStyle: Hashable {
     /// Standard background with a subtle shadow
     case standard
     

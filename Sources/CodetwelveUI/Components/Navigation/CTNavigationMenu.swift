@@ -441,7 +441,7 @@ public enum CTNavigationBadge {
 }
 
 /// Style of the navigation menu
-public enum CTNavigationMenuStyle {
+public enum CTNavigationMenuStyle: Hashable {
     /// Standard sidebar style with light background
     case sidebar
     

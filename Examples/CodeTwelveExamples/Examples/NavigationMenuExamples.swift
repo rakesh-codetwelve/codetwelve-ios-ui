@@ -75,7 +75,7 @@ struct NavigationMenuExamples: View {
             }
             
             if showBasicCode {
-                CodePreview(code: """
+              CodePreview("""
                 @State private var selectedItem: String? = "home"
                 
                 CTNavigationMenu(
@@ -155,7 +155,7 @@ struct NavigationMenuExamples: View {
             }
             
             if showStylesCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Sidebar Style
                 CTNavigationMenu(
                     items: menuItems,
@@ -214,7 +214,7 @@ struct NavigationMenuExamples: View {
             }
             
             if showSectionsCode {
-                CodePreview(code: """
+              CodePreview("""
                 CTNavigationMenu(
                     items: [
                         .item(id: "dashboard", label: "Dashboard", icon: "chart.bar"),
@@ -241,7 +241,7 @@ struct NavigationMenuExamples: View {
     
     // MARK: - Badges Section
     
-    private var badgesSection: View {
+    private var badgesSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
             SectionHeader(title: "Navigation with Badges", showCode: $showBadgesCode)
             
@@ -265,7 +265,7 @@ struct NavigationMenuExamples: View {
             }
             
             if showBadgesCode {
-                CodePreview(code: """
+              CodePreview("""
                 CTNavigationMenu(
                     items: [
                         .item(id: "inbox", label: "Inbox", icon: "envelope", badge: .count(5)),
@@ -364,7 +364,7 @@ struct NavigationMenuExamples: View {
                 .padding(.vertical, CTSpacing.s)
                 
                 if showInteractiveCode {
-                    CodePreview(code: generateInteractiveCode())
+                  CodePreview(generateInteractiveCode())
                 }
             }
             .padding(.top, CTSpacing.m)

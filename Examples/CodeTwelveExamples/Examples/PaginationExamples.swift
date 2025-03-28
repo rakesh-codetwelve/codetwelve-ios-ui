@@ -71,7 +71,7 @@ struct PaginationExamples: View {
             }
             
             if showBasicCode {
-                CodePreview(code: """
+              CodePreview("""
                 @State private var currentPage = 1
                 
                 CTPagination(
@@ -144,7 +144,7 @@ struct PaginationExamples: View {
             }
             
             if showStylesCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Primary Style
                 CTPagination(
                     currentPage: $currentPage,
@@ -226,7 +226,7 @@ struct PaginationExamples: View {
             }
             
             if showSizesCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Small Size
                 CTPagination(
                     currentPage: $currentPage,
@@ -301,7 +301,7 @@ struct PaginationExamples: View {
             }
             
             if showRangeCode {
-                CodePreview(code: """
+              CodePreview("""
                 // Default Range (2)
                 CTPagination(
                     currentPage: $currentPage,
@@ -364,7 +364,7 @@ struct PaginationExamples: View {
             }
             
             if showEdgeButtonsCode {
-                CodePreview(code: """
+              CodePreview("""
                 // With Edge Buttons
                 CTPagination(
                     currentPage: $currentPage,
@@ -474,7 +474,7 @@ struct PaginationExamples: View {
                 .padding(.vertical, CTSpacing.s)
                 
                 if showInteractiveCode {
-                    CodePreview(code: generateInteractiveCode())
+                  CodePreview(generateInteractiveCode())
                 }
             }
             .padding(.top, CTSpacing.m)

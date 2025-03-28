@@ -31,7 +31,7 @@ import SwiftUI
 /// ```
 public struct CTPagination: View {
     /// Pagination styles
-    public enum PaginationStyle {
+    public enum PaginationStyle: Hashable {
         /// Default primary style with standard appearance
         case primary
         /// Secondary style with alternative visual design
