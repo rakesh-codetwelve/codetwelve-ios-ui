@@ -48,13 +48,13 @@ struct ComponentCatalog: View {
     ]
     
     private let formComponents = [
-        Component(name: "Text Field", destination: Text("Text Field Examples").padding()),
+        Component(name: "Text Field", destination: TextFieldExamples()),
         Component(name: "Text Area", destination: Text("Text Area Examples").padding()),
-        Component(name: "Checkbox", destination: Text("Checkbox Examples").padding()),
-        Component(name: "Radio Group", destination: Text("Radio Group Examples").padding()),
-        Component(name: "Select", destination: Text("Select Examples").padding()),
+        Component(name: "Checkbox", destination: CheckboxExamples()),
+        Component(name: "Radio Group", destination: RadioGroupExamples()),
+        Component(name: "Select", destination: SelectExamples()),
         Component(name: "Slider", destination: Text("Slider Examples").padding()),
-        Component(name: "Switch", destination: Text("Switch Examples").padding())
+        Component(name: "Switch", destination: ToggleExamples())
     ]
     
     // MARK: - Feedback Components
