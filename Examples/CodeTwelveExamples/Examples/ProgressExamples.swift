@@ -102,7 +102,7 @@ struct ProgressExamples: View {
             }
             
             ToggleCodeButton(isExpanded: $showBasicCode)
-                .padding(.top, CTSpacing.s)
+                .padding(Edge.Set.top, CTSpacing.s)
             
             if showBasicCode {
                 codeExample("""
@@ -128,7 +128,10 @@ struct ProgressExamples: View {
                 """)
             }
         }
-        .ctCard()
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .shadow(radius: 2)
     }
     
     /// Examples of different progress styles and sizes
@@ -158,20 +161,20 @@ struct ProgressExamples: View {
             VStack(alignment: .leading, spacing: CTSpacing.s) {
                 Text("Colors:").ctBodyBold()
                 
-                CTProgress(value: 0.5, color: .ctPrimary, label: "Primary")
+                CTProgress(value: 0.5, size: .medium, color: .ctPrimary, label: "Primary")
                     .padding(.bottom, CTSpacing.xs)
                 
-                CTProgress(value: 0.5, color: .ctSuccess, label: "Success")
+                CTProgress(value: 0.5, size: .medium, color: .ctSuccess, label: "Success")
                     .padding(.bottom, CTSpacing.xs)
                 
-                CTProgress(value: 0.5, color: .ctDestructive, label: "Destructive")
+                CTProgress(value: 0.5, size: .medium, color: .ctDestructive, label: "Destructive")
                     .padding(.bottom, CTSpacing.xs)
                 
-                CTProgress(value: 0.5, color: .ctWarning, label: "Warning")
+                CTProgress(value: 0.5, size: .medium, color: .ctWarning, label: "Warning")
             }
             
             ToggleCodeButton(isExpanded: $showStylesCode)
-                .padding(.top, CTSpacing.s)
+                .padding(Edge.Set.top, CTSpacing.s)
             
             if showStylesCode {
                 codeExample("""
@@ -185,11 +188,14 @@ struct ProgressExamples: View {
                 CTProgress(value: 0.5, size: .large, label: "Large")
                 
                 // Custom color progress
-                CTProgress(value: 0.5, color: .ctSuccess, label: "Success")
+                CTProgress(value: 0.5, size: .medium, color: .ctSuccess, label: "Success")
                 """)
             }
         }
-        .ctCard()
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .shadow(radius: 2)
     }
     
     /// Examples of different progress states
@@ -230,7 +236,10 @@ struct ProgressExamples: View {
                 )
             }
         }
-        .ctCard()
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .shadow(radius: 2)
     }
     
     /// Custom progress configuration section
@@ -312,7 +321,7 @@ struct ProgressExamples: View {
             )
             
             ToggleCodeButton(isExpanded: $showCustomCode)
-                .padding(.top, CTSpacing.s)
+                .padding(Edge.Set.top, CTSpacing.s)
             
             if showCustomCode {
                 codeExample("""
@@ -328,7 +337,10 @@ struct ProgressExamples: View {
                 """)
             }
         }
-        .ctCard()
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .shadow(radius: 2)
     }
     
     /// Usage examples of progress indicators
@@ -376,7 +388,7 @@ struct ProgressExamples: View {
                             .foregroundColor(.ctSuccess)
                     }
                     
-                    CTProgress(value: 1.0, color: .ctSuccess, size: .small)
+                    CTProgress(value: 1.0, size: .small, color: .ctSuccess)
                     
                     HStack {
                         Text("Design System")
@@ -409,7 +421,10 @@ struct ProgressExamples: View {
                 .cornerRadius(8)
             }
         }
-        .ctCard()
+        .padding()
+        .background(Color(.systemBackground))
+        .cornerRadius(12)
+        .shadow(radius: 2)
     }
     
     // MARK: - Helper Methods
@@ -485,6 +500,35 @@ struct ProgressExamples: View {
                     animatedProgress = 0.0
                 }
             }
+        }
+    }
+}
+
+// MARK: - Supporting Views
+
+/// A button that toggles the visibility of code examples
+struct ToggleCodeButton: View {
+    @Binding var isExpanded: Bool
+    
+    var body: some View {
+        Button(action: {
+            withAnimation {
+                isExpanded.toggle()
+            }
+        }) {
+            HStack {
+                Text(isExpanded ? "Hide Code" : "Show Code")
+                    .ctBodySmall()
+                    .foregroundColor(.ctPrimary)
+                
+                Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                    .font(.system(size: 12))
+                    .foregroundColor(.ctPrimary)
+            }
+            .padding(.vertical, CTSpacing.xs)
+            .padding(.horizontal, CTSpacing.s)
+            .background(Color.ctPrimary.opacity(0.1))
+            .cornerRadius(CTSpacing.xs)
         }
     }
 }

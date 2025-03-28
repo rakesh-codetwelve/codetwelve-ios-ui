@@ -239,7 +239,7 @@ public struct CTAlert<Content: View>: View {
 // MARK: - Supporting Types
 
 /// The severity of an alert
-public enum CTAlertSeverity {
+public enum CTAlertSeverity: Hashable {
     /// Informational alert (typically blue)
     case info
     
@@ -284,6 +284,40 @@ public enum CTAlertSeverity {
             return "Error"
         case .custom:
             return "Custom"
+        }
+    }
+    
+    // MARK: - Hashable
+    
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .info:
+            hasher.combine(0)
+        case .success:
+            hasher.combine(1)
+        case .warning:
+            hasher.combine(2)
+        case .error:
+            hasher.combine(3)
+        case .custom(_, let iconColor, let borderColor):
+            hasher.combine(4)
+            hasher.combine(iconColor)
+            hasher.combine(borderColor)
+        }
+    }
+    
+    public static func == (lhs: CTAlertSeverity, rhs: CTAlertSeverity) -> Bool {
+        switch (lhs, rhs) {
+        case (.info, .info),
+             (.success, .success),
+             (.warning, .warning),
+             (.error, .error):
+            return true
+        case (.custom(_, let lhsIconColor, let lhsBorderColor),
+              .custom(_, let rhsIconColor, let rhsBorderColor)):
+            return lhsIconColor == rhsIconColor && lhsBorderColor == rhsBorderColor
+        default:
+            return false
         }
     }
 }

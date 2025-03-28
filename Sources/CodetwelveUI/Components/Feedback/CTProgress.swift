@@ -268,7 +268,7 @@ public enum CTProgressStyle {
 }
 
 /// The size of the progress indicator
-public enum CTProgressSize {
+public enum CTProgressSize: Hashable {
     /// Small progress indicator
     case small
     
@@ -334,6 +334,38 @@ public enum CTProgressSize {
             return CTTypography.body()
         case .custom(_, _, _, let font):
             return font
+        }
+    }
+    
+    // MARK: - Hashable
+    
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .small:
+            hasher.combine(0)
+        case .medium:
+            hasher.combine(1)
+        case .large:
+            hasher.combine(2)
+        case .custom(let linearHeight, let circularDiameter, let circularLineWidth, _):
+            hasher.combine(3)
+            hasher.combine(linearHeight)
+            hasher.combine(circularDiameter)
+            hasher.combine(circularLineWidth)
+        }
+    }
+    
+    public static func == (lhs: CTProgressSize, rhs: CTProgressSize) -> Bool {
+        switch (lhs, rhs) {
+        case (.small, .small),
+             (.medium, .medium),
+             (.large, .large):
+            return true
+        case (.custom(let lh, let ld, let lw, _),
+              .custom(let rh, let rd, let rw, _)):
+            return lh == rh && ld == rd && lw == rw
+        default:
+            return false
         }
     }
 }

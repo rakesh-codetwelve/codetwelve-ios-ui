@@ -186,7 +186,7 @@ public struct CTSkeletonLoader: View {
 // MARK: - Supporting Types
 
 /// The shape of the skeleton
-public enum CTSkeletonShape {
+public enum CTSkeletonShape: Hashable {
     /// Rectangle shape
     case rectangle
     
@@ -201,6 +201,39 @@ public enum CTSkeletonShape {
     
     /// Text shape with multiple lines
     case text(lines: Int, lastLineWidth: CGFloat)
+    
+    // MARK: - Hashable
+    
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .rectangle:
+            hasher.combine(0)
+        case .square:
+            hasher.combine(1)
+        case .circle:
+            hasher.combine(2)
+        case .capsule:
+            hasher.combine(3)
+        case .text(let lines, let lastLineWidth):
+            hasher.combine(4)
+            hasher.combine(lines)
+            hasher.combine(lastLineWidth)
+        }
+    }
+    
+    public static func == (lhs: CTSkeletonShape, rhs: CTSkeletonShape) -> Bool {
+        switch (lhs, rhs) {
+        case (.rectangle, .rectangle),
+             (.square, .square),
+             (.circle, .circle),
+             (.capsule, .capsule):
+            return true
+        case (.text(let lines1, let width1), .text(let lines2, let width2)):
+            return lines1 == lines2 && width1 == width2
+        default:
+            return false
+        }
+    }
 }
 
 /// The animation style for the skeleton

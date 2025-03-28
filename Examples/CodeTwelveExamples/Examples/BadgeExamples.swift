@@ -8,6 +8,25 @@
 import SwiftUI
 import CodetwelveUI
 
+/// A view that displays code examples in a monospaced font
+struct CodePreview: View {
+    let code: String
+    
+    init(_ code: String) {
+        self.code = code
+    }
+    
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            Text(code)
+                .font(.system(.footnote, design: .monospaced))
+                .padding(8)
+        }
+        .background(Color.secondary.opacity(0.1))
+        .cornerRadius(8)
+    }
+}
+
 /// Badge content enum for switching between numeric and text content
 enum BadgeContent: Equatable {
     case number(Int)
@@ -783,45 +802,6 @@ struct BadgeExamples: View {
             return "CTBadge(\(value)\(params.isEmpty ? "" : ", \(params)"))"
         case .text(let text):
             return "CTBadge(\"\(text)\"\(params.isEmpty ? "" : ", \(params)"))"
-        }
-    }
-}
-
-// MARK: - Helper Views for Code Display
-
-struct CodePreview: View {
-    let code: String
-    
-    init(_ code: String) {
-        self.code = code
-    }
-    
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            Text(code)
-                .font(.system(.footnote, design: .monospaced))
-                .padding(8)
-        }
-        .background(Color.secondary.opacity(0.1))
-        .cornerRadius(8)
-    }
-}
-
-struct ToggleCodeButton: View {
-    @Binding var isExpanded: Bool
-    
-    var body: some View {
-        Button(action: {
-            withAnimation {
-                isExpanded.toggle()
-            }
-        }) {
-            HStack {
-                Text(isExpanded ? "Hide code" : "Show code")
-                Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-            }
-            .font(.footnote)
-            .foregroundColor(.accentColor)
         }
     }
 }

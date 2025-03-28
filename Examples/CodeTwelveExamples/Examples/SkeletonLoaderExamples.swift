@@ -69,404 +69,377 @@ struct SkeletonLoaderExamples: View {
     
     /// Basic usage examples of skeleton loaders
     private var basicUsageSection: some View {
-        VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Basic Usage").ctHeading2()
-            
-            Text("Skeleton loaders provide visual placeholders during content loading to improve perceived performance.")
-                .ctBody()
-                .padding(.bottom, CTSpacing.s)
-            
-            // Toggle to show/hide skeletons
-            Toggle("Show Loading State", isOn: $isLoading)
-                .padding(.bottom, CTSpacing.m)
-            
-            // Basic shapes
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Basic Shapes:").ctBodyBold()
+        CTCard {
+            VStack(alignment: .leading, spacing: CTSpacing.m) {
+                Text("Basic Usage").ctHeading2()
                 
-                HStack(spacing: CTSpacing.m) {
-                    VStack(spacing: CTSpacing.xs) {
-                        Text("Rectangle").ctCaption()
-                        CTSkeletonLoader(shape: .rectangle)
-                            .frame(width: 150, height: 20)
-                    }
+                Text("Skeleton loaders provide visual placeholders during content loading to improve perceived performance.")
+                    .ctBody()
+                    .padding(.bottom, CTSpacing.s)
+                
+                // Toggle to show/hide skeletons
+                Toggle("Show Loading State", isOn: $isLoading)
+                    .padding(.bottom, CTSpacing.m)
+                
+                // Basic shapes
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Basic Shapes:").ctBodyBold()
                     
-                    VStack(spacing: CTSpacing.xs) {
-                        Text("Circle").ctCaption()
-                        CTSkeletonLoader(shape: .circle)
-                            .frame(width: 50, height: 50)
-                    }
-                    
-                    VStack(spacing: CTSpacing.xs) {
-                        Text("Capsule").ctCaption()
-                        CTSkeletonLoader(shape: .capsule)
-                            .frame(width: 100, height: 30)
+                    HStack(spacing: CTSpacing.m) {
+                        VStack(spacing: CTSpacing.xs) {
+                            Text("Rectangle").ctCaption()
+                            CTSkeletonLoader(shape: .rectangle)
+                                .frame(width: 150, height: 20)
+                        }
+                        
+                        VStack(spacing: CTSpacing.xs) {
+                            Text("Circle").ctCaption()
+                            CTSkeletonLoader(shape: .circle)
+                                .frame(width: 50, height: 50)
+                        }
+                        
+                        VStack(spacing: CTSpacing.xs) {
+                            Text("Capsule").ctCaption()
+                            CTSkeletonLoader(shape: .capsule)
+                                .frame(width: 100, height: 30)
+                        }
                     }
                 }
-            }
-            .padding(.bottom, CTSpacing.m)
-            
-            // Text skeleton
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Text Skeleton:").ctBodyBold()
+                .padding(.bottom, CTSpacing.m)
                 
-                CTSkeletonLoader(shape: .text(lines: 3, lastLineWidth: 0.7))
-                    .frame(width: 300)
-            }
-            
-            ToggleCodeButton(isExpanded: $showBasicCode)
-                .padding(.top, CTSpacing.s)
-            
-            if showBasicCode {
-                codeExample("""
-                // Rectangle skeleton
-                CTSkeletonLoader(shape: .rectangle)
-                    .frame(width: 150, height: 20)
+                // Text skeleton
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Text Skeleton:").ctBodyBold()
+                    
+                    CTSkeletonLoader(shape: .text(lines: 3, lastLineWidth: 0.7))
+                        .frame(width: 300)
+                }
                 
-                // Circle skeleton
-                CTSkeletonLoader(shape: .circle)
-                    .frame(width: 50, height: 50)
+                ToggleCodeButton(isExpanded: $showBasicCode)
+                    .padding(.top, CTSpacing.s)
                 
-                // Capsule skeleton
-                CTSkeletonLoader(shape: .capsule)
-                    .frame(width: 100, height: 30)
-                
-                // Text skeleton with multiple lines
-                CTSkeletonLoader(shape: .text(lines: 3, lastLineWidth: 0.7))
-                    .frame(width: 300)
-                """)
+                if showBasicCode {
+                    codeExample("""
+                    // Rectangle skeleton
+                    CTSkeletonLoader(shape: .rectangle)
+                        .frame(width: 150, height: 20)
+                    
+                    // Circle skeleton
+                    CTSkeletonLoader(shape: .circle)
+                        .frame(width: 50, height: 50)
+                    
+                    // Capsule skeleton
+                    CTSkeletonLoader(shape: .capsule)
+                        .frame(width: 100, height: 30)
+                    
+                    // Text skeleton with multiple lines
+                    CTSkeletonLoader(shape: .text(lines: 3, lastLineWidth: 0.7))
+                        .frame(width: 300)
+                    """)
+                }
             }
         }
-        .ctCard()
     }
     
     /// Examples of different skeleton animation types
     private var animationTypesSection: some View {
-        VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Animation Types").ctHeading2()
-            
-            Text("Skeleton loaders support different animation types to indicate loading state.")
-                .ctBody()
-                .padding(.bottom, CTSpacing.s)
-            
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Pulse Animation:").ctBodyBold()
-                CTSkeletonLoader(
-                    shape: .rectangle,
-                    animation: .pulse
-                )
-                .frame(width: 300, height: 50)
-            }
-            .padding(.bottom, CTSpacing.m)
-            
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Shimmer Animation:").ctBodyBold()
-                CTSkeletonLoader(
-                    shape: .rectangle,
-                    animation: .shimmer
-                )
-                .frame(width: 300, height: 50)
-            }
-            .padding(.bottom, CTSpacing.m)
-            
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("No Animation:").ctBodyBold()
-                CTSkeletonLoader(
-                    shape: .rectangle,
-                    animation: .none
-                )
-                .frame(width: 300, height: 50)
+        CTCard {
+            VStack(alignment: .leading, spacing: CTSpacing.m) {
+                Text("Animation Types").ctHeading2()
+                
+                Text("Skeleton loaders support different animation types to indicate loading state.")
+                    .ctBody()
+                    .padding(.bottom, CTSpacing.s)
+                
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Pulse Animation:").ctBodyBold()
+                    CTSkeletonLoader(
+                        shape: .rectangle,
+                        animation: .pulse
+                    )
+                    .frame(width: 300, height: 50)
+                }
+                .padding(.bottom, CTSpacing.m)
+                
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Shimmer Animation:").ctBodyBold()
+                    CTSkeletonLoader(
+                        shape: .rectangle,
+                        animation: .shimmer
+                    )
+                    .frame(width: 300, height: 50)
+                }
+                .padding(.bottom, CTSpacing.m)
+                
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("No Animation:").ctBodyBold()
+                    CTSkeletonLoader(
+                        shape: .rectangle,
+                        animation: .none
+                    )
+                    .frame(width: 300, height: 50)
+                }
             }
         }
-        .ctCard()
     }
     
     /// Custom skeleton configuration section
     private var customSkeletonSection: some View {
-        VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Custom Skeleton").ctHeading2()
-            
-            Text("You can customize various aspects of skeleton loaders including the shape, size, animation type, and appearance.")
-                .ctBody()
-                .padding(.bottom, CTSpacing.s)
-            
-            // Shape picker
-            VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                Text("Shape:").ctBodyBold()
-                Picker("Shape", selection: $selectedShape) {
-                    Text("Rectangle").tag(CTSkeletonShape.rectangle)
-                    Text("Square").tag(CTSkeletonShape.square)
-                    Text("Circle").tag(CTSkeletonShape.circle)
-                    Text("Capsule").tag(CTSkeletonShape.capsule)
-                    Text("Text").tag(CTSkeletonShape.text(lines: Int(textLines), lastLineWidth: lastLineWidth))
+        CTCard {
+            VStack(alignment: .leading, spacing: CTSpacing.m) {
+                Text("Custom Skeleton").ctHeading2()
+                
+                Text("You can customize various aspects of skeleton loaders including the shape, size, animation type, and appearance.")
+                    .ctBody()
+                    .padding(.bottom, CTSpacing.s)
+                
+                // Shape picker
+                VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                    Text("Shape:").ctBodyBold()
+                    Picker("Shape", selection: $selectedShape) {
+                        Text("Rectangle").tag(CTSkeletonShape.rectangle)
+                        Text("Square").tag(CTSkeletonShape.square)
+                        Text("Circle").tag(CTSkeletonShape.circle)
+                        Text("Capsule").tag(CTSkeletonShape.capsule)
+                        Text("Text").tag(CTSkeletonShape.text(lines: Int(textLines), lastLineWidth: lastLineWidth))
+                    }
+                    .onChange(of: selectedShape) { newValue in
+                        if case .text = newValue {
+                            // Create a new text shape with current parameters
+                            selectedShape = .text(lines: Int(textLines), lastLineWidth: lastLineWidth)
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
-                .onChange(of: selectedShape) { newValue in
-                    if case .text = newValue {
-                        // Create a new text shape with current parameters
-                        selectedShape = .text(lines: Int(textLines), lastLineWidth: lastLineWidth)
+                
+                // Animation type picker
+                VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                    Text("Animation:").ctBodyBold()
+                    Picker("Animation", selection: $selectedAnimation) {
+                        Text("Pulse").tag(CTSkeletonAnimation.pulse)
+                        Text("Shimmer").tag(CTSkeletonAnimation.shimmer)
+                        Text("None").tag(CTSkeletonAnimation.none)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                
+                // Text skeleton options (only shown for text shape)
+                switch selectedShape {
+                case .text:
+                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                        Text("Text Lines: \(Int(textLines))").ctBodyBold()
+                        Slider(value: $textLines, in: 1...8, step: 1)
+                            .onChange(of: textLines) { newValue in
+                                selectedShape = .text(lines: Int(newValue), lastLineWidth: lastLineWidth)
+                            }
+                        
+                        Text("Last Line Width: \(Int(lastLineWidth * 100))%").ctBodyBold()
+                        Slider(value: $lastLineWidth, in: 0.1...1.0, step: 0.05)
+                            .onChange(of: lastLineWidth) { newValue in
+                                selectedShape = .text(lines: Int(textLines), lastLineWidth: newValue)
+                            }
+                    }
+                default:
+                    // Size options (only shown for non-text shapes)
+                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                        Text("Width: \(Int(skeletonWidth))").ctBodyBold()
+                        Slider(value: $skeletonWidth, in: 50...300, step: 10)
+                        
+                        Text("Height: \(Int(skeletonHeight))").ctBodyBold()
+                        Slider(value: $skeletonHeight, in: 10...150, step: 10)
                     }
                 }
-                .pickerStyle(SegmentedPickerStyle())
-            }
-            
-            // Animation type picker
-            VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                Text("Animation:").ctBodyBold()
-                Picker("Animation", selection: $selectedAnimation) {
-                    Text("Pulse").tag(CTSkeletonAnimation.pulse)
-                    Text("Shimmer").tag(CTSkeletonAnimation.shimmer)
-                    Text("None").tag(CTSkeletonAnimation.none)
+                
+                // Corner radius (only applicable to rectangle/square)
+                switch selectedShape {
+                case .rectangle, .square:
+                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                        Text("Corner Radius: \(Int(cornerRadius))").ctBodyBold()
+                        Slider(value: $cornerRadius, in: 0...20, step: 1)
+                    }
+                default:
+                    EmptyView()
                 }
-                .pickerStyle(SegmentedPickerStyle())
-            }
-            
-            // Text skeleton options (only shown for text shape)
-            if case .text = selectedShape {
-                VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                    Text("Text Lines: \(Int(textLines))").ctBodyBold()
-                    Slider(value: $textLines, in: 1...8, step: 1)
-                        .onChange(of: textLines) { newValue in
-                            selectedShape = .text(lines: Int(newValue), lastLineWidth: lastLineWidth)
-                        }
-                    
-                    Text("Last Line Width: \(Int(lastLineWidth * 100))%").ctBodyBold()
-                    Slider(value: $lastLineWidth, in: 0.1...1.0, step: 0.05)
-                        .onChange(of: lastLineWidth) { newValue in
-                            selectedShape = .text(lines: Int(textLines), lastLineWidth: newValue)
-                        }
+                
+                // Preview
+                Text("Preview:").ctBodyBold()
+                    .padding(.top, CTSpacing.s)
+                
+                customSkeletonPreview
+                
+                ToggleCodeButton(isExpanded: $showCustomCode)
+                    .padding(.top, CTSpacing.s)
+                
+                if showCustomCode {
+                    codeExample(generateCustomCode())
                 }
-            } else {
-                // Size options (only shown for non-text shapes)
-                VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                    Text("Width: \(Int(skeletonWidth))").ctBodyBold()
-                    Slider(value: $skeletonWidth, in: 50...300, step: 10)
-                    
-                    Text("Height: \(Int(skeletonHeight))").ctBodyBold()
-                    Slider(value: $skeletonHeight, in: 10...150, step: 10)
-                }
-            }
-            
-            // Corner radius (only applicable to rectangle/square)
-            if case .rectangle = selectedShape || case .square = selectedShape {
-                VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                    Text("Corner Radius: \(Int(cornerRadius))").ctBodyBold()
-                    Slider(value: $cornerRadius, in: 0...20, step: 1)
-                }
-            }
-            
-            // Preview
-            Text("Preview:").ctBodyBold()
-                .padding(.top, CTSpacing.s)
-            
-            customSkeletonPreview
-            
-            ToggleCodeButton(isExpanded: $showCustomCode)
-                .padding(.top, CTSpacing.s)
-            
-            if showCustomCode {
-                codeExample(generateCustomCode())
             }
         }
-        .ctCard()
     }
     
     /// Common skeleton loader patterns
     private var commonPatternsSection: some View {
-        VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Common Patterns").ctHeading2()
-            
-            Text("Skeleton loaders are commonly used in various UI patterns to represent loading content.")
-                .ctBody()
-                .padding(.bottom, CTSpacing.s)
-            
-            // Profile card skeleton
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("Profile Card:").ctBodyBold()
+        CTCard {
+            VStack(alignment: .leading, spacing: CTSpacing.m) {
+                Text("Common Patterns").ctHeading2()
                 
-                HStack(spacing: CTSpacing.m) {
-                    CTSkeletonLoader(shape: .circle)
-                        .frame(width: 64, height: 64)
+                Text("Skeleton loaders are commonly used in various UI patterns to represent loading content.")
+                    .ctBody()
+                    .padding(.bottom, CTSpacing.s)
+                
+                // Profile card skeleton
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Profile Card:").ctBodyBold()
                     
-                    VStack(alignment: .leading, spacing: CTSpacing.s) {
-                        CTSkeletonLoader(shape: .rectangle)
-                            .frame(width: 150, height: 20)
+                    HStack(spacing: CTSpacing.m) {
+                        CTSkeletonLoader(shape: .circle)
+                            .frame(width: 64, height: 64)
                         
-                        CTSkeletonLoader(shape: .rectangle)
-                            .frame(width: 100, height: 16)
-                    }
-                }
-                .padding()
-                .background(Color.ctSurface)
-                .cornerRadius(CTSpacing.m)
-            }
-            .padding(.bottom, CTSpacing.m)
-            
-            // List skeleton
-            VStack(alignment: .leading, spacing: CTSpacing.s) {
-                Text("List Items:").ctBodyBold()
-                
-                VStack(spacing: CTSpacing.m) {
-                    ForEach(0..<3) { _ in
-                        HStack(spacing: CTSpacing.m) {
-                            CTSkeletonLoader(shape: .square)
-                                .frame(width: 40, height: 40)
+                        VStack(alignment: .leading, spacing: CTSpacing.s) {
+                            CTSkeletonLoader(shape: .rectangle)
+                                .frame(width: 150, height: 20)
                             
-                            VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                                CTSkeletonLoader(shape: .rectangle)
-                                    .frame(width: 120, height: 16)
-                                
-                                CTSkeletonLoader(shape: .rectangle)
-                                    .frame(width: 80, height: 12)
-                            }
-                            
-                            Spacer()
-                            
-                            CTSkeletonLoader(shape: .capsule)
-                                .frame(width: 60, height: 24)
+                            CTSkeletonLoader(shape: .rectangle)
+                                .frame(width: 100, height: 16)
                         }
                     }
+                    .padding()
+                    .background(Color.ctSurface)
+                    .cornerRadius(CTSpacing.m)
                 }
-                .padding()
-                .background(Color.ctSurface)
-                .cornerRadius(CTSpacing.m)
+                .padding(.bottom, CTSpacing.m)
+                
+                // List skeleton
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("List Items:").ctBodyBold()
+                    
+                    VStack(spacing: CTSpacing.m) {
+                        ForEach(0..<3) { _ in
+                            HStack(spacing: CTSpacing.m) {
+                                CTSkeletonLoader(shape: .square)
+                                    .frame(width: 40, height: 40)
+                                
+                                VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                                    CTSkeletonLoader(shape: .rectangle)
+                                        .frame(width: 120, height: 16)
+                                    
+                                    CTSkeletonLoader(shape: .rectangle)
+                                        .frame(width: 80, height: 12)
+                                }
+                                
+                                Spacer()
+                                
+                                CTSkeletonLoader(shape: .capsule)
+                                    .frame(width: 60, height: 24)
+                            }
+                        }
+                    }
+                    .padding()
+                    .background(Color.ctSurface)
+                    .cornerRadius(CTSpacing.m)
+                }
             }
         }
-        .ctCard()
     }
     
     /// Example of usage with actual content loading
     private var usageExampleSection: some View {
-        VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Usage Example").ctHeading2()
-            
-            Text("This example shows how to transition from skeleton loaders to actual content when data loads.")
-                .ctBody()
-                .padding(.bottom, CTSpacing.s)
-            
-            // Action buttons
-            HStack {
-                CTButton(isLoading ? "Loading..." : "Reload Data",
-                       isLoading: isLoading,
-                       isDisabled: isLoading) {
-                    isLoading = true
-                    sampleData = nil
-                    
-                    // Simulate loading
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        loadSampleData()
-                    }
-                }
+        CTCard {
+            VStack(alignment: .leading, spacing: CTSpacing.m) {
+                Text("Usage Example").ctHeading2()
                 
-                if !isLoading && sampleData != nil {
-                    CTButton("Clear Data", style: .secondary) {
-                        isLoading = true
-                        sampleData = nil
-                    }
-                }
-            }
-            .padding(.bottom, CTSpacing.m)
-            
-            // List content or skeleton
-            if isLoading || sampleData == nil {
-                // Skeleton UI
-                VStack(spacing: CTSpacing.m) {
-                    // Header skeleton
-                    HStack {
-                        CTSkeletonLoader(shape: .rectangle)
-                            .frame(width: 150, height: 24)
-                        
-                        Spacer()
-                        
-                        CTSkeletonLoader(shape: .capsule)
-                            .frame(width: 80, height: 30)
-                    }
-                    
-                    // List items skeletons
-                    ForEach(0..<5) { _ in
-                        HStack(spacing: CTSpacing.m) {
-                            CTSkeletonLoader(shape: .square)
-                                .frame(width: 50, height: 50)
-                                .cornerRadius(CTSpacing.xs)
-                            
-                            VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                                CTSkeletonLoader(shape: .rectangle)
-                                    .frame(width: 180, height: 16)
-                                
-                                CTSkeletonLoader(shape: .rectangle)
-                                    .frame(width: 120, height: 12)
-                            }
+                Text("This example demonstrates how to use skeleton loaders while loading actual content.")
+                    .ctBody()
+                    .padding(.bottom, CTSpacing.s)
+                
+                if isLoading || sampleData == nil {
+                    // Skeleton UI
+                    VStack(spacing: CTSpacing.m) {
+                        // Header skeleton
+                        HStack {
+                            CTSkeletonLoader(shape: .rectangle)
+                                .frame(width: 150, height: 24)
                             
                             Spacer()
                             
-                            CTSkeletonLoader(shape: .rectangle)
-                                .frame(width: 40, height: 20)
+                            CTSkeletonLoader(shape: .capsule)
+                                .frame(width: 80, height: 30)
                         }
-                        .padding()
-                        .background(Color.ctSurface)
-                        .cornerRadius(CTSpacing.s)
+                        
+                        // List items skeletons
+                        ForEach(0..<5) { _ in
+                            HStack(spacing: CTSpacing.m) {
+                                CTSkeletonLoader(shape: .square)
+                                    .frame(width: 50, height: 50)
+                                    .cornerRadius(CTSpacing.xs)
+                                
+                                VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                                    CTSkeletonLoader(shape: .rectangle)
+                                        .frame(width: 180, height: 16)
+                                    
+                                    CTSkeletonLoader(shape: .rectangle)
+                                        .frame(width: 120, height: 12)
+                                }
+                                
+                                Spacer()
+                                
+                                CTSkeletonLoader(shape: .rectangle)
+                                    .frame(width: 40, height: 20)
+                            }
+                            .padding()
+                            .background(Color.ctSurface)
+                            .cornerRadius(CTSpacing.s)
+                        }
                     }
-                }
-            } else {
-                // Actual content
-                VStack(spacing: CTSpacing.m) {
-                    // Header
-                    HStack {
-                        Text("Item List (\(sampleData?.count ?? 0))")
-                            .ctHeading3()
-                        
-                        Spacer()
-                        
-                        CTButton("Refresh", icon: "arrow.clockwise", style: .outline) {
-                            isLoading = true
-                            sampleData = nil
+                } else {
+                    // Actual content
+                    VStack(spacing: CTSpacing.m) {
+                        // Header
+                        HStack {
+                            Text("Sample List").ctHeading2()
                             
-                            // Simulate loading
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                            Spacer()
+                            
+                            CTButton("Refresh", style: .primary) {
+                                isLoading = true
+                                sampleData = nil
                                 loadSampleData()
                             }
                         }
-                    }
-                    
-                    // List items
-                    ForEach(sampleData ?? []) { item in
-                        HStack(spacing: CTSpacing.m) {
-                            Image(systemName: item.icon)
-                                .font(.system(size: 24))
-                                .frame(width: 50, height: 50)
-                                .background(item.color.opacity(0.2))
-                                .foregroundColor(item.color)
-                                .cornerRadius(CTSpacing.xs)
-                            
-                            VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                                Text(item.title)
-                                    .ctBody()
-                                
-                                Text(item.subtitle)
-                                    .ctCaption()
-                                    .foregroundColor(.ctTextSecondary)
+                        
+                        // List items
+                        if let items = sampleData {
+                            ForEach(items) { item in
+                                HStack(spacing: CTSpacing.m) {
+                                    CTAvatar(initials: item.initials)
+                                        .frame(width: 50, height: 50)
+                                    
+                                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                                        Text(item.title).ctBodyBold()
+                                        Text(item.subtitle).ctCaption()
+                                    }
+                                    
+                                    Spacer()
+                                    
+                                    Text(item.value).ctBody()
+                                }
+                                .padding()
+                                .background(Color.ctSurface)
+                                .cornerRadius(CTSpacing.s)
                             }
-                            
-                            Spacer()
-                            
-                            Text("$\(item.price)")
-                                .ctBodyBold()
-                                .foregroundColor(.ctPrimary)
                         }
-                        .padding()
-                        .background(Color.ctSurface)
-                        .cornerRadius(CTSpacing.s)
                     }
                 }
             }
         }
-        .ctCard()
     }
     
     // MARK: - Supporting Views
     
     /// Preview of the custom skeleton based on the selected parameters
     private var customSkeletonPreview: some View {
-        if case let .text(lines, lastLineWidth) = selectedShape {
+        switch selectedShape {
+        case .text(let lines, let lastLineWidth):
             return AnyView(
                 CTSkeletonLoader(
                     shape: .text(lines: lines, lastLineWidth: lastLineWidth),
@@ -476,7 +449,7 @@ struct SkeletonLoaderExamples: View {
                 )
                 .frame(width: skeletonWidth)
             )
-        } else {
+        default:
             let size = selectedShape == .square ? CGSize(width: skeletonWidth, height: skeletonWidth) : CGSize(width: skeletonWidth, height: skeletonHeight)
             
             return AnyView(
@@ -536,18 +509,20 @@ struct SkeletonLoaderExamples: View {
         }
         
         // Size
-        if case let .text(lines, _) = selectedShape {
+        switch selectedShape {
+        case .text(let lines, _):
             code += "    size: CGSize(width: \(Int(skeletonWidth)), height: \(lines * 16 + (lines - 1) * 8)),\n"
-        } else if case .square = selectedShape {
+        case .square:
             code += "    size: CGSize(width: \(Int(skeletonWidth)), height: \(Int(skeletonWidth))),\n"
-        } else {
+        default:
             code += "    size: CGSize(width: \(Int(skeletonWidth)), height: \(Int(skeletonHeight))),\n"
         }
         
         // Corner radius (only for rectangle/square)
-        if case .rectangle = selectedShape || case .square = selectedShape {
+        switch selectedShape {
+        case .rectangle, .square:
             code += "    cornerRadius: \(Int(cornerRadius))\n"
-        } else {
+        default:
             code = code.trimmingCharacters(in: CharacterSet(charactersIn: ",\n")) + "\n"
         }
         
@@ -562,37 +537,32 @@ struct SkeletonLoaderExamples: View {
             SampleItem(
                 title: "Wireless Headphones",
                 subtitle: "Premium sound quality",
-                icon: "headphones",
-                price: 199,
-                color: .blue
+                initials: "WH",
+                value: "$199"
             ),
             SampleItem(
                 title: "Smart Watch",
                 subtitle: "Fitness tracking & notifications",
-                icon: "applewatch",
-                price: 249,
-                color: .green
+                initials: "SW",
+                value: "$249"
             ),
             SampleItem(
                 title: "Laptop Stand",
                 subtitle: "Ergonomic design",
-                icon: "laptopcomputer",
-                price: 59,
-                color: .orange
+                initials: "LS",
+                value: "$59"
             ),
             SampleItem(
                 title: "Wireless Charger",
                 subtitle: "Fast charging technology",
-                icon: "bolt.fill",
-                price: 39,
-                color: .purple
+                initials: "WC",
+                value: "$39"
             ),
             SampleItem(
                 title: "Bluetooth Speaker",
                 subtitle: "Waterproof & portable",
-                icon: "speaker.wave.2.fill",
-                price: 89,
-                color: .red
+                initials: "BS",
+                value: "$89"
             )
         ]
         
@@ -608,9 +578,8 @@ struct SampleItem: Identifiable {
     let id = UUID()
     let title: String
     let subtitle: String
-    let icon: String
-    let price: Int
-    let color: Color
+    let initials: String
+    let value: String
 }
 
 // MARK: - Previews

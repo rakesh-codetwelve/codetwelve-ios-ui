@@ -24,7 +24,7 @@ let package = Package(
                 "**/.DS_Store"
             ],
             resources: [
-                .process("Resources", excluding: ["**/.gitkeep", "**/.DS_Store"])
+                .process("Resources")
             ]),
         .testTarget(
             name: "CodetwelveUITests",

@@ -228,7 +228,7 @@ public struct CTToast: View {
 // MARK: - Supporting Types
 
 /// The type of toast notification
-public enum CTToastType {
+public enum CTToastType: Hashable {
     /// Success toast (typically green)
     case success
     
@@ -321,6 +321,36 @@ public enum CTToastType {
             return "Information"
         case .custom:
             return "Notification"
+        }
+    }
+    
+    // MARK: - Hashable
+    
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .success:
+            hasher.combine(0)
+        case .error:
+            hasher.combine(1)
+        case .warning:
+            hasher.combine(2)
+        case .info:
+            hasher.combine(3)
+        case .custom:
+            hasher.combine(4)
+        }
+    }
+    
+    public static func == (lhs: CTToastType, rhs: CTToastType) -> Bool {
+        switch (lhs, rhs) {
+        case (.success, .success),
+             (.error, .error),
+             (.warning, .warning),
+             (.info, .info),
+             (.custom, .custom):
+            return true
+        default:
+            return false
         }
     }
 }
