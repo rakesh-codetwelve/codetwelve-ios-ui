@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
+#endif
 
 /// Utilities for determining device characteristics and environment
 ///
@@ -15,6 +17,7 @@ import UIKit
 public enum CTDeviceUtilities {
     /// The current device type
     public static var deviceType: CTDeviceType {
+        #if canImport(UIKit)
         let idiom = UIDevice.current.userInterfaceIdiom
         
         switch idiom {
@@ -27,6 +30,9 @@ public enum CTDeviceUtilities {
         default:
             return .unknown
         }
+        #else
+        return .unknown
+        #endif
     }
     
     /// Whether the current device is an iPhone
@@ -46,6 +52,7 @@ public enum CTDeviceUtilities {
     
     /// The current device size class
     public static var deviceSize: CTDeviceSize {
+        #if canImport(UIKit)
         let screenWidth = UIScreen.main.bounds.width
         
         if screenWidth <= 375 {
@@ -57,6 +64,9 @@ public enum CTDeviceUtilities {
         } else {
             return .extraLarge
         }
+        #else
+        return .medium
+        #endif
     }
     
     /// Whether the current device is a small device (iPhone SE, iPhone 8 size)
@@ -66,6 +76,7 @@ public enum CTDeviceUtilities {
     
     /// Whether the current device supports Dynamic Island
     public static var hasDynamicIsland: Bool {
+        #if canImport(UIKit)
         // Check for iPhone 14 Pro and newer models with Dynamic Island
         // This is an approximate check that might need adjustment for future devices
         if isPhone {
@@ -76,11 +87,13 @@ public enum CTDeviceUtilities {
             // Dynamic Island devices have a screen height of 852 or 932
             return maxDimension >= 852
         }
+        #endif
         return false
     }
     
     /// Whether the current device has a home button
     public static var hasHomeButton: Bool {
+        #if canImport(UIKit)
         // Devices without a home button have a safe area inset at the bottom
         let window = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
@@ -92,23 +105,37 @@ public enum CTDeviceUtilities {
         }
         
         return window.safeAreaInsets.bottom == 0
+        #else
+        return true
+        #endif
     }
     
     /// The current orientation of the device
+    #if canImport(UIKit)
     public static var orientation: UIDeviceOrientation {
         return UIDevice.current.orientation
     }
+    #endif
     
     /// Whether the device is in landscape orientation
     public static var isLandscape: Bool {
+        #if canImport(UIKit)
         return orientation.isLandscape
+        #else
+        return false
+        #endif
     }
     
     /// Whether the device is in portrait orientation
     public static var isPortrait: Bool {
+        #if canImport(UIKit)
         return orientation.isPortrait
+        #else
+        return true
+        #endif
     }
     
+    #if canImport(UIKit)
     /// The current horizontal size class
     public static var horizontalSizeClass: UIUserInterfaceSizeClass {
         guard let windowScene = UIApplication.shared.connectedScenes
@@ -138,19 +165,29 @@ public enum CTDeviceUtilities {
         
         return window.traitCollection.verticalSizeClass
     }
+    #endif
     
     /// Whether the app is running in a compact width environment
     public static var isCompactWidth: Bool {
+        #if canImport(UIKit)
         return horizontalSizeClass == .compact
+        #else
+        return false
+        #endif
     }
     
     /// Whether the app is running in a regular width environment
     public static var isRegularWidth: Bool {
+        #if canImport(UIKit)
         return horizontalSizeClass == .regular
+        #else
+        return true
+        #endif
     }
     
     /// Get the safe area insets of the current window
     public static var safeAreaInsets: EdgeInsets {
+        #if canImport(UIKit)
         guard let windowScene = UIApplication.shared.connectedScenes
             .compactMap({ $0 as? UIWindowScene })
             .first else {
@@ -168,6 +205,9 @@ public enum CTDeviceUtilities {
             bottom: insets.bottom,
             trailing: insets.right
         )
+        #else
+        return EdgeInsets()
+        #endif
     }
 }
 

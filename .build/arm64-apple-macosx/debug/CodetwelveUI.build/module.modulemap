@@ -1,0 +1,4 @@
+module CodetwelveUI {
+    header "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CodetwelveUI-Swift.h"
+    requires objc
+}

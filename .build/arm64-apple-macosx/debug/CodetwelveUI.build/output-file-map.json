@@ -1,0 +1,419 @@
+{
+  "": {
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/master.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/CodetwelveUI.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CodetwelveUI.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CodetwelveUI.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CodetwelveUI~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CodetwelveUI.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Basic/CTAvatar.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAvatar.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAvatar.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAvatar~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAvatar.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Basic/CTButton.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTButton.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTButton.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTButton~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTButton.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Basic/CTDivider.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDivider.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDivider.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDivider~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDivider.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Basic/CTIcon.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTIcon.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTIcon.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTIcon~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTIcon.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Basic/CTText.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTText.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTText.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTText~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTText.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Button/ButtonStyle.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/ButtonStyle.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/ButtonStyle.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/ButtonStyle~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/ButtonStyle.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Data/CTContextMenu.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTContextMenu.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTContextMenu.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTContextMenu~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTContextMenu.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Data/CTDataTable.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDataTable.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDataTable.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDataTable~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDataTable.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Data/CTDropdownMenu.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDropdownMenu.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDropdownMenu.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDropdownMenu~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDropdownMenu.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Data/CTHoverCard.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTHoverCard.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTHoverCard.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTHoverCard~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTHoverCard.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Data/CTList.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTList.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTList.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTList~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTList.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Data/CTTable.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTable.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTable.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTable~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTable.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Data/CTTag.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTag.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTag.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTag~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTag.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Feedback/CTAlert.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAlert.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAlert.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAlert~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAlert.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Feedback/CTAlertDialog.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAlertDialog.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAlertDialog.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAlertDialog~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAlertDialog.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Feedback/CTProgress.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTProgress.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTProgress.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTProgress~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTProgress.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Feedback/CTSkeletonLoader.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSkeletonLoader.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSkeletonLoader.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSkeletonLoader~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSkeletonLoader.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Feedback/CTToast.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTToast.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTToast.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTToast~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTToast.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTCheckbox.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCheckbox.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCheckbox.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCheckbox~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCheckbox.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTDatePicker.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDatePicker.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDatePicker.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDatePicker~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDatePicker.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTRadioGroup.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTRadioGroup.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTRadioGroup.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTRadioGroup~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTRadioGroup.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTSecureField.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSecureField.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSecureField.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSecureField~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSecureField.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTSelect.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSelect.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSelect.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSelect~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSelect.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTSlider.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSlider.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSlider.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSlider~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSlider.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTTextArea.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTextArea.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTextArea.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTextArea~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTextArea.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTTextField.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTextField.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTextField.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTextField~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTextField.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Forms/CTToggle.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTToggle.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTToggle.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTToggle~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTToggle.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Layout/CTAccordion.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAccordion.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAccordion.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAccordion~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAccordion.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Layout/CTAspectRatio.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAspectRatio.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAspectRatio.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAspectRatio~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAspectRatio.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Layout/CTCard.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCard.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCard.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCard~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCard.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Layout/CTContainer.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTContainer.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTContainer.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTContainer~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTContainer.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Layout/CTGrid.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTGrid.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTGrid.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTGrid~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTGrid.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Layout/CTScrollArea.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTScrollArea.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTScrollArea.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTScrollArea~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTScrollArea.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Layout/CTStack.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTStack.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTStack.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTStack~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTStack.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Media/CTCarousel.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCarousel.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCarousel.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCarousel~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCarousel.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Media/CTImage.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTImage.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTImage.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTImage~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTImage.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Media/CTVideo.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTVideo.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTVideo.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTVideo~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTVideo.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Navigation/CTBottomSheet.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTBottomSheet.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTBottomSheet.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTBottomSheet~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTBottomSheet.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Navigation/CTCommandPalette.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCommandPalette.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCommandPalette.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCommandPalette~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTCommandPalette.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Navigation/CTDrawer.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDrawer.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDrawer.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDrawer~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDrawer.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Navigation/CTHamburgerMenu.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTHamburgerMenu.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTHamburgerMenu.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTHamburgerMenu~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTHamburgerMenu.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Navigation/CTNavigationMenu.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTNavigationMenu.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTNavigationMenu.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTNavigationMenu~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTNavigationMenu.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Navigation/CTPagination.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTPagination.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTPagination.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTPagination~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTPagination.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Navigation/CTPopover.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTPopover.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTPopover.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTPopover~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTPopover.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Components/Navigation/CTTabBar.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTabBar.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTabBar.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTabBar~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTabBar.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Extensions/CTDeviceUtilities.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDeviceUtilities.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDeviceUtilities.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDeviceUtilities~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDeviceUtilities.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Extensions/CTLayoutUtilities.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTLayoutUtilities.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTLayoutUtilities.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTLayoutUtilities~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTLayoutUtilities.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Extensions/View+Accessibility.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Accessibility.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Accessibility.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Accessibility~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Accessibility.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Extensions/View+Animation.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Animation.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Animation.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Animation~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Animation.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Extensions/View+Conditional.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Conditional.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Conditional.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Conditional~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Conditional.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Extensions/View+Shadow.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Shadow.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Shadow.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Shadow~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Shadow.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Extensions/View+Theme.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Theme.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Theme.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Theme~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Theme.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Extensions/View+Typography.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Typography.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Typography.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Typography~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/View+Typography.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Themes/CTDarkTheme.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDarkTheme.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDarkTheme.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDarkTheme~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDarkTheme.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Themes/CTDefaultTheme.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDefaultTheme.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDefaultTheme.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDefaultTheme~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTDefaultTheme.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Themes/CTLightTheme.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTLightTheme.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTLightTheme.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTLightTheme~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTLightTheme.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Themes/CTTheme+Default.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTheme+Default.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTheme+Default.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTheme+Default~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTheme+Default.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Themes/CTTheme.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTheme.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTheme.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTheme~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTheme.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Themes/CTThemeBuilder.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTThemeBuilder.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTThemeBuilder.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTThemeBuilder~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTThemeBuilder.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Themes/CTThemeManager.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTThemeManager.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTThemeManager.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTThemeManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTThemeManager.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Tokens/CTAnimations.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAnimations.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAnimations.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAnimations~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAnimations.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Tokens/CTColors.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTColors.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTColors.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTColors~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTColors.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Tokens/CTSpacing.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSpacing.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSpacing.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSpacing~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTSpacing.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Tokens/CTTypography.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTypography.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTypography.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTypography~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTTypography.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Utilities/CTAccessibilityUtilities.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAccessibilityUtilities.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAccessibilityUtilities.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAccessibilityUtilities~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAccessibilityUtilities.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Utilities/CTAnimationManager.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAnimationManager.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAnimationManager.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAnimationManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/CTAnimationManager.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Sources/CodetwelveUI/Utilities/Color+Hex.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/Color+Hex.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/Color+Hex.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/Color+Hex~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/Color+Hex.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/DerivedSources/resource_bundle_accessor.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/resource_bundle_accessor.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/resource_bundle_accessor.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/resource_bundle_accessor~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUI.build/resource_bundle_accessor.swiftdeps"
+  }
+}

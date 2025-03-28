@@ -1,0 +1,311 @@
+{
+  "": {
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/master.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/AccessibilityTests/CTButtonAccessibilityTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTButtonAccessibilityTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTButtonAccessibilityTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTButtonAccessibilityTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTButtonAccessibilityTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/AccessibilityTests/CTCheckboxAccessibilityTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCheckboxAccessibilityTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCheckboxAccessibilityTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCheckboxAccessibilityTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCheckboxAccessibilityTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/AccessibilityTests/CTProgressAccessibilityTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTProgressAccessibilityTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTProgressAccessibilityTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTProgressAccessibilityTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTProgressAccessibilityTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/AccessibilityTests/CTRadioGroupAccessibilityTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTRadioGroupAccessibilityTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTRadioGroupAccessibilityTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTRadioGroupAccessibilityTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTRadioGroupAccessibilityTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/AccessibilityTests/CTSliderAccessibilityTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSliderAccessibilityTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSliderAccessibilityTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSliderAccessibilityTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSliderAccessibilityTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/AccessibilityTests/CTTextFieldAccessibilityTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextFieldAccessibilityTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextFieldAccessibilityTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextFieldAccessibilityTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextFieldAccessibilityTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/AccessibilityTests/CTToggleAccessibilityTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToggleAccessibilityTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToggleAccessibilityTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToggleAccessibilityTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToggleAccessibilityTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTAccordionTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAccordionTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAccordionTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAccordionTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAccordionTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTAlertDialogTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAlertDialogTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAlertDialogTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAlertDialogTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAlertDialogTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTAlertTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAlertTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAlertTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAlertTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAlertTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTAspectRatioTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAspectRatioTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAspectRatioTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAspectRatioTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTAspectRatioTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTBottomSheetTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTBottomSheetTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTBottomSheetTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTBottomSheetTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTBottomSheetTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTButtonTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTButtonTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTButtonTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTButtonTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTButtonTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTCardTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCardTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCardTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCardTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCardTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTCarouselTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCarouselTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCarouselTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCarouselTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCarouselTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTCheckboxTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCheckboxTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCheckboxTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCheckboxTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCheckboxTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTCommandPaletteTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCommandPaletteTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCommandPaletteTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCommandPaletteTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTCommandPaletteTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTContainerTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTContainerTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTContainerTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTContainerTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTContainerTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTContextMenuTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTContextMenuTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTContextMenuTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTContextMenuTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTContextMenuTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTDataTableTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDataTableTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDataTableTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDataTableTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDataTableTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTDatePickerTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDatePickerTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDatePickerTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDatePickerTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDatePickerTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTDividerTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDividerTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDividerTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDividerTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDividerTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTDropdownMenuTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDropdownMenuTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDropdownMenuTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDropdownMenuTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTDropdownMenuTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTGridTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTGridTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTGridTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTGridTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTGridTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTHamburgerMenuTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTHamburgerMenuTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTHamburgerMenuTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTHamburgerMenuTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTHamburgerMenuTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTHoverCardTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTHoverCardTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTHoverCardTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTHoverCardTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTHoverCardTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTIconTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTIconTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTIconTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTIconTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTIconTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTImageTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTImageTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTImageTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTImageTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTImageTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTListTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTListTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTListTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTListTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTListTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTNavigationMenuTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTNavigationMenuTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTNavigationMenuTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTNavigationMenuTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTNavigationMenuTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTPaginationTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTPaginationTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTPaginationTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTPaginationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTPaginationTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTPopoverTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTPopoverTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTPopoverTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTPopoverTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTPopoverTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTProgressTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTProgressTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTProgressTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTProgressTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTProgressTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTRadioGroupTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTRadioGroupTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTRadioGroupTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTRadioGroupTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTRadioGroupTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTScrollAreaTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTScrollAreaTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTScrollAreaTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTScrollAreaTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTScrollAreaTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTSecureFieldTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSecureFieldTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSecureFieldTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSecureFieldTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSecureFieldTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTSelectTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSelectTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSelectTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSelectTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSelectTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTSkeletonLoaderTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSkeletonLoaderTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSkeletonLoaderTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSkeletonLoaderTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSkeletonLoaderTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTSliderTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSliderTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSliderTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSliderTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTSliderTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTStackTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTStackTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTStackTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTStackTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTStackTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTTabBarTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTabBarTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTabBarTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTabBarTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTabBarTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTTableTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTableTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTableTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTableTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTableTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTTagTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTagTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTagTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTagTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTagTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTTextAreaTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextAreaTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextAreaTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextAreaTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextAreaTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTTextFieldTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextFieldTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextFieldTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextFieldTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextFieldTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTTextTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTTextTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTToastTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToastTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToastTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToastTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToastTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTToggleTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToggleTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToggleTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToggleTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTToggleTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/ComponentTests/CTVideoTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTVideoTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTVideoTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTVideoTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTVideoTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/IntegrationTests/CTFormIntegrationTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTFormIntegrationTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTFormIntegrationTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTFormIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTFormIntegrationTests.swiftdeps"
+  },
+  "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/Tests/CodetwelveUITests/IntegrationTests/CTNavigationIntegrationTests.swift": {
+    "dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTNavigationIntegrationTests.d",
+    "object": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTNavigationIntegrationTests.swift.o",
+    "swiftmodule": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTNavigationIntegrationTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUITests.build/CTNavigationIntegrationTests.swiftdeps"
+  }
+}

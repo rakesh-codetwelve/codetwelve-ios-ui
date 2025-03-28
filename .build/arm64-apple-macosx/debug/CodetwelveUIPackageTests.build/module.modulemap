@@ -1,0 +1,4 @@
+module CodetwelveUIPackageTests {
+    header "/Users/rakeshr/Documents/Projects/codetwelve/codetwelve-ios-ui/.build/arm64-apple-macosx/debug/CodetwelveUIPackageTests.build/CodetwelveUIPackageTests-Swift.h"
+    requires objc
+}

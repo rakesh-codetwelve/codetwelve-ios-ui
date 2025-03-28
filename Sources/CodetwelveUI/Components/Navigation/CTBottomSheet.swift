@@ -6,7 +6,9 @@
 //
 
 import SwiftUI
-import CodetwelveUI
+#if canImport(UIKit)
+import UIKit
+#endif
 
 /// A bottom sheet component that slides up from the bottom of the screen.
 ///
@@ -239,11 +241,23 @@ public struct CTBottomSheet<SheetContent: View>: ViewModifier {
     private func getSheetHeight() -> CGFloat {
         switch height {
         case .small:
+            #if canImport(UIKit)
             return UIScreen.main.bounds.height * 0.25
+            #else
+            return 200
+            #endif
         case .medium:
+            #if canImport(UIKit)
             return UIScreen.main.bounds.height * 0.4
+            #else
+            return 300
+            #endif
         case .large:
+            #if canImport(UIKit)
             return UIScreen.main.bounds.height * 0.7
+            #else
+            return 500
+            #endif
         case .custom(let height):
             return height
         case .dynamic:
