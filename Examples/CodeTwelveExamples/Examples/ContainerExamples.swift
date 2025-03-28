@@ -11,24 +11,23 @@ import CodetwelveUI
 /// A view that showcases CTContainer component examples
 ///
 /// This view demonstrates different aspects of the CTContainer component:
-/// - Basic container usage
-/// - Padding options
-/// - Background and border customization
-/// - Elevation effects with shadows
-/// - Container factory methods
+/// - Basic container usage with various padding options
+/// - Different background, border, and corner radius styling
+/// - Shadow effects and customization
+/// - Static container styles (surface, primary, bordered)
+/// - View extension methods
 /// - Interactive container builder
 struct ContainerExamples: View {
     // MARK: - State Properties
     
     @State private var padding: CGFloat = CTSpacing.m
     @State private var cornerRadius: CGFloat = 8
-    @State private var backgroundColor: Color = .white
-    @State private var hasBorder: Bool = false
-    @State private var borderWidth: CGFloat = 1
-    @State private var borderColor: Color = .gray
-    @State private var hasShadow: Bool = false
-    @State private var shadowOpacity: Double = 0.1
+    @State private var borderWidth: CGFloat = 0
+    @State private var useBackground: Bool = true
+    @State private var useBorder: Bool = false
+    @State private var useShadow: Bool = false
     @State private var shadowRadius: CGFloat = 4
+    @State private var shadowOpacity: Double = 0.1
     
     // MARK: - Body
     
@@ -38,17 +37,17 @@ struct ContainerExamples: View {
                 // Basic usage section
                 basicUsageSection
                 
-                // Padding section
-                paddingSection
+                // Styling section
+                stylingSection
                 
-                // Background and border section
-                backgroundAndBorderSection
+                // Shadow section
+                shadowSection
                 
-                // Elevation section
-                elevationSection
+                // Container styles section
+                containerStylesSection
                 
-                // Factory methods section
-                factoryMethodsSection
+                // Extension methods section
+                extensionMethodsSection
                 
                 // Interactive section
                 interactiveSection
@@ -61,188 +60,82 @@ struct ContainerExamples: View {
     
     // MARK: - Private Views
     
-    /// Basic usage examples of CTContainer
+    /// Basic container usage examples
     private var basicUsageSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
             Text("Basic Usage")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("CTContainer provides a consistent way to wrap content with appropriate spacing and styling.")
+            Text("CTContainer provides a flexible way to wrap content with consistent spacing and styling.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Simple container
+            // Basic container
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Simple Container")
+                    Text("Basic Container")
                         .font(.headline)
                     
                     CTContainer {
-                        Text("This is a basic container with default padding.")
+                        Text("This is a basic container with default medium padding.")
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
                     
                     codeExample("""
                     CTContainer {
-                        Text("This is a basic container with default padding.")
+                        Text("This is a basic container with default medium padding.")
                     }
                     """)
                 }
             }
             
-            // Container with custom styling
+            // Custom padding
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Custom Styled Container")
+                    Text("Custom Padding")
                         .font(.headline)
                     
-                    CTContainer(
-                        padding: CTSpacing.all(CTSpacing.l),
-                        backgroundColor: Color.ctPrimary.opacity(0.1),
-                        cornerRadius: 12
-                    ) {
-                        Text("This container has custom padding, background color, and corner radius.")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    
-                    codeExample("""
-                    CTContainer(
-                        padding: CTSpacing.all(CTSpacing.l),
-                        backgroundColor: Color.ctPrimary.opacity(0.1),
-                        cornerRadius: 12
-                    ) {
-                        Text("This container has custom styling.")
-                    }
-                    """)
-                }
-            }
-        }
-    }
-    
-    /// Examples of different padding options
-    private var paddingSection: some View {
-        VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Padding Options")
-                .font(.title)
-                .fontWeight(.bold)
-            
-            Text("CTContainer supports various padding configurations for different use cases.")
-                .padding(.bottom, CTSpacing.s)
-            
-            // Uniform padding
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Uniform Padding")
-                        .font(.headline)
-                    
-                    HStack {
-                        CTContainer(padding: CTSpacing.s) {
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(Color.ctPrimary)
-                                .frame(width: 60, height: 60)
-                        }
-                        .background(Color.ctPrimary.opacity(0.1))
-                        .cornerRadius(4)
-                        
-                        CTContainer(padding: CTSpacing.m) {
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(Color.ctSecondary)
-                                .frame(width: 60, height: 60)
-                        }
-                        .background(Color.ctSecondary.opacity(0.1))
-                        .cornerRadius(4)
-                        
-                        CTContainer(padding: CTSpacing.l) {
-                            RoundedRectangle(cornerRadius: 4)
-                                .fill(Color.ctSuccess)
-                                .frame(width: 60, height: 60)
-                        }
-                        .background(Color.ctSuccess.opacity(0.1))
-                        .cornerRadius(4)
-                    }
-                    
-                    codeExample("""
-                    // Small padding
-                    CTContainer(padding: CTSpacing.s) {
-                        // Content
-                    }
-                    
-                    // Medium padding
-                    CTContainer(padding: CTSpacing.m) {
-                        // Content
-                    }
-                    
-                    // Large padding
                     CTContainer(padding: CTSpacing.l) {
-                        // Content
+                        Text("This container has large padding (24pt).")
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    
+                    codeExample("""
+                    CTContainer(padding: CTSpacing.l) {
+                        Text("This container has large padding (24pt).")
                     }
                     """)
                 }
             }
             
-            // Custom edge insets
+            // Uneven padding
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Custom Edge Insets")
+                    Text("Uneven Padding")
                         .font(.headline)
                     
                     CTContainer(
-                        padding: CTSpacing.insets(
+                        padding: EdgeInsets(
                             top: CTSpacing.l,
                             leading: CTSpacing.s,
-                            bottom: CTSpacing.s,
-                            trailing: CTSpacing.l
-                        ),
-                        backgroundColor: Color.ctBackground
+                            bottom: CTSpacing.l,
+                            trailing: CTSpacing.s
+                        )
                     ) {
-                        Text("This container has different padding values for each edge.")
+                        Text("This container has different padding on each side (top: 24pt, leading: 8pt, bottom: 24pt, trailing: 8pt).")
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
-                    .cornerRadius(8)
                     
                     codeExample("""
                     CTContainer(
-                        padding: CTSpacing.insets(
+                        padding: EdgeInsets(
                             top: CTSpacing.l,
                             leading: CTSpacing.s,
-                            bottom: CTSpacing.s,
-                            trailing: CTSpacing.l
+                            bottom: CTSpacing.l,
+                            trailing: CTSpacing.s
                         )
                     ) {
-                        // Content
-                    }
-                    """)
-                }
-            }
-            
-            // Horizontal and vertical padding
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Horizontal & Vertical Padding")
-                        .font(.headline)
-                    
-                    CTContainer(
-                        padding: CTSpacing.symmetrical(
-                            horizontal: CTSpacing.l,
-                            vertical: CTSpacing.s
-                        ),
-                        backgroundColor: Color.ctBackground
-                    ) {
-                        Text("This container has symmetrical horizontal and vertical padding.")
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    .cornerRadius(8)
-                    
-                    codeExample("""
-                    CTContainer(
-                        padding: CTSpacing.symmetrical(
-                            horizontal: CTSpacing.l,
-                            vertical: CTSpacing.s
-                        )
-                    ) {
-                        // Content
+                        Text("This container has different padding on each side.")
                     }
                     """)
                 }
@@ -250,114 +143,30 @@ struct ContainerExamples: View {
         }
     }
     
-    /// Examples of background and border customization
-    private var backgroundAndBorderSection: some View {
+    /// Container styling examples
+    private var stylingSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Background & Border")
+            Text("Styling")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("Containers can have custom backgrounds and borders.")
+            Text("Containers can be styled with background colors, borders, and corner radius.")
                 .padding(.bottom, CTSpacing.s)
             
             // Background color
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Background Colors")
+                    Text("Background Color")
                         .font(.headline)
                     
-                    HStack {
-                        CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctPrimary
-                        ) {
-                            Text("Primary")
-                                .foregroundColor(.white)
-                        }
-                        .cornerRadius(8)
-                        
-                        CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctSecondary
-                        ) {
-                            Text("Secondary")
-                                .foregroundColor(.white)
-                        }
-                        .cornerRadius(8)
-                        
-                        CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctSuccess
-                        ) {
-                            Text("Success")
-                                .foregroundColor(.white)
-                        }
-                        .cornerRadius(8)
+                    CTContainer(backgroundColor: Color.ctPrimary.opacity(0.1)) {
+                        Text("This container has a custom background color.")
+                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                     codeExample("""
-                    CTContainer(
-                        padding: CTSpacing.m,
-                        backgroundColor: Color.ctPrimary
-                    ) {
-                        Text("Primary")
-                            .foregroundColor(.white)
-                    }
-                    .cornerRadius(8)
-                    """)
-                }
-            }
-            
-            // Borders
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Borders")
-                        .font(.headline)
-                    
-                    HStack {
-                        CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: .clear,
-                            cornerRadius: 8,
-                            borderWidth: 1,
-                            borderColor: Color.ctPrimary
-                        ) {
-                            Text("Thin Border")
-                                .foregroundColor(Color.ctPrimary)
-                        }
-                        
-                        CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: .clear,
-                            cornerRadius: 8,
-                            borderWidth: 2,
-                            borderColor: Color.ctSecondary
-                        ) {
-                            Text("Medium Border")
-                                .foregroundColor(Color.ctSecondary)
-                        }
-                        
-                        CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: .clear,
-                            cornerRadius: 8,
-                            borderWidth: 3,
-                            borderColor: Color.ctSuccess
-                        ) {
-                            Text("Thick Border")
-                                .foregroundColor(Color.ctSuccess)
-                        }
-                    }
-                    
-                    codeExample("""
-                    CTContainer(
-                        padding: CTSpacing.m,
-                        backgroundColor: .clear,
-                        cornerRadius: 8,
-                        borderWidth: 2,
-                        borderColor: Color.ctSecondary
-                    ) {
-                        Text("Medium Border")
+                    CTContainer(backgroundColor: Color.ctPrimary.opacity(0.1)) {
+                        Text("This container has a custom background color.")
                     }
                     """)
                 }
@@ -371,42 +180,41 @@ struct ContainerExamples: View {
                     
                     HStack {
                         CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctBackground,
+                            backgroundColor: Color.ctPrimary.opacity(0.1),
                             cornerRadius: 0
                         ) {
                             Text("0")
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                         
                         CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctBackground,
+                            backgroundColor: Color.ctPrimary.opacity(0.1),
                             cornerRadius: 8
                         ) {
                             Text("8")
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                         
                         CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctBackground,
+                            backgroundColor: Color.ctPrimary.opacity(0.1),
                             cornerRadius: 16
                         ) {
                             Text("16")
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                         
                         CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctBackground,
+                            backgroundColor: Color.ctPrimary.opacity(0.1),
                             cornerRadius: 24
                         ) {
                             Text("24")
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                     }
                     
                     codeExample("""
                     CTContainer(
-                        padding: CTSpacing.m,
-                        backgroundColor: Color.ctBackground,
+                        backgroundColor: Color.ctPrimary.opacity(0.1),
                         cornerRadius: 16
                     ) {
                         Text("16")
@@ -414,74 +222,49 @@ struct ContainerExamples: View {
                     """)
                 }
             }
-        }
-    }
-    
-    /// Examples of elevation with shadows
-    private var elevationSection: some View {
-        VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Elevation")
-                .font(.title)
-                .fontWeight(.bold)
             
-            Text("Add elevation to containers using shadows.")
-                .padding(.bottom, CTSpacing.s)
-            
-            // Shadow examples
+            // Border
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Shadow Elevation")
+                    Text("Border")
                         .font(.headline)
                     
                     HStack {
                         CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctSurface,
-                            cornerRadius: 8,
-                            shadowEnabled: true,
-                            shadowRadius: 2,
-                            shadowOpacity: 0.1
+                            backgroundColor: Color.clear,
+                            borderWidth: 1,
+                            borderColor: Color.ctPrimary
                         ) {
-                            Text("Low")
-                                .frame(width: 80, height: 40)
+                            Text("1px")
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                         
                         CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctSurface,
-                            cornerRadius: 8,
-                            shadowEnabled: true,
-                            shadowRadius: 5,
-                            shadowOpacity: 0.15
+                            backgroundColor: Color.clear,
+                            borderWidth: 2,
+                            borderColor: Color.ctPrimary
                         ) {
-                            Text("Medium")
-                                .frame(width: 80, height: 40)
+                            Text("2px")
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                         
                         CTContainer(
-                            padding: CTSpacing.m,
-                            backgroundColor: Color.ctSurface,
-                            cornerRadius: 8,
-                            shadowEnabled: true,
-                            shadowRadius: 10,
-                            shadowOpacity: 0.2
+                            backgroundColor: Color.clear,
+                            borderWidth: 3,
+                            borderColor: Color.ctPrimary
                         ) {
-                            Text("High")
-                                .frame(width: 80, height: 40)
+                            Text("3px")
+                                .frame(maxWidth: .infinity, alignment: .center)
                         }
                     }
-                    .padding(.bottom, 10) // Extra space for shadows
                     
                     codeExample("""
                     CTContainer(
-                        padding: CTSpacing.m,
-                        backgroundColor: Color.ctSurface,
-                        cornerRadius: 8,
-                        shadowEnabled: true,
-                        shadowRadius: 5,
-                        shadowOpacity: 0.15
+                        backgroundColor: Color.clear,
+                        borderWidth: 2,
+                        borderColor: Color.ctPrimary
                     ) {
-                        Text("Medium")
+                        Text("2px")
                     }
                     """)
                 }
@@ -489,14 +272,132 @@ struct ContainerExamples: View {
         }
     }
     
-    /// Examples of factory methods
-    private var factoryMethodsSection: some View {
+    /// Shadow examples
+    private var shadowSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Factory Methods")
+            Text("Shadow Effects")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("CTContainer provides convenient factory methods for common use cases.")
+            Text("Containers can have customizable shadow effects.")
+                .padding(.bottom, CTSpacing.s)
+            
+            // Shadow containers
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Shadow Options")
+                        .font(.headline)
+                    
+                    HStack {
+                        CTContainer(
+                            shadowEnabled: true,
+                            shadowRadius: 2,
+                            shadowOpacity: 0.1
+                        ) {
+                            Text("Subtle")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        }
+                        
+                        CTContainer(
+                            shadowEnabled: true,
+                            shadowRadius: 8,
+                            shadowOpacity: 0.2
+                        ) {
+                            Text("Medium")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        }
+                        
+                        CTContainer(
+                            shadowEnabled: true,
+                            shadowRadius: 16,
+                            shadowOpacity: 0.3
+                        ) {
+                            Text("Strong")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        }
+                    }
+                    .padding(.bottom, 16) // Space for shadow
+                    
+                    codeExample("""
+                    CTContainer(
+                        shadowEnabled: true,
+                        shadowRadius: 8,
+                        shadowOpacity: 0.2
+                    ) {
+                        Text("Medium")
+                    }
+                    """)
+                }
+            }
+            
+            // Shadow offset
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Shadow Offset")
+                        .font(.headline)
+                    
+                    HStack {
+                        CTContainer(
+                            shadowEnabled: true,
+                            shadowRadius: 4,
+                            shadowOpacity: 0.2,
+                            shadowOffset: CGSize(width: 0, height: 4)
+                        ) {
+                            Text("Bottom")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        }
+                        
+                        CTContainer(
+                            shadowEnabled: true,
+                            shadowRadius: 4,
+                            shadowOpacity: 0.2,
+                            shadowOffset: CGSize(width: -4, height: 0)
+                        ) {
+                            Text("Left")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        }
+                        
+                        CTContainer(
+                            shadowEnabled: true,
+                            shadowRadius: 4,
+                            shadowOpacity: 0.2,
+                            shadowOffset: CGSize(width: 4, height: 4)
+                        ) {
+                            Text("Bottom-Right")
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        }
+                    }
+                    .padding(.bottom, 16) // Space for shadow
+                    
+                    codeExample("""
+                    CTContainer(
+                        shadowEnabled: true,
+                        shadowRadius: 4,
+                        shadowOpacity: 0.2,
+                        shadowOffset: CGSize(width: 4, height: 4)
+                    ) {
+                        Text("Bottom-Right")
+                    }
+                    """)
+                }
+            }
+        }
+    }
+    
+    /// Container styles examples
+    private var containerStylesSection: some View {
+        VStack(alignment: .leading, spacing: CTSpacing.m) {
+            Text("Container Styles")
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("CTContainer provides convenience initializers for common container styles.")
                 .padding(.bottom, CTSpacing.s)
             
             // Padding container
@@ -506,16 +407,15 @@ struct ContainerExamples: View {
                         .font(.headline)
                     
                     CTContainer.padding(CTSpacing.all(CTSpacing.m)) {
-                        Text("This container only adds padding without background or border.")
+                        Text("This container adds padding without any styling.")
                             .frame(maxWidth: .infinity, alignment: .leading)
                             .padding()
-                            .background(Color.ctBackground)
-                            .cornerRadius(8)
+                            .border(Color.gray.opacity(0.3))
                     }
                     
                     codeExample("""
                     CTContainer.padding(CTSpacing.all(CTSpacing.m)) {
-                        // Content
+                        Text("This container adds padding without any styling.")
                     }
                     """)
                 }
@@ -527,17 +427,23 @@ struct ContainerExamples: View {
                     Text("Surface Container")
                         .font(.headline)
                     
-                    CTContainer.surface(cornerRadius: 8, shadowStrength: 0.1) {
-                        Text("This container is styled as a surface with a subtle shadow.")
+                    CTContainer.surface(
+                        padding: CTSpacing.all(CTSpacing.m),
+                        cornerRadius: 12,
+                        shadowStrength: 0.15
+                    ) {
+                        Text("This container is styled as a surface with shadow.")
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
+                    .padding(.bottom, 8) // Extra space for shadow
                     
                     codeExample("""
                     CTContainer.surface(
-                        cornerRadius: 8, 
-                        shadowStrength: 0.1
+                        padding: CTSpacing.all(CTSpacing.m),
+                        cornerRadius: 12,
+                        shadowStrength: 0.15
                     ) {
-                        // Content
+                        Text("This container is styled as a surface with shadow.")
                     }
                     """)
                 }
@@ -549,15 +455,22 @@ struct ContainerExamples: View {
                     Text("Primary Container")
                         .font(.headline)
                     
-                    CTContainer.primary(cornerRadius: 8) {
-                        Text("This container has a primary background color.")
+                    CTContainer.primary(
+                        padding: CTSpacing.all(CTSpacing.m),
+                        cornerRadius: 8
+                    ) {
+                        Text("This container uses the primary color as background.")
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                     codeExample("""
-                    CTContainer.primary(cornerRadius: 8) {
-                        // Content
+                    CTContainer.primary(
+                        padding: CTSpacing.all(CTSpacing.m),
+                        cornerRadius: 8
+                    ) {
+                        Text("This container uses the primary color as background.")
+                            .foregroundColor(.white)
                     }
                     """)
                 }
@@ -570,22 +483,75 @@ struct ContainerExamples: View {
                         .font(.headline)
                     
                     CTContainer.bordered(
+                        padding: CTSpacing.all(CTSpacing.m),
                         borderWidth: 2,
                         borderColor: Color.ctPrimary,
                         cornerRadius: 8
                     ) {
-                        Text("This container has a custom border.")
+                        Text("This container has a border with custom styling.")
                             .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
                     codeExample("""
                     CTContainer.bordered(
+                        padding: CTSpacing.all(CTSpacing.m),
                         borderWidth: 2,
                         borderColor: Color.ctPrimary,
                         cornerRadius: 8
                     ) {
-                        // Content
+                        Text("This container has a border with custom styling.")
                     }
+                    """)
+                }
+            }
+        }
+    }
+    
+    /// Extension methods examples
+    private var extensionMethodsSection: some View {
+        VStack(alignment: .leading, spacing: CTSpacing.m) {
+            Text("View Extensions")
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("CTContainer provides view extensions for easy container wrapping.")
+                .padding(.bottom, CTSpacing.s)
+            
+            // Container padding
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Container Padding")
+                        .font(.headline)
+                    
+                    Text("This text uses the ctContainerPadding modifier.")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .ctContainerPadding(CTSpacing.m)
+                        .border(Color.gray.opacity(0.3))
+                    
+                    codeExample("""
+                    Text("This text uses the ctContainerPadding modifier.")
+                        .ctContainerPadding(CTSpacing.m)
+                    """)
+                }
+            }
+            
+            // Surface extension
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Surface Extension")
+                        .font(.headline)
+                    
+                    Text("This text uses the ctSurface modifier.")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .ctSurface(padding: CTSpacing.all(CTSpacing.m), cornerRadius: 12)
+                        .padding(.bottom, 8) // Extra space for shadow
+                    
+                    codeExample("""
+                    Text("This text uses the ctSurface modifier.")
+                        .ctSurface(
+                            padding: CTSpacing.all(CTSpacing.m),
+                            cornerRadius: 12
+                        )
                     """)
                 }
             }
@@ -610,7 +576,7 @@ struct ContainerExamples: View {
                         Text("Padding: \(Int(padding))")
                             .font(.headline)
                         
-                        Slider(value: $padding, in: 0...48, step: 8)
+                        Slider(value: $padding, in: 0...32, step: 4)
                     }
                     
                     // Corner radius control
@@ -621,53 +587,40 @@ struct ContainerExamples: View {
                         Slider(value: $cornerRadius, in: 0...24, step: 4)
                     }
                     
-                    // Background color control
+                    // Background control
                     VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        HStack {
-                            Text("Background Color:")
-                                .font(.headline)
+                        Toggle("Background", isOn: $useBackground)
+                            .font(.headline)
+                    }
+                    
+                    // Border control
+                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                        Toggle("Border", isOn: $useBorder)
+                            .font(.headline)
+                        
+                        if useBorder {
+                            Text("Border Width: \(Int(borderWidth))")
+                                .font(.subheadline)
                             
-                            ColorPicker("", selection: $backgroundColor)
-                                .labelsHidden()
+                            Slider(value: $borderWidth, in: 1...5, step: 1)
                         }
                     }
                     
-                    // Border controls
+                    // Shadow control
                     VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        Toggle("Show Border", isOn: $hasBorder)
+                        Toggle("Shadow", isOn: $useShadow)
                             .font(.headline)
                         
-                        if hasBorder {
-                            VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                                Text("Border Width: \(Int(borderWidth))")
-                                
-                                Slider(value: $borderWidth, in: 1...5, step: 1)
-                                
-                                HStack {
-                                    Text("Border Color:")
-                                    
-                                    ColorPicker("", selection: $borderColor)
-                                        .labelsHidden()
-                                }
-                            }
-                        }
-                    }
-                    
-                    // Shadow controls
-                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        Toggle("Enable Shadow", isOn: $hasShadow)
-                            .font(.headline)
-                        
-                        if hasShadow {
-                            VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                                Text("Shadow Opacity: \(shadowOpacity, specifier: "%.2f")")
-                                
-                                Slider(value: $shadowOpacity, in: 0.05...0.3, step: 0.05)
-                                
-                                Text("Shadow Radius: \(Int(shadowRadius))")
-                                
-                                Slider(value: $shadowRadius, in: 1...15, step: 1)
-                            }
+                        if useShadow {
+                            Text("Shadow Radius: \(Int(shadowRadius))")
+                                .font(.subheadline)
+                            
+                            Slider(value: $shadowRadius, in: 1...16, step: 1)
+                            
+                            Text("Shadow Opacity: \(String(format: "%.1f", shadowOpacity))")
+                                .font(.subheadline)
+                            
+                            Slider(value: $shadowOpacity, in: 0.05...0.3, step: 0.05)
                         }
                     }
                 }
@@ -679,20 +632,24 @@ struct ContainerExamples: View {
                     Text("Preview")
                         .font(.headline)
                     
-                    CTContainer(
-                        padding: EdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding),
-                        backgroundColor: backgroundColor,
-                        cornerRadius: cornerRadius,
-                        borderWidth: hasBorder ? borderWidth : 0,
-                        borderColor: hasBorder ? borderColor : nil,
-                        shadowEnabled: hasShadow,
-                        shadowRadius: shadowRadius,
-                        shadowOpacity: shadowOpacity
-                    ) {
-                        Text("Container Content")
-                            .frame(maxWidth: .infinity, alignment: .center)
+                    VStack {
+                        CTContainer(
+                            padding: EdgeInsets(top: padding, leading: padding, bottom: padding, trailing: padding),
+                            backgroundColor: useBackground ? Color.ctPrimary.opacity(0.1) : .clear,
+                            cornerRadius: cornerRadius,
+                            borderWidth: useBorder ? borderWidth : 0,
+                            borderColor: useBorder ? Color.ctPrimary : nil,
+                            shadowEnabled: useShadow,
+                            shadowRadius: shadowRadius,
+                            shadowOpacity: shadowOpacity
+                        ) {
+                            Text("Custom Container")
+                                .font(.headline)
+                                .frame(maxWidth: .infinity, alignment: .center)
+                                .padding()
+                        }
                     }
-                    .padding(.bottom, hasShadow ? 10 : 0) // Extra space for shadow
+                    .padding(.bottom, useShadow ? 16 : 0) // Extra space for shadow
                     
                     codeExample(generateCode())
                 }
@@ -728,33 +685,41 @@ struct ContainerExamples: View {
         
         // Padding
         if padding != CTSpacing.m {
-            code += "    padding: EdgeInsets(top: \(padding), leading: \(padding), bottom: \(padding), trailing: \(padding)),\n"
+            code += "    padding: EdgeInsets(top: \(Int(padding)), leading: \(Int(padding)), bottom: \(Int(padding)), trailing: \(Int(padding))),\n"
         }
         
-        // Background color
-        if backgroundColor != .white {
-            code += "    backgroundColor: Color(...),\n"
+        // Background
+        if useBackground {
+            code += "    backgroundColor: Color.ctPrimary.opacity(0.1),\n"
         }
         
         // Corner radius
         if cornerRadius != 8 {
-            code += "    cornerRadius: \(cornerRadius),\n"
+            code += "    cornerRadius: \(Int(cornerRadius)),\n"
         }
         
         // Border
-        if hasBorder {
-            code += "    borderWidth: \(borderWidth),\n"
-            code += "    borderColor: Color(...),\n"
+        if useBorder {
+            code += "    borderWidth: \(Int(borderWidth)),\n"
+            code += "    borderColor: Color.ctPrimary,\n"
         }
         
         // Shadow
-        if hasShadow {
+        if useShadow {
             code += "    shadowEnabled: true,\n"
-            code += "    shadowRadius: \(shadowRadius),\n"
-            code += "    shadowOpacity: \(String(format: "%.2f", shadowOpacity)),\n"
+            if shadowRadius != 4 {
+                code += "    shadowRadius: \(Int(shadowRadius)),\n"
+            }
+            if shadowOpacity != 0.1 {
+                code += "    shadowOpacity: \(String(format: "%.2f", shadowOpacity)),\n"
+            }
         }
         
-        code += ") {\n    Text(\"Container Content\")\n}"
+        code += ") {\n"
+        code += "    Text(\"Custom Container\")\n"
+        code += "        .frame(maxWidth: .infinity)\n"
+        code += "        .padding()\n"
+        code += "}"
         
         return code
     }

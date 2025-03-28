@@ -8,19 +8,48 @@
 import SwiftUI
 import CodetwelveUI
 
+/// Wrapper enum to make HorizontalAlignment hashable for use in pickers
+enum HorizontalAlignmentOption: String, Hashable {
+    case leading, center, trailing
+    
+    var alignment: HorizontalAlignment {
+        switch self {
+        case .leading: return .leading
+        case .center: return .center
+        case .trailing: return .trailing
+        }
+    }
+}
+
+/// Wrapper enum to make VerticalAlignment hashable for use in pickers
+enum VerticalAlignmentOption: String, Hashable {
+    case top, center, bottom
+    
+    var alignment: VerticalAlignment {
+        switch self {
+        case .top: return .top
+        case .center: return .center
+        case .bottom: return .bottom
+        }
+    }
+}
+
 /// A view that showcases CTStack component examples
 ///
 /// This view demonstrates different aspects of the CTStack component:
-/// - Vertical stacks
-/// - Horizontal stacks
-/// - Customized stacks with different spacing and alignment
-/// - Stacks with dividers
-/// - Interactive stack examples
+/// - Vertical and horizontal stack orientations
+/// - Custom spacing options
+/// - Different alignment options
+/// - Dividers between items
+/// - View extension methods
+/// - Interactive stack builder
 struct StackExamples: View {
     // MARK: - State Properties
     
-    @State private var orientation: CTStack<AnyView>.Orientation = .vertical
+    @State private var orientation: CTStackOrientation = .vertical
     @State private var spacing: CGFloat = CTSpacing.m
+    @State private var horizontalAlignmentOption: HorizontalAlignmentOption = .center
+    @State private var verticalAlignmentOption: VerticalAlignmentOption = .center
     @State private var showDividers: Bool = false
     @State private var dividerColor: Color = .gray
     @State private var dividerThickness: CGFloat = 1
@@ -36,11 +65,17 @@ struct StackExamples: View {
                 // Orientation section
                 orientationSection
                 
-                // Customization section
-                customizationSection
+                // Spacing section
+                spacingSection
+                
+                // Alignment section
+                alignmentSection
                 
                 // Dividers section
                 dividersSection
+                
+                // View extensions section
+                extensionsSection
                 
                 // Interactive section
                 interactiveSection
@@ -53,77 +88,33 @@ struct StackExamples: View {
     
     // MARK: - Private Views
     
-    /// Basic usage examples of CTStack
+    /// Basic stack usage examples
     private var basicUsageSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
             Text("Basic Usage")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("CTStack is a customizable stack component that enhances SwiftUI's VStack and HStack with additional features.")
+            Text("CTStack provides a flexible way to arrange views in vertical or horizontal layouts.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Default vertical stack
+            // Basic stack
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Default Vertical Stack")
+                    Text("Basic Stack")
                         .font(.headline)
                     
-                    CTStack {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctPrimary)
-                            .frame(height: 44)
-                        
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctSecondary)
-                            .frame(height: 44)
-                        
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctSuccess)
-                            .frame(height: 44)
+                    CTStack(vertical: CTSpacing.m) {
+                        stackItem(1, color: .blue)
+                        stackItem(2, color: .green)
+                        stackItem(3, color: .purple)
                     }
-                    .padding()
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
                     
                     codeExample("""
                     CTStack {
-                        // First item
-                        // Second item
-                        // Third item
-                    }
-                    """)
-                }
-            }
-            
-            // Default horizontal stack
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Default Horizontal Stack")
-                        .font(.headline)
-                    
-                    CTStack(orientation: .horizontal) {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctPrimary)
-                            .frame(width: 80, height: 44)
-                        
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctSecondary)
-                            .frame(width: 80, height: 44)
-                        
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctSuccess)
-                            .frame(width: 80, height: 44)
-                    }
-                    .padding()
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
-                    
-                    codeExample("""
-                    CTStack(orientation: .horizontal) {
-                        // First item
-                        // Second item
-                        // Third item
+                        Text("Item 1")
+                        Text("Item 2")
+                        Text("Item 3")
                     }
                     """)
                 }
@@ -131,53 +122,38 @@ struct StackExamples: View {
         }
     }
     
-    /// Examples of different stack orientations
+    /// Orientation examples
     private var orientationSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
             Text("Orientation")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("CTStack supports both vertical and horizontal orientations with dedicated initializers.")
+            Text("Stacks can be arranged vertically or horizontally.")
                 .padding(.bottom, CTSpacing.s)
             
             // Vertical stack
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Vertical Stack with Alignment")
+                    Text("Vertical Stack")
                         .font(.headline)
                     
-                    CTStack(vertical: CTSpacing.m, alignment: .leading) {
-                        Text("Leading")
-                            .padding()
-                            .frame(width: 120)
-                            .background(Color.ctPrimary)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                        
-                        Text("Alignment")
-                            .padding()
-                            .frame(width: 180)
-                            .background(Color.ctSecondary)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                        
-                        Text("Example")
-                            .padding()
-                            .frame(width: 150)
-                            .background(Color.ctSuccess)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
+                    CTStack(orientation: .vertical, spacing: CTSpacing.m) {
+                        stackItem(1, color: .blue)
+                        stackItem(2, color: .green)
+                        stackItem(3, color: .purple)
                     }
-                    .padding()
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
                     
                     codeExample("""
-                    CTStack(vertical: CTSpacing.m, alignment: .leading) {
-                        Text("Leading")
-                        Text("Alignment")
-                        Text("Example")
+                    CTStack(orientation: .vertical, spacing: CTSpacing.m) {
+                        Text("Item 1")
+                        Text("Item 2")
+                        Text("Item 3")
+                    }
+                    
+                    // Or using the convenience initializer:
+                    CTStack(vertical: CTSpacing.m) {
+                        // stack items
                     }
                     """)
                 }
@@ -186,39 +162,25 @@ struct StackExamples: View {
             // Horizontal stack
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Horizontal Stack with Alignment")
+                    Text("Horizontal Stack")
                         .font(.headline)
                     
-                    CTStack(horizontal: CTSpacing.m, alignment: .top) {
-                        Text("Top")
-                            .padding()
-                            .frame(height: 50)
-                            .background(Color.ctPrimary)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                        
-                        Text("Alignment\nExample\nWith\nMultiple\nLines")
-                            .padding()
-                            .background(Color.ctSecondary)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
-                        
-                        Text("Top")
-                            .padding()
-                            .frame(height: 50)
-                            .background(Color.ctSuccess)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
+                    CTStack(orientation: .horizontal, spacing: CTSpacing.m) {
+                        stackItem(1, color: .blue)
+                        stackItem(2, color: .green)
+                        stackItem(3, color: .purple)
                     }
-                    .padding()
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
                     
                     codeExample("""
-                    CTStack(horizontal: CTSpacing.m, alignment: .top) {
-                        Text("Top")
-                        Text("Alignment\\nExample\\nWith\\nMultiple\\nLines")
-                        Text("Top")
+                    CTStack(orientation: .horizontal, spacing: CTSpacing.m) {
+                        Text("Item 1")
+                        Text("Item 2")
+                        Text("Item 3")
+                    }
+                    
+                    // Or using the convenience initializer:
+                    CTStack(horizontal: CTSpacing.m) {
+                        // stack items
                     }
                     """)
                 }
@@ -226,203 +188,270 @@ struct StackExamples: View {
         }
     }
     
-    /// Examples of stack customization options
-    private var customizationSection: some View {
+    /// Spacing examples
+    private var spacingSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Customization")
+            Text("Spacing")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("CTStack offers various customization options, including spacing and alignment.")
+            Text("Control the spacing between items in the stack.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Custom spacing
+            // Spacing options
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Custom Spacing")
+                    Text("Spacing Options")
                         .font(.headline)
                     
-                    CTStack(spacing: CTSpacing.l) {
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctPrimary)
-                            .frame(height: 44)
+                    VStack(alignment: .leading, spacing: CTSpacing.m) {
+                        Text("No Spacing")
+                            .font(.subheadline)
                         
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctSecondary)
-                            .frame(height: 44)
+                        CTStack(spacing: 0) {
+                            stackItem(1, color: .blue)
+                            stackItem(2, color: .green)
+                            stackItem(3, color: .purple)
+                        }
                         
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(Color.ctSuccess)
-                            .frame(height: 44)
+                        Text("Small Spacing (8pt)")
+                            .font(.subheadline)
+                        
+                        CTStack(spacing: CTSpacing.s) {
+                            stackItem(1, color: .blue)
+                            stackItem(2, color: .green)
+                            stackItem(3, color: .purple)
+                        }
+                        
+                        Text("Large Spacing (24pt)")
+                            .font(.subheadline)
+                        
+                        CTStack(spacing: CTSpacing.l) {
+                            stackItem(1, color: .blue)
+                            stackItem(2, color: .green)
+                            stackItem(3, color: .purple)
+                        }
                     }
-                    .padding()
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
                     
                     codeExample("""
+                    // No spacing
+                    CTStack(spacing: 0) {
+                        // stack items
+                    }
+                    
+                    // Small spacing
+                    CTStack(spacing: CTSpacing.s) {
+                        // stack items
+                    }
+                    
+                    // Large spacing
                     CTStack(spacing: CTSpacing.l) {
-                        // Items with large spacing between them
+                        // stack items
                     }
-                    """)
-                }
-            }
-            
-            // View extensions
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Using View Extensions")
-                        .font(.headline)
-                    
-                    VStack(alignment: .leading, spacing: CTSpacing.s) {
-                        Text("With ctVStack:")
-                        
-                        VStack {
-                            Text("First item")
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.ctPrimary)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                            
-                            Text("Second item")
-                                .padding()
-                                .frame(maxWidth: .infinity)
-                                .background(Color.ctSecondary)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                        }
-                        .ctVStack(spacing: CTSpacing.m)
-                        
-                        Text("With ctHStack:")
-                        
-                        HStack {
-                            Text("First")
-                                .padding()
-                                .background(Color.ctPrimary)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                            
-                            Text("Second")
-                                .padding()
-                                .background(Color.ctSecondary)
-                                .foregroundColor(.white)
-                                .cornerRadius(8)
-                        }
-                        .ctHStack(spacing: CTSpacing.m)
-                    }
-                    .padding()
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
-                    
-                    codeExample("""
-                    // Using view extensions
-                    VStack {
-                        // Content
-                    }
-                    .ctVStack(spacing: CTSpacing.m)
-                    
-                    HStack {
-                        // Content
-                    }
-                    .ctHStack(spacing: CTSpacing.m)
                     """)
                 }
             }
         }
     }
     
-    /// Examples of stacks with dividers
+    /// Alignment examples
+    private var alignmentSection: some View {
+        VStack(alignment: .leading, spacing: CTSpacing.m) {
+            Text("Alignment")
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("Control the alignment of items within the stack.")
+                .padding(.bottom, CTSpacing.s)
+            
+            // Horizontal alignment in vertical stack
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Horizontal Alignment in Vertical Stack")
+                        .font(.headline)
+                    
+                    VStack(alignment: .leading, spacing: CTSpacing.m) {
+                        Text("Leading Alignment")
+                            .font(.subheadline)
+                        
+                        CTStack(vertical: CTSpacing.m, alignment: .leading) {
+                            stackItem(1, color: .blue, width: 100)
+                            stackItem(2, color: .green, width: 150)
+                            stackItem(3, color: .purple, width: 200)
+                        }
+                        
+                        Text("Center Alignment")
+                            .font(.subheadline)
+                        
+                        CTStack(vertical: CTSpacing.m, alignment: .center) {
+                            stackItem(1, color: .blue, width: 100)
+                            stackItem(2, color: .green, width: 150)
+                            stackItem(3, color: .purple, width: 200)
+                        }
+                        
+                        Text("Trailing Alignment")
+                            .font(.subheadline)
+                        
+                        CTStack(vertical: CTSpacing.m, alignment: .trailing) {
+                            stackItem(1, color: .blue, width: 100)
+                            stackItem(2, color: .green, width: 150)
+                            stackItem(3, color: .purple, width: 200)
+                        }
+                    }
+                    
+                    codeExample("""
+                    CTStack(vertical: CTSpacing.m, alignment: .leading) {
+                        // Items with different widths
+                    }
+                    
+                    CTStack(vertical: CTSpacing.m, alignment: .center) {
+                        // Items with different widths
+                    }
+                    
+                    CTStack(vertical: CTSpacing.m, alignment: .trailing) {
+                        // Items with different widths
+                    }
+                    """)
+                }
+            }
+            
+            // Vertical alignment in horizontal stack
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Vertical Alignment in Horizontal Stack")
+                        .font(.headline)
+                    
+                    VStack(alignment: .leading, spacing: CTSpacing.m) {
+                        Text("Top Alignment")
+                            .font(.subheadline)
+                        
+                        CTStack(horizontal: CTSpacing.m, alignment: .top) {
+                            stackItem(1, color: .blue, height: 40)
+                            stackItem(2, color: .green, height: 60)
+                            stackItem(3, color: .purple, height: 80)
+                        }
+                        
+                        Text("Center Alignment")
+                            .font(.subheadline)
+                        
+                        CTStack(horizontal: CTSpacing.m, alignment: .center) {
+                            stackItem(1, color: .blue, height: 40)
+                            stackItem(2, color: .green, height: 60)
+                            stackItem(3, color: .purple, height: 80)
+                        }
+                        
+                        Text("Bottom Alignment")
+                            .font(.subheadline)
+                        
+                        CTStack(horizontal: CTSpacing.m, alignment: .bottom) {
+                            stackItem(1, color: .blue, height: 40)
+                            stackItem(2, color: .green, height: 60)
+                            stackItem(3, color: .purple, height: 80)
+                        }
+                    }
+                    
+                    codeExample("""
+                    CTStack(horizontal: CTSpacing.m, alignment: .top) {
+                        // Items with different heights
+                    }
+                    
+                    CTStack(horizontal: CTSpacing.m, alignment: .center) {
+                        // Items with different heights
+                    }
+                    
+                    CTStack(horizontal: CTSpacing.m, alignment: .bottom) {
+                        // Items with different heights
+                    }
+                    """)
+                }
+            }
+        }
+    }
+    
+    /// Dividers examples
     private var dividersSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
             Text("Dividers")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("CTStack can automatically add dividers between items.")
+            Text("Add dividers between stack items for visual separation.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Vertical dividers
+            // Vertical stack with dividers
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
                     Text("Vertical Stack with Dividers")
                         .font(.headline)
                     
-                    CTStack(showDividers: true) {
-                        Text("First Item")
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.ctSurface)
-                            .cornerRadius(8)
-                        
-                        Text("Second Item")
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.ctSurface)
-                            .cornerRadius(8)
-                        
-                        Text("Third Item")
-                            .padding()
-                            .frame(maxWidth: .infinity)
-                            .background(Color.ctSurface)
-                            .cornerRadius(8)
+                    CTStack(vertical: CTSpacing.m, showDividers: true) {
+                        stackItem(1, color: .blue)
+                        stackItem(2, color: .green)
+                        stackItem(3, color: .purple)
                     }
-                    .padding()
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
                     
                     codeExample("""
                     CTStack(showDividers: true) {
-                        Text("First Item")
-                        Text("Second Item")
-                        Text("Third Item")
+                        Text("Item 1")
+                        Text("Item 2")
+                        Text("Item 3")
                     }
                     """)
                 }
             }
             
-            // Horizontal dividers
+            // Horizontal stack with dividers
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Horizontal Stack with Custom Dividers")
+                    Text("Horizontal Stack with Dividers")
                         .font(.headline)
                     
-                    CTStack(
-                        orientation: .horizontal,
-                        spacing: CTSpacing.s,
-                        showDividers: true,
-                        dividerColor: .ctPrimary,
-                        dividerThickness: 2
-                    ) {
-                        Text("First")
-                            .padding()
-                            .background(Color.ctSurface)
-                            .cornerRadius(8)
-                        
-                        Text("Second")
-                            .padding()
-                            .background(Color.ctSurface)
-                            .cornerRadius(8)
-                        
-                        Text("Third")
-                            .padding()
-                            .background(Color.ctSurface)
-                            .cornerRadius(8)
+                    CTStack(orientation: .horizontal, showDividers: true) {
+                        stackItem(1, color: .blue)
+                        stackItem(2, color: .green)
+                        stackItem(3, color: .purple)
                     }
-                    .padding()
-                    .background(Color.ctBackground)
-                    .cornerRadius(8)
                     
                     codeExample("""
                     CTStack(
                         orientation: .horizontal,
-                        spacing: CTSpacing.s,
+                        showDividers: true
+                    ) {
+                        Text("Item 1")
+                        Text("Item 2")
+                        Text("Item 3")
+                    }
+                    """)
+                }
+            }
+            
+            // Custom dividers
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Custom Dividers")
+                        .font(.headline)
+                    
+                    CTStack(
+                        spacing: CTSpacing.m,
                         showDividers: true,
                         dividerColor: .ctPrimary,
                         dividerThickness: 2
                     ) {
-                        Text("First")
-                        Text("Second")
-                        Text("Third")
+                        stackItem(1, color: .blue)
+                        stackItem(2, color: .green)
+                        stackItem(3, color: .purple)
+                    }
+                    
+                    codeExample("""
+                    CTStack(
+                        spacing: CTSpacing.m,
+                        showDividers: true,
+                        dividerColor: .ctPrimary,
+                        dividerThickness: 2
+                    ) {
+                        Text("Item 1")
+                        Text("Item 2")
+                        Text("Item 3")
                     }
                     """)
                 }
@@ -430,7 +459,71 @@ struct StackExamples: View {
         }
     }
     
-    /// Interactive stack examples
+    /// View extension examples
+    private var extensionsSection: some View {
+        VStack(alignment: .leading, spacing: CTSpacing.m) {
+            Text("View Extensions")
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("CTStack provides view extensions for easier stack creation.")
+                .padding(.bottom, CTSpacing.s)
+            
+            // VStack extension
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("VStack Extension")
+                        .font(.headline)
+                    
+                    Text("Use the ctVStack modifier to create a vertical stack.")
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    HStack {
+                        stackItem(1, color: .blue)
+                        CTStack(vertical: CTSpacing.s) {
+                            stackItem(2, color: .green)
+                            stackItem(3, color: .purple)
+                        }
+                    }
+                    
+                    codeExample("""
+                    Text("Item 1")
+                    CTStack(vertical: CTSpacing.s) {
+                        Text("Item 2")
+                        Text("Item 3")
+                    }
+                    """)
+                }
+            }
+            
+            // HStack extension
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("HStack Extension")
+                        .font(.headline)
+                    
+                    Text("Use the ctHStack modifier to create a horizontal stack.")
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    stackItem(1, color: .blue)
+                    CTStack(horizontal: CTSpacing.s) {
+                        stackItem(2, color: .green)
+                        stackItem(3, color: .purple)
+                    }
+                    
+                    codeExample("""
+                    Text("Item 1")
+                    CTStack(horizontal: CTSpacing.s) {
+                        Text("Item 2")
+                        Text("Item 3")
+                    }
+                    """)
+                }
+            }
+        }
+    }
+    
+    /// Interactive stack builder
     private var interactiveSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
             Text("Interactive Example")
@@ -449,8 +542,8 @@ struct StackExamples: View {
                             .font(.headline)
                         
                         Picker("Orientation", selection: $orientation) {
-                            Text("Vertical").tag(CTStack<AnyView>.Orientation.vertical)
-                            Text("Horizontal").tag(CTStack<AnyView>.Orientation.horizontal)
+                            Text("Vertical").tag(CTStackOrientation.vertical)
+                            Text("Horizontal").tag(CTStackOrientation.horizontal)
                         }
                         .pickerStyle(SegmentedPickerStyle())
                     }
@@ -460,27 +553,49 @@ struct StackExamples: View {
                         Text("Spacing: \(Int(spacing))")
                             .font(.headline)
                         
-                        Slider(value: $spacing, in: 0...50, step: 4)
+                        Slider(value: $spacing, in: 0...32, step: 4)
                     }
                     
-                    // Dividers control
+                    // Alignment control
+                    if orientation == .vertical {
+                        VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                            Text("Horizontal Alignment:")
+                                .font(.headline)
+                            
+                            Picker("Horizontal Alignment", selection: $horizontalAlignmentOption) {
+                                Text("Leading").tag(HorizontalAlignmentOption.leading)
+                                Text("Center").tag(HorizontalAlignmentOption.center)
+                                Text("Trailing").tag(HorizontalAlignmentOption.trailing)
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                        }
+                    } else {
+                        VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                            Text("Vertical Alignment:")
+                                .font(.headline)
+                            
+                            Picker("Vertical Alignment", selection: $verticalAlignmentOption) {
+                                Text("Top").tag(VerticalAlignmentOption.top)
+                                Text("Center").tag(VerticalAlignmentOption.center)
+                                Text("Bottom").tag(VerticalAlignmentOption.bottom)
+                            }
+                            .pickerStyle(SegmentedPickerStyle())
+                        }
+                    }
+                    
+                    // Divider controls
                     VStack(alignment: .leading, spacing: CTSpacing.xs) {
                         Toggle("Show Dividers", isOn: $showDividers)
                             .font(.headline)
                         
                         if showDividers {
-                            HStack {
-                                Text("Divider Color:")
-                                
-                                ColorPicker("", selection: $dividerColor)
-                                    .labelsHidden()
-                            }
+                            ColorPicker("Divider Color:", selection: $dividerColor)
+                                .font(.subheadline)
                             
-                            VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                                Text("Divider Thickness: \(Int(dividerThickness))")
-                                
-                                Slider(value: $dividerThickness, in: 1...10, step: 1)
-                            }
+                            Text("Divider Thickness: \(Int(dividerThickness))")
+                                .font(.subheadline)
+                            
+                            Slider(value: $dividerThickness, in: 1...5, step: 1)
                         }
                     }
                 }
@@ -497,52 +612,32 @@ struct StackExamples: View {
                             CTStack(
                                 orientation: orientation,
                                 spacing: spacing,
+                                alignment: Alignment(horizontal: horizontalAlignmentOption.alignment, vertical: .center),
                                 showDividers: showDividers,
                                 dividerColor: dividerColor,
                                 dividerThickness: dividerThickness
                             ) {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.ctPrimary)
-                                    .frame(height: 44)
-                                    .overlay(Text("Item 1").foregroundColor(.white))
-                                
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.ctSecondary)
-                                    .frame(height: 44)
-                                    .overlay(Text("Item 2").foregroundColor(.white))
-                                
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.ctSuccess)
-                                    .frame(height: 44)
-                                    .overlay(Text("Item 3").foregroundColor(.white))
+                                previewItem(1, width: 100, height: 50)
+                                previewItem(2, width: 150, height: 50)
+                                previewItem(3, width: 200, height: 50)
                             }
                         } else {
                             CTStack(
                                 orientation: orientation,
                                 spacing: spacing,
+                                alignment: Alignment(horizontal: .center, vertical: verticalAlignmentOption.alignment),
                                 showDividers: showDividers,
                                 dividerColor: dividerColor,
                                 dividerThickness: dividerThickness
                             ) {
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.ctPrimary)
-                                    .frame(width: 80, height: 44)
-                                    .overlay(Text("Item 1").foregroundColor(.white))
-                                
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.ctSecondary)
-                                    .frame(width: 80, height: 44)
-                                    .overlay(Text("Item 2").foregroundColor(.white))
-                                
-                                RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color.ctSuccess)
-                                    .frame(width: 80, height: 44)
-                                    .overlay(Text("Item 3").foregroundColor(.white))
+                                previewItem(1, width: 80, height: 40)
+                                previewItem(2, width: 80, height: 60)
+                                previewItem(3, width: 80, height: 80)
                             }
                         }
                     }
                     .padding()
-                    .background(Color.ctBackground)
+                    .background(Color.gray.opacity(0.1))
                     .cornerRadius(8)
                     
                     codeExample(generateCode())
@@ -552,6 +647,54 @@ struct StackExamples: View {
     }
     
     // MARK: - Helper Methods
+    
+    /// Creates a stack item with specified properties
+    /// - Parameters:
+    ///   - number: The item number
+    ///   - color: The background color
+    ///   - width: Optional custom width
+    ///   - height: Optional custom height
+    /// - Returns: A standard stack item view
+    private func stackItem(_ number: Int, color: Color, width: CGFloat? = nil, height: CGFloat? = nil) -> some View {
+        Text("Item \(number)")
+            .padding(10)
+            .frame(width: width, height: height)
+            .frame(maxWidth: width == nil ? .infinity : nil)
+            .background(color.opacity(0.2))
+            .foregroundColor(color)
+            .cornerRadius(6)
+    }
+    
+    /// Gets a string representation of a Color
+    /// - Parameter color: The color to convert
+    /// - Returns: A string representation of the color
+    private func colorName(for color: Color) -> String {
+        // This is a simple implementation - you might want to expand this
+        if color == .gray { return "gray" }
+        if color == .blue { return "blue" }
+        if color == .red { return "red" }
+        if color == .green { return "green" }
+        if color == .yellow { return "yellow" }
+        if color == .orange { return "orange" }
+        if color == .purple { return "purple" }
+        if color == .pink { return "pink" }
+        return "gray" // Default
+    }
+    
+    /// Creates a preview item for the interactive builder
+    /// - Parameters:
+    ///   - number: The item number
+    ///   - width: The width of the item
+    ///   - height: The height of the item
+    /// - Returns: A preview item view
+    private func previewItem(_ number: Int, width: CGFloat, height: CGFloat) -> some View {
+        Text("Item \(number)")
+            .padding(10)
+            .frame(width: width, height: height)
+            .background(Color.ctPrimary.opacity(0.2))
+            .foregroundColor(Color.ctPrimary)
+            .cornerRadius(6)
+    }
     
     /// Creates a formatted code example view
     /// - Parameter code: The code string to display
@@ -581,21 +724,31 @@ struct StackExamples: View {
             code += "    orientation: .horizontal,\n"
         }
         
-        code += "    spacing: \(spacing != CTSpacing.m ? String(format: "%.1f", spacing) : "CTSpacing.m"),\n"
+        code += "    spacing: \(Int(spacing)),\n"
+        
+        if orientation == .vertical && horizontalAlignmentOption != .center {
+            code += "    alignment: .\(horizontalAlignmentOption.rawValue),\n"
+        } else if orientation == .horizontal && verticalAlignmentOption != .center {
+            code += "    alignment: .\(verticalAlignmentOption.rawValue),\n"
+        }
         
         if showDividers {
             code += "    showDividers: true,\n"
-            
-            if dividerColor != .gray {
-                code += "    dividerColor: Color(...),\n"
-            }
-            
-            if dividerThickness != 1 {
-                code += "    dividerThickness: \(dividerThickness),\n"
-            }
         }
         
-        code += ") {\n    // Content items\n}"
+        if dividerColor != .gray {
+            code += "    dividerColor: .\(colorName(for: dividerColor)),\n"
+        }
+        
+        if dividerThickness != 1 {
+            code += "    dividerThickness: \(Int(dividerThickness)),\n"
+        }
+        
+        code += ") {\n"
+        code += "    Text(\"Item 1\")\n"
+        code += "    Text(\"Item 2\")\n"
+        code += "    Text(\"Item 3\")\n"
+        code += "}"
         
         return code
     }

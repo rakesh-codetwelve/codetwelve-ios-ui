@@ -271,7 +271,7 @@ public struct CTCard<Content: View, Header: View, Footer: View>: View {
 // MARK: - Supporting Types
 
 /// Style options for the Card component
-public enum CTCardStyle {
+public enum CTCardStyle: Hashable {
     /// An elevated card with shadow
     case elevated
     
@@ -312,6 +312,39 @@ public enum CTCardStyle {
             return theme.border
         case .custom(_, let borderColor):
             return borderColor
+        }
+    }
+    
+    // MARK: - Hashable
+    
+    public func hash(into hasher: inout Hasher) {
+        switch self {
+        case .elevated:
+            hasher.combine(0)
+        case .flat:
+            hasher.combine(1)
+        case .outlined:
+            hasher.combine(2)
+        case .filled:
+            hasher.combine(3)
+        case .custom(let backgroundColor, let borderColor):
+            hasher.combine(4)
+            hasher.combine(backgroundColor)
+            hasher.combine(borderColor)
+        }
+    }
+    
+    public static func == (lhs: CTCardStyle, rhs: CTCardStyle) -> Bool {
+        switch (lhs, rhs) {
+        case (.elevated, .elevated),
+             (.flat, .flat),
+             (.outlined, .outlined),
+             (.filled, .filled):
+            return true
+        case (.custom(let lhsBackground, let lhsBorder), .custom(let rhsBackground, let rhsBorder)):
+            return lhsBackground == rhsBackground && lhsBorder == rhsBorder
+        default:
+            return false
         }
     }
 }

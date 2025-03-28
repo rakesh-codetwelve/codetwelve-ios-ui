@@ -34,21 +34,20 @@ import SwiftUI
 ///     Text("Section 2")
 /// }
 /// ```
+public enum CTStackOrientation {
+    case vertical
+    case horizontal
+}
+
 public struct CTStack<Content: View>: View {
     // MARK: - Public Properties
     
     /// The orientation of the stack
-    public enum Orientation {
-        /// Vertical stack (like VStack)
-        case vertical
-        /// Horizontal stack (like HStack)
-        case horizontal
-    }
+    public let orientation: CTStackOrientation
     
     // MARK: - Private Properties
     
-    private let orientation: Orientation
-    private let spacing: CGFloat?
+    private let spacing: CGFloat
     private let alignment: Alignment
     private let horizontalAlignment: HorizontalAlignment
     private let verticalAlignment: VerticalAlignment
@@ -71,8 +70,8 @@ public struct CTStack<Content: View>: View {
     ///   - dividerThickness: The thickness of the dividers (default: 1)
     ///   - content: The content of the stack
     public init(
-        orientation: Orientation = .vertical,
-        spacing: CGFloat? = nil,
+        orientation: CTStackOrientation = .vertical,
+        spacing: CGFloat = CTSpacing.m,
         alignment: Alignment = .center,
         showDividers: Bool = false,
         dividerColor: Color? = nil,
@@ -99,7 +98,7 @@ public struct CTStack<Content: View>: View {
     ///   - dividerThickness: The thickness of the dividers (default: 1)
     ///   - content: The content of the stack
     public init(
-        vertical spacing: CGFloat? = nil,
+        vertical spacing: CGFloat = CTSpacing.m,
         alignment: HorizontalAlignment = .center,
         showDividers: Bool = false,
         dividerColor: Color? = nil,
@@ -126,7 +125,7 @@ public struct CTStack<Content: View>: View {
     ///   - dividerThickness: The thickness of the dividers (default: 1)
     ///   - content: The content of the stack
     public init(
-        horizontal spacing: CGFloat? = nil,
+        horizontal spacing: CGFloat = CTSpacing.m,
         alignment: VerticalAlignment = .center,
         showDividers: Bool = false,
         dividerColor: Color? = nil,
@@ -203,8 +202,8 @@ public struct CTStack<Content: View>: View {
 
 /// A view modifier that adds dividers between content items
 private struct DividerModifier: ViewModifier {
-    let orientation: CTStack<AnyView>.Orientation
-    let spacing: CGFloat?
+    let orientation: CTStackOrientation
+    let spacing: CGFloat
     let dividerColor: Color?
     let dividerThickness: CGFloat
     
@@ -232,14 +231,14 @@ private struct DividerModifier: ViewModifier {
                         color: dividerColor,
                         thickness: dividerThickness
                     )
-                    .padding(.vertical, spacing ?? CTSpacing.xs)
+                    .padding(.vertical, spacing)
                 } else {
                     CTDivider(
                         orientation: .vertical,
                         color: dividerColor,
                         thickness: dividerThickness
                     )
-                    .padding(.horizontal, spacing ?? CTSpacing.xs)
+                    .padding(.horizontal, spacing)
                 }
             }
         }
@@ -261,7 +260,7 @@ public extension View {
         showDividers: Bool = false
     ) -> CTStack<Self> {
         CTStack(
-            vertical: spacing,
+            vertical: spacing ?? CTSpacing.m,
             alignment: alignment,
             showDividers: showDividers
         ) {
@@ -281,7 +280,7 @@ public extension View {
         showDividers: Bool = false
     ) -> CTStack<Self> {
         CTStack(
-            horizontal: spacing,
+            horizontal: spacing ?? CTSpacing.m,
             alignment: alignment,
             showDividers: showDividers
         ) {

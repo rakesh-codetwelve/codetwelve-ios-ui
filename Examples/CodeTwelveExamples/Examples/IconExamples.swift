@@ -604,7 +604,7 @@ struct IconExamples: View {
 
 // MARK: - SymbolRenderingMode Extensions
 
-extension SymbolRenderingMode: Hashable {
+extension SymbolRenderingMode: @retroactive Hashable {
     public func hash(into hasher: inout Hasher) {
         switch self {
         case .monochrome:
@@ -621,18 +621,17 @@ extension SymbolRenderingMode: Hashable {
     }
     
     public static func == (lhs: SymbolRenderingMode, rhs: SymbolRenderingMode) -> Bool {
-        switch (lhs, rhs) {
-        case (.monochrome, .monochrome):
-            return true
-        case (.multicolor, .multicolor):
-            return true
-        case (.hierarchical, .hierarchical):
-            return true
-        case (.palette, .palette):
-            return true
-        default:
-            return false
+        // Convert each mode to a unique integer for comparison
+        func modeToInt(_ mode: SymbolRenderingMode) -> Int {
+            switch mode {
+            case .monochrome: return 0
+            case .multicolor: return 1
+            case .hierarchical: return 2
+            case .palette: return 3
+            default: return -1
+            }
         }
+        return modeToInt(lhs) == modeToInt(rhs)
     }
 }
 

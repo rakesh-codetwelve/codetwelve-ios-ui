@@ -11,29 +11,49 @@ import CodetwelveUI
 /// A view that showcases CTGrid component examples
 ///
 /// This view demonstrates different aspects of the CTGrid component:
-/// - Fixed column grids
-/// - Adaptive grids
-/// - Custom grid spacing and alignment
-/// - Grid items with specialized sizing
+/// - Basic grid usage with different column configurations
+/// - Responsive grid layouts
+/// - Grid with different spacing options
+/// - Grid with custom item styling
 /// - Interactive grid builder
 struct GridExamples: View {
+    // MARK: - Supporting Types
+    
+    /// Wrapper for grid column width options
+    enum GridColumnWidth {
+        case fixed(Int)
+        case adaptive(minWidth: CGFloat)
+        
+        var columns: Int? {
+            switch self {
+            case .fixed(let columns):
+                return columns
+            case .adaptive:
+                return nil
+            }
+        }
+        
+        var minItemWidth: CGFloat? {
+            switch self {
+            case .fixed:
+                return nil
+            case .adaptive(let minWidth):
+                return minWidth
+            }
+        }
+    }
+    
     // MARK: - State Properties
     
-    @State private var gridType: GridType = .fixed
     @State private var columns: Int = 2
-    @State private var minItemWidth: CGFloat = 120
-    @State private var spacing: CGFloat = CTSpacing.m
-    @State private var horizontalAlignment: HorizontalAlignment = .center
-    @State private var verticalAlignment: VerticalAlignment = .center
-    @State private var usePadding: Bool = false
-    @State private var itemCount: Double = 6
-    
-    // MARK: - Private Properties
-    
-    private enum GridType {
-        case fixed
-        case adaptive
-    }
+    @State private var horizontalSpacing: CGFloat = 10
+    @State private var verticalSpacing: CGFloat = 10
+    @State private var itemPadding: CGFloat = 12
+    @State private var itemBackgroundColor: Color = .blue.opacity(0.1)
+    @State private var itemCornerRadius: CGFloat = 8
+    @State private var columnWidthStrategy: ColumnWidthStrategy = .fixed(2)
+    @State private var minItemWidth: CGFloat = 100
+    @State private var columnsDouble: Double = 2.0
     
     // MARK: - Body
     
@@ -43,14 +63,17 @@ struct GridExamples: View {
                 // Basic usage section
                 basicUsageSection
                 
-                // Adaptive grid section
-                adaptiveGridSection
+                // Column configuration section
+                columnConfigurationSection
                 
-                // Customization section
-                customizationSection
+                // Spacing section
+                spacingSection
                 
-                // Specialized items section
-                specializedItemsSection
+                // Responsive section
+                responsiveSection
+                
+                // Custom styling section
+                customStylingSection
                 
                 // Interactive section
                 interactiveSection
@@ -70,49 +93,29 @@ struct GridExamples: View {
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("CTGrid provides a flexible grid layout for arranging views in rows and columns.")
+            Text("CTGrid provides a flexible way to arrange views in a grid layout.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Fixed 2-column grid
+            // Basic grid
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Fixed 2-Column Grid")
-                        .font(.headline)
-                    
-                    CTGrid(columns: 2, spacing: CTSpacing.m) {
-                        ForEach(1...4, id: \.self) { index in
-                            gridItem(index: index)
-                        }
-                    }
-                    .frame(height: 200)
-                    
-                    codeExample("""
-                    CTGrid(columns: 2, spacing: CTSpacing.m) {
-                        ForEach(1...4, id: \\.self) { index in
-                            // Grid item \(index)
-                        }
-                    }
-                    """)
-                }
-            }
-            
-            // Fixed 3-column grid
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Fixed 3-Column Grid")
+                    Text("Basic Grid")
                         .font(.headline)
                     
                     CTGrid(columns: 3, spacing: CTSpacing.m) {
-                        ForEach(1...6, id: \.self) { index in
-                            gridItem(index: index)
+                        ForEach(1..<7, id: \.self) { index in
+                            gridItem(index)
                         }
                     }
-                    .frame(height: 200)
                     
                     codeExample("""
                     CTGrid(columns: 3, spacing: CTSpacing.m) {
                         ForEach(1...6, id: \\.self) { index in
-                            // Grid item \(index)
+                            Text("Item \\(index)")
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.ctPrimary.opacity(0.1))
+                                .cornerRadius(8)
                         }
                     }
                     """)
@@ -121,57 +124,77 @@ struct GridExamples: View {
         }
     }
     
-    /// Adaptive grid examples
-    private var adaptiveGridSection: some View {
+    /// Column configuration examples
+    private var columnConfigurationSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Adaptive Grids")
+            Text("Column Configuration")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("Adaptive grids adjust the number of columns based on available width.")
+            Text("CTGrid supports different column width strategies.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Adaptive grid
+            // Fixed column width
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Adaptive Grid (min width: 120pt)")
+                    Text("Fixed Column Width")
                         .font(.headline)
                     
-                    CTGrid(minItemWidth: 120, spacing: CTSpacing.m) {
-                        ForEach(1...8, id: \.self) { index in
-                            gridItem(index: index, color: .ctSecondary)
+                    CTGrid(columns: 2, spacing: CTSpacing.m) {
+                        ForEach(1...6, id: \.self) { index in
+                            gridItem(index)
                         }
                     }
-                    .frame(height: 300)
                     
                     codeExample("""
-                    CTGrid(minItemWidth: 120, spacing: CTSpacing.m) {
-                        ForEach(1...8, id: \\.self) { index in
-                            // Grid item \(index)
+                    CTGrid(columns: 2, spacing: CTSpacing.m) {
+                        ForEach(1...6, id: \\.self) { index in
+                            Text("Item \\(index)")
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.ctPrimary.opacity(0.1))
+                                .cornerRadius(8)
                         }
                     }
                     """)
                 }
             }
             
-            // Smaller adaptive grid
+            // Flexible column width
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Adaptive Grid (min width: 80pt)")
+                    Text("Flexible Column Width")
                         .font(.headline)
                     
-                    CTGrid(minItemWidth: 80, spacing: CTSpacing.m) {
-                        ForEach(1...10, id: \.self) { index in
-                            gridItem(index: index, color: .ctInfo)
+                    CTGrid(minItemWidth: 100, spacing: CTSpacing.m) {
+                        ForEach(1...6, id: \.self) { index in
+                            gridItem(index)
                         }
                     }
-                    .frame(height: 300)
                     
                     codeExample("""
-                    CTGrid(minItemWidth: 80, spacing: CTSpacing.m) {
-                        ForEach(1...10, id: \\.self) { index in
-                            // Grid item \(index)
+                    CTGrid(minItemWidth: 100, spacing: CTSpacing.m) {
+                        // Grid items
+                    }
+                    """)
+                }
+            }
+            
+            // Adaptive column width
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Adaptive Column Width")
+                        .font(.headline)
+                    
+                    makeGrid(columnWidth: .adaptive(minWidth: 100), spacing: CTSpacing.m) {
+                        ForEach(1...6, id: \.self) { index in
+                            gridItem(index)
                         }
+                    }
+                    
+                    codeExample("""
+                    CTGrid(minItemWidth: 100, spacing: CTSpacing.m) {
+                        // Grid items
                     }
                     """)
                 }
@@ -179,45 +202,57 @@ struct GridExamples: View {
         }
     }
     
-    /// Customization examples
-    private var customizationSection: some View {
+    /// Spacing examples
+    private var spacingSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Customization")
+            Text("Spacing")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("Grids can be customized with different spacing, alignment, and padding.")
+            Text("Control the spacing between items in the grid.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Custom spacing
+            // Spacing options
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Custom Spacing")
+                    Text("Different Spacing Options")
                         .font(.headline)
                     
-                    VStack(spacing: CTSpacing.m) {
+                    VStack(alignment: .leading, spacing: CTSpacing.m) {
+                        Text("No Spacing")
+                            .font(.subheadline)
+                        
+                        CTGrid(columns: 3, spacing: 0) {
+                            ForEach(1...6, id: \.self) { index in
+                                gridItem(index)
+                            }
+                        }
+                        
                         Text("Small Spacing (8pt)")
                             .font(.subheadline)
                         
                         CTGrid(columns: 3, spacing: CTSpacing.s) {
                             ForEach(1...6, id: \.self) { index in
-                                gridItem(index: index, color: .ctInfo)
+                                gridItem(index)
                             }
                         }
-                        .frame(height: 120)
                         
                         Text("Large Spacing (24pt)")
                             .font(.subheadline)
                         
                         CTGrid(columns: 3, spacing: CTSpacing.l) {
                             ForEach(1...6, id: \.self) { index in
-                                gridItem(index: index, color: .ctInfo)
+                                gridItem(index)
                             }
                         }
-                        .frame(height: 120)
                     }
                     
                     codeExample("""
+                    // No spacing
+                    CTGrid(columns: 3, spacing: 0) {
+                        // Grid items
+                    }
+                    
                     // Small spacing
                     CTGrid(columns: 3, spacing: CTSpacing.s) {
                         // Grid items
@@ -231,109 +266,29 @@ struct GridExamples: View {
                 }
             }
             
-            // Alignment
+            // Different horizontal and vertical spacing
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Custom Alignment")
+                    Text("Different Horizontal & Vertical Spacing")
                         .font(.headline)
                     
-                    VStack(spacing: CTSpacing.m) {
-                        Text("Horizontal Alignment: Leading")
-                            .font(.subheadline)
-                        
-                        CTGrid(
-                            columns: 3,
-                            spacing: CTSpacing.m,
-                            horizontalAlignment: .leading
-                        ) {
-                            gridItemWithText("Leading")
-                                .frame(width: 100)
-                            
-                            gridItemWithText("Alignment")
-                                .frame(width: 100)
-                            
-                            gridItemWithText("Example")
-                                .frame(width: 100)
+                    CTGrid(
+                        columns: 3,
+                        spacing: CTSpacing.l
+                    ) {
+                        ForEach(1..<7, id: \.self) { index in
+                            gridItem(index)
                         }
-                        .frame(height: 100)
-                        
-                        Text("Vertical Alignment: Bottom")
-                            .font(.subheadline)
-                        
-                        CTGrid(
-                            columns: 3,
-                            spacing: CTSpacing.m,
-                            horizontalAlignment: .center,
-                            verticalAlignment: .bottom
-                        ) {
-                            gridItemWithText("Item 1")
-                                .frame(height: 40)
-                            
-                            gridItemWithText("Item 2\nWith\nMultiple\nLines")
-                                .frame(height: 100)
-                            
-                            gridItemWithText("Item 3")
-                                .frame(height: 60)
-                        }
-                        .frame(height: 120)
                     }
                     
                     codeExample("""
                     CTGrid(
                         columns: 3,
-                        spacing: CTSpacing.m,
-                        horizontalAlignment: .leading
+                        spacing: CTSpacing.l
                     ) {
-                        // Grid items
-                    }
-                    
-                    CTGrid(
-                        columns: 3,
-                        spacing: CTSpacing.m,
-                        verticalAlignment: .bottom
-                    ) {
-                        // Grid items with varying heights
-                    }
-                    """)
-                }
-            }
-            
-            // Padding
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Grid with Padding")
-                        .font(.headline)
-                    
-                    CTGrid(
-                        columns: 2,
-                        spacing: CTSpacing.m,
-                        padding: EdgeInsets(
-                            top: CTSpacing.m,
-                            leading: CTSpacing.m,
-                            bottom: CTSpacing.m,
-                            trailing: CTSpacing.m
-                        )
-                    ) {
-                        ForEach(1...4, id: \.self) { index in
-                            gridItem(index: index, color: .ctSuccess)
+                        ForEach(1..<7, id: \\.self) { index in
+                            gridItem(index)
                         }
-                    }
-                    .frame(height: 200)
-                    .background(Color.ctSuccess.opacity(0.1))
-                    .cornerRadius(8)
-                    
-                    codeExample("""
-                    CTGrid(
-                        columns: 2,
-                        spacing: CTSpacing.m,
-                        padding: EdgeInsets(
-                            top: CTSpacing.m,
-                            leading: CTSpacing.m,
-                            bottom: CTSpacing.m,
-                            trailing: CTSpacing.m
-                        )
-                    ) {
-                        // Grid items
                     }
                     """)
                 }
@@ -341,100 +296,139 @@ struct GridExamples: View {
         }
     }
     
-    /// Specialized item examples
-    private var specializedItemsSection: some View {
+    /// Responsive grid examples
+    private var responsiveSection: some View {
         VStack(alignment: .leading, spacing: CTSpacing.m) {
-            Text("Specialized Items")
+            Text("Responsive Grids")
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("Grid items can have specialized sizing like squares and aspect ratios.")
+            Text("CTGrid automatically adapts to different screen sizes.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Square items
+            // Adaptive grid
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Square Items")
+                    Text("Adaptive Grid")
                         .font(.headline)
                     
-                    CTGrid(columns: 3, spacing: CTSpacing.m) {
-                        ForEach(1...6, id: \.self) { index in
-                            Text("\(index)")
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .background(Color.ctPrimary.opacity(0.1))
-                                .foregroundColor(Color.ctPrimary)
-                                .cornerRadius(8)
-                                .ctGridSquare()
+                    Text("This grid automatically adjusts the number of columns based on available width.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    makeGrid(columnWidth: .adaptive(minWidth: 120), spacing: CTSpacing.m) {
+                        ForEach(1...8, id: \.self) { index in
+                            gridItem(index)
                         }
                     }
-                    .frame(height: 200)
                     
                     codeExample("""
-                    CTGrid(columns: 3, spacing: CTSpacing.m) {
-                        ForEach(1...6, id: \\.self) { index in
-                            Text("\\(index)")
-                                // Make the item square
-                                .ctGridSquare()
-                        }
+                    // Resize your window to see the columns adapt
+                    CTGrid(minItemWidth: 120, spacing: CTSpacing.m) {
+                        // Grid items
                     }
                     """)
                 }
             }
             
-            // Aspect ratio items
+            // Responsive columns grid
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Aspect Ratio Items")
+                    Text("Responsive Columns")
+                        .font(.headline)
+                    
+                    Text("This grid changes columns based on environment size class.")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                        .padding(.bottom, CTSpacing.xs)
+                    
+                    ResponsiveColumnsGrid()
+                    
+                    codeExample("""
+                    @Environment(\\.horizontalSizeClass) var horizontalSizeClass
+                    
+                    var columns: Int {
+                        horizontalSizeClass == .compact ? 2 : 4
+                    }
+                    
+                    var body: some View {
+                        CTGrid(columns: columns, spacing: CTSpacing.m) {
+                            // Grid items
+                        }
+                    }
+                    """)
+                }
+            }
+        }
+    }
+    
+    /// Custom styling examples
+    private var customStylingSection: some View {
+        VStack(alignment: .leading, spacing: CTSpacing.m) {
+            Text("Custom Styling")
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("Customize the appearance of grid items.")
+                .padding(.bottom, CTSpacing.s)
+            
+            // Styled grid items
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Styled Grid Items")
+                        .font(.headline)
+                    
+                    CTGrid(columns: 3, spacing: CTSpacing.m) {
+                        gridItem(1, style: .primary)
+                        gridItem(2, style: .secondary)
+                        gridItem(3, style: .success)
+                        gridItem(4, style: .warning)
+                        gridItem(5, style: .danger)
+                        gridItem(6, style: .info)
+                    }
+                    
+                    codeExample("""
+                    CTGrid(columns: 3, spacing: CTSpacing.m) {
+                        // Items with different styles
+                        // Primary, Secondary, Success, etc.
+                    }
+                    """)
+                }
+            }
+            
+            // Card grid
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Card Grid")
                         .font(.headline)
                     
                     CTGrid(columns: 2, spacing: CTSpacing.m) {
-                        // 16:9 item
-                        Text("16:9")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color.ctSecondary.opacity(0.1))
-                            .foregroundColor(Color.ctSecondary)
-                            .cornerRadius(8)
-                            .ctGridAspectRatio(16/9)
-                        
-                        // 4:3 item
-                        Text("4:3")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color.ctSecondary.opacity(0.1))
-                            .foregroundColor(Color.ctSecondary)
-                            .cornerRadius(8)
-                            .ctGridAspectRatio(4/3)
-                        
-                        // 1:1 item (square)
-                        Text("1:1")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color.ctSecondary.opacity(0.1))
-                            .foregroundColor(Color.ctSecondary)
-                            .cornerRadius(8)
-                            .ctGridAspectRatio(1)
-                        
-                        // 2:1 item
-                        Text("2:1")
-                            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                            .background(Color.ctSecondary.opacity(0.1))
-                            .foregroundColor(Color.ctSecondary)
-                            .cornerRadius(8)
-                            .ctGridAspectRatio(2)
+                        ForEach(1...4, id: \.self) { index in
+                            CTCard(style: .outlined, borderWidth: 1) {
+                                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                                    Image(systemName: "star.fill")
+                                        .foregroundColor(.yellow)
+                                    
+                                    Text("Card \(index)")
+                                        .font(.headline)
+                                    
+                                    Text("A grid of cards with custom content")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
+                                .padding()
+                            }
+                        }
                     }
-                    .frame(height: 300)
                     
                     codeExample("""
                     CTGrid(columns: 2, spacing: CTSpacing.m) {
-                        // 16:9 widescreen item
-                        Text("16:9")
-                            .ctGridAspectRatio(16/9)
-                            
-                        // 4:3 standard item
-                        Text("4:3")
-                            .ctGridAspectRatio(4/3)
-                            
-                        // Custom aspect ratio
-                        Text("Custom")
-                            .ctGridAspectRatio(2.5)
+                        ForEach(1...4, id: \\.self) { index in
+                            CTCard(style: .outlined, borderWidth: 1) {
+                                // Card content
+                            }
+                        }
                     }
                     """)
                 }
@@ -455,81 +449,87 @@ struct GridExamples: View {
             // Controls
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.m) {
-                    // Grid type control
-                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        Text("Grid Type:")
+                    // Column width strategy
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Layout Strategy:")
                             .font(.headline)
                         
-                        Picker("Grid Type", selection: $gridType) {
-                            Text("Fixed Columns").tag(GridType.fixed)
-                            Text("Adaptive").tag(GridType.adaptive)
+                        Picker("Layout Strategy", selection: $columnWidthStrategy) {
+                            Text("Fixed").tag(ColumnWidthStrategy.fixed(2))
+                            Text("Adaptive").tag(ColumnWidthStrategy.adaptive(100))
                         }
                         .pickerStyle(SegmentedPickerStyle())
-                    }
-                    
-                    // Columns or min item width
-                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        if gridType == .fixed {
-                            Text("Columns: \(columns)")
-                                .font(.headline)
+                        .onChange(of: columnWidthStrategy) { newValue in
+                            // Reset values when switching strategies
+                            switch newValue {
+                            case .fixed:
+                                columns = 2
+                            case .adaptive:
+                                minItemWidth = 100
+                            }
+                        }
+                        
+                        // Show different controls based on strategy
+                        switch columnWidthStrategy {
+                        case .fixed:
+                            HStack {
+                                Text("Columns: \(columns)")
+                                Slider(value: $columnsDouble, in: 1...6, step: 1)
+                                    .onChange(of: columnsDouble) { newValue in
+                                        columns = Int(newValue)
+                                        // Update the strategy
+                                        columnWidthStrategy = .fixed(columns)
+                                    }
+                            }
                             
-                            Slider(value: Binding(
-                                get: { Double(columns) },
-                                set: { columns = max(1, Int($0)) }
-                            ), in: 1...4, step: 1)
-                        } else {
-                            Text("Min Item Width: \(Int(minItemWidth))")
-                                .font(.headline)
-                            
-                            Slider(value: $minItemWidth, in: 60...200, step: 20)
+                        case .adaptive:
+                            HStack {
+                                Text("Min Width: \(Int(minItemWidth))px")
+                                Slider(value: $minItemWidth, in: 50...300, step: 5)
+                                    .onChange(of: minItemWidth) { newValue in
+                                        // Update the strategy
+                                        columnWidthStrategy = .adaptive(newValue)
+                                    }
+                            }
                         }
                     }
                     
-                    // Spacing control
+                    // Spacing controls
                     VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        Text("Spacing: \(Int(spacing))")
+                        Text("Horizontal Spacing: \(Int(horizontalSpacing))")
                             .font(.headline)
                         
-                        Slider(value: $spacing, in: 0...48, step: 8)
-                    }
-                    
-                    // Alignment controls
-                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        Text("Horizontal Alignment:")
-                            .font(.headline)
-                        
-                        Picker("Horizontal Alignment", selection: $horizontalAlignment) {
-                            Text("Leading").tag(HorizontalAlignment.leading)
-                            Text("Center").tag(HorizontalAlignment.center)
-                            Text("Trailing").tag(HorizontalAlignment.trailing)
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
+                        Slider(value: $horizontalSpacing.animation(), in: 0...32, step: 4)
                     }
                     
                     VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        Text("Vertical Alignment:")
+                        Text("Vertical Spacing: \(Int(verticalSpacing))")
                             .font(.headline)
                         
-                        Picker("Vertical Alignment", selection: $verticalAlignment) {
-                            Text("Top").tag(VerticalAlignment.top)
-                            Text("Center").tag(VerticalAlignment.center)
-                            Text("Bottom").tag(VerticalAlignment.bottom)
-                        }
-                        .pickerStyle(SegmentedPickerStyle())
+                        Slider(value: $verticalSpacing.animation(), in: 0...32, step: 4)
                     }
                     
-                    // Padding control
+                    // Item styling
                     VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        Toggle("Add Padding", isOn: $usePadding)
-                            .font(.headline)
-                    }
-                    
-                    // Item count control
-                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
-                        Text("Item Count: \(Int(itemCount))")
+                        Text("Item Padding: \(Int(itemPadding))")
                             .font(.headline)
                         
-                        Slider(value: $itemCount, in: 1...12, step: 1)
+                        Slider(value: $itemPadding.animation(), in: 0...24, step: 4)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                        Text("Item Corner Radius: \(Int(itemCornerRadius))")
+                            .font(.headline)
+                        
+                        Slider(value: $itemCornerRadius.animation(), in: 0...20, step: 2)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: CTSpacing.xs) {
+                        Text("Item Background:")
+                            .font(.headline)
+                        
+                        ColorPicker("", selection: $itemBackgroundColor)
+                            .labelsHidden()
                     }
                 }
             }
@@ -541,35 +541,30 @@ struct GridExamples: View {
                         .font(.headline)
                     
                     Group {
-                        if gridType == .fixed {
+                        switch columnWidthStrategy {
+                        case .fixed:
                             CTGrid(
-                                columns: columns,
-                                spacing: spacing,
-                                horizontalAlignment: horizontalAlignment,
-                                verticalAlignment: verticalAlignment,
-                                padding: usePadding ? EdgeInsets(top: CTSpacing.m, leading: CTSpacing.m, bottom: CTSpacing.m, trailing: CTSpacing.m) : nil
+                                columns: Int(columns),
+                                spacing: horizontalSpacing
                             ) {
-                                ForEach(1...Int(itemCount), id: \.self) { index in
-                                    gridItem(index: index, color: .ctPrimary)
+                                ForEach(1...9, id: \.self) { index in
+                                    interactiveGridItem(index)
                                 }
                             }
-                        } else {
+                        case .adaptive:
                             CTGrid(
                                 minItemWidth: minItemWidth,
-                                spacing: spacing,
-                                horizontalAlignment: horizontalAlignment,
-                                verticalAlignment: verticalAlignment,
-                                padding: usePadding ? EdgeInsets(top: CTSpacing.m, leading: CTSpacing.m, bottom: CTSpacing.m, trailing: CTSpacing.m) : nil
+                                spacing: horizontalSpacing
                             ) {
-                                ForEach(1...Int(itemCount), id: \.self) { index in
-                                    gridItem(index: index, color: .ctPrimary)
+                                ForEach(1...9, id: \.self) { index in
+                                    interactiveGridItem(index)
                                 }
                             }
                         }
                     }
-                    .frame(height: 300)
-                    .background(usePadding ? Color.ctBackground : nil)
-                    .cornerRadius(usePadding ? 8 : 0)
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
                     
                     codeExample(generateCode())
                 }
@@ -577,33 +572,46 @@ struct GridExamples: View {
         }
     }
     
-    // MARK: - Helper Methods
+    // MARK: - Private Methods
     
-    /// Creates a grid item with an index and background color
+    /// Creates a grid with the specified column width
+    private func makeGrid<Content: View>(columnWidth: GridColumnWidth, spacing: CGFloat = CTSpacing.m, @ViewBuilder content: () -> Content) -> some View {
+        Group {
+            if let columns = columnWidth.columns {
+                CTGrid(columns: columns, spacing: spacing, content: content)
+            } else if let minWidth = columnWidth.minItemWidth {
+                CTGrid(minItemWidth: minWidth, spacing: spacing, content: content)
+            } else {
+                // Default to 2 columns
+                CTGrid(columns: 2, spacing: spacing, content: content)
+            }
+        }
+    }
+    
+    /// Creates a grid item with the specified index and style
     /// - Parameters:
-    ///   - index: The index number to display
-    ///   - color: The background color of the item
-    /// - Returns: A formatted grid item
-    private func gridItem(index: Int, color: Color = .ctPrimary) -> some View {
-        Text("\(index)")
-            .font(.title2)
-            .fontWeight(.semibold)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .aspectRatio(1, contentMode: .fill)
-            .background(color.opacity(0.1))
-            .foregroundColor(color)
+    ///   - index: The item number
+    ///   - style: Optional style for coloring the item
+    /// - Returns: A standard grid item view
+    private func gridItem(_ index: Int, style: ItemStyle = .default) -> some View {
+        Text("Item \(index)")
+            .padding()
+            .frame(maxWidth: .infinity, minHeight: 60)
+            .background(style.backgroundColor)
+            .foregroundColor(style.foregroundColor)
             .cornerRadius(8)
     }
     
-    /// Creates a grid item with custom text
-    /// - Parameter text: The text to display
-    /// - Returns: A formatted grid item
-    private func gridItemWithText(_ text: String) -> some View {
-        Text(text)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.ctPrimary.opacity(0.1))
-            .foregroundColor(Color.ctPrimary)
-            .cornerRadius(8)
+    /// Creates an interactive grid item
+    /// - Parameter index: The item number
+    /// - Returns: A grid item with interactive styling
+    private func interactiveGridItem(_ index: Int) -> some View {
+        Text("Item \(index)")
+            .padding(itemPadding)
+            .frame(maxWidth: .infinity, minHeight: 60)
+            .background(itemBackgroundColor)
+            .foregroundColor(itemBackgroundColor.opacity(0.5).cgColor?.alpha ?? 0 < 0.5 ? .primary : .white)
+            .cornerRadius(itemCornerRadius)
     }
     
     /// Creates a formatted code example view
@@ -628,56 +636,154 @@ struct GridExamples: View {
     /// Generates code based on the current interactive settings
     /// - Returns: A code string reflecting current settings
     private func generateCode() -> String {
-        var code = ""
+        var code = "CTGrid(\n"
         
-        if gridType == .fixed {
-            code += "CTGrid(\n"
+        // Column configuration
+        switch columnWidthStrategy {
+        case .fixed:
             code += "    columns: \(columns),\n"
+        case .adaptive:
+            code += "    minItemWidth: \(Int(minItemWidth)),\n"
+        }
+        
+        // Spacing
+        if horizontalSpacing == verticalSpacing {
+            code += "    spacing: \(Int(horizontalSpacing)),\n"
         } else {
-            code += "CTGrid(\n"
-            code += "    minItemWidth: \(minItemWidth),\n"
-        }
-        
-        code += "    spacing: \(spacing != CTSpacing.m ? String(format: "%.1f", spacing) : "CTSpacing.m"),\n"
-        
-        if horizontalAlignment != .center {
-            switch horizontalAlignment {
-            case .leading:
-                code += "    horizontalAlignment: .leading,\n"
-            case .trailing:
-                code += "    horizontalAlignment: .trailing,\n"
-            default:
-                break
-            }
-        }
-        
-        if verticalAlignment != .center {
-            switch verticalAlignment {
-            case .top:
-                code += "    verticalAlignment: .top,\n"
-            case .bottom:
-                code += "    verticalAlignment: .bottom,\n"
-            default:
-                break
-            }
-        }
-        
-        if usePadding {
-            code += "    padding: EdgeInsets(\n"
-            code += "        top: CTSpacing.m,\n"
-            code += "        leading: CTSpacing.m,\n"
-            code += "        bottom: CTSpacing.m,\n"
-            code += "        trailing: CTSpacing.m\n"
-            code += "    ),\n"
+            code += "    horizontalSpacing: \(Int(horizontalSpacing)),\n"
+            code += "    verticalSpacing: \(Int(verticalSpacing)),\n"
         }
         
         code += ") {\n"
-        code += "    ForEach(1...\(Int(itemCount)), id: \\.self) { index in\n"
-        code += "        // Grid item content\n"
+        code += "    ForEach(1...9, id: \\.self) { index in\n"
+        code += "        Text(\"Item \\(index)\")\n"
+        code += "            .padding(\(Int(itemPadding)))\n"
+        code += "            .frame(maxWidth: .infinity, minHeight: 60)\n"
+        code += "            .background(Color.ctPrimary.opacity(0.1))\n"
+        code += "            .cornerRadius(\(Int(itemCornerRadius)))\n"
         code += "    }\n"
         code += "}"
         
         return code
+    }
+    
+    // MARK: - Supporting Types
+    
+    /// Style options for grid items
+    enum ItemStyle {
+        case `default`
+        case primary
+        case secondary
+        case success
+        case warning
+        case danger
+        case info
+        
+        var backgroundColor: Color {
+            switch self {
+            case .default:
+                return Color.ctPrimary.opacity(0.1)
+            case .primary:
+                return Color.ctPrimary
+            case .secondary:
+                return Color.gray
+            case .success:
+                return Color.green
+            case .warning:
+                return Color.yellow
+            case .danger:
+                return Color.red
+            case .info:
+                return Color.blue
+            }
+        }
+        
+        var foregroundColor: Color {
+            switch self {
+            case .default:
+                return .primary
+            case .warning:
+                return .black
+            case .primary, .secondary, .success, .danger, .info:
+                return .white
+            }
+        }
+    }
+    
+    /// Define column width strategy for the example
+    enum ColumnWidthStrategy: Hashable, Equatable {
+        case fixed(Int)
+        case adaptive(CGFloat)
+        
+        var description: String {
+            switch self {
+            case .fixed(let columns):
+                return "Fixed (\(columns) columns)"
+            case .adaptive(let width):
+                return "Adaptive (min width: \(Int(width)))"
+            }
+        }
+        
+        var minWidth: CGFloat {
+            switch self {
+            case .fixed:
+                return 0 // Not applicable for fixed columns
+            case .adaptive(let width):
+                return width
+            }
+        }
+        
+        // MARK: - Hashable & Equatable Conformance
+        
+        func hash(into hasher: inout Hasher) {
+            switch self {
+            case .fixed(let columns):
+                hasher.combine(0) // Use 0 as discriminator for fixed
+                hasher.combine(columns)
+            case .adaptive(let width):
+                hasher.combine(1) // Use 1 as discriminator for adaptive
+                hasher.combine(width)
+            }
+        }
+        
+        static func == (lhs: ColumnWidthStrategy, rhs: ColumnWidthStrategy) -> Bool {
+            switch (lhs, rhs) {
+            case (.fixed(let lhsColumns), .fixed(let rhsColumns)):
+                return lhsColumns == rhsColumns
+            case (.adaptive(let lhsWidth), .adaptive(let rhsWidth)):
+                return lhsWidth == rhsWidth
+            default:
+                return false
+            }
+        }
+    }
+    
+    /// A grid that changes columns based on the environment size class
+    struct ResponsiveColumnsGrid: View {
+        @Environment(\.horizontalSizeClass) var horizontalSizeClass
+        
+        var columns: Int {
+            horizontalSizeClass == .compact ? 2 : 4
+        }
+        
+        var body: some View {
+            VStack(alignment: .leading) {
+                Text("Current columns: \(columns) (based on size class)")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    .padding(.bottom, CTSpacing.xs)
+                
+                CTGrid(columns: columns, spacing: CTSpacing.m) {
+                    ForEach(1...8, id: \.self) { index in
+                        Text("Item \(index)")
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.ctPrimary.opacity(0.1))
+                            .cornerRadius(8)
+                    }
+                }
+            }
+        }
     }
 }
 

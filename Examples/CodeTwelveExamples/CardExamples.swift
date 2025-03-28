@@ -8,47 +8,45 @@
 import SwiftUI
 import CodetwelveUI
 
-/// A view showcasing various examples of the CTCard component.
+/// A view that showcases CTCard component examples
 ///
-/// This view demonstrates:
-/// - Basic usage of cards
-/// - Predefined card styles
+/// This view demonstrates different aspects of the CTCard component:
+/// - Basic card usage
+/// - Card styles (default, bordered, elevated)
 /// - Custom styling options
 /// - Header and footer sections
 /// - Interactive card builder
 struct CardExamples: View {
-    // MARK: - Properties
+    // MARK: - State Properties
     
-    // Card style properties
-    @State private var selectedStyle: CTCardStyle = .elevated
-    @State private var padding: CGFloat = 16
+    @State private var padding: CGFloat = CTSpacing.m
     @State private var cornerRadius: CGFloat = 8
-    @State private var borderWidth: CGFloat = 0
+    @State private var borderWidth: CGFloat = 1
     @State private var borderColor: Color = .gray
-    @State private var backgroundColor: Color = .white
+    @State private var backgroundColor: Color = Color.ctBackground
     @State private var shadowRadius: CGFloat = 4
     @State private var showHeader: Bool = false
     @State private var showFooter: Bool = false
-    
-    // Code toggle properties
-    @State private var showBasicCode: Bool = false
-    @State private var showStylesCode: Bool = false
-    @State private var showCustomCode: Bool = false
-    @State private var showHeaderFooterCode: Bool = false
+    @State private var selectedStyle: CTCardStyle = .default
     
     // MARK: - Body
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: CTSpacing.l) {
+                // Basic usage section
                 basicUsageSection
                 
+                // Card styles section
                 cardStylesSection
                 
+                // Custom styling section
                 customStylingSection
                 
+                // Header and footer section
                 headerFooterSection
                 
+                // Interactive section
                 interactiveSection
             }
             .padding()
@@ -57,7 +55,7 @@ struct CardExamples: View {
         .background(Color.ctBackground.edgesIgnoringSafeArea(.all))
     }
     
-    // MARK: - Sections
+    // MARK: - Private Views
     
     /// Basic card usage examples
     private var basicUsageSection: some View {
@@ -66,72 +64,42 @@ struct CardExamples: View {
                 .font(.title)
                 .fontWeight(.bold)
             
-            Text("A card component that works as a container for content with a consistent card-like appearance.")
+            Text("CTCard provides a container for content with consistent styling.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Regular card
+            // Basic card
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
                     Text("Basic Card")
                         .font(.headline)
                     
                     CTCard {
-                        cardContent()
+                        VStack(alignment: .leading, spacing: CTSpacing.m) {
+                            Text("Card Title")
+                                .font(.headline)
+                            
+                            Text("This is a basic card with default styling. Cards are used to group related content and actions.")
+                            
+                            Button("Card Action") {}
+                                .buttonStyle(.borderedProminent)
+                        }
+                        .padding()
                     }
                     
                     codeExample("""
                     CTCard {
-                        // Your content goes here
-                        Text("Hello, World!")
-                            .padding()
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                    }
-                    """, isShowing: $showBasicCode)
-                }
-            }
-            
-            // Interactive card
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Interactive Card")
-                        .font(.headline)
-                    
-                    CTCard(isInteractive: true, action: {
-                        // Action would go here
-                    }) {
-                        HStack {
-                            Text("Tap me!")
-                                .padding()
+                        VStack(alignment: .leading, spacing: CTSpacing.m) {
+                            Text("Card Title")
+                                .font(.headline)
                             
-                            Spacer()
+                            Text("Card content goes here...")
                             
-                            Image(systemName: "arrow.right")
-                                .padding()
+                            Button("Card Action") {}
+                                .buttonStyle(.borderedProminent)
                         }
-                        .background(Color.ctPrimary.opacity(0.1))
-                        .foregroundColor(.ctPrimary)
-                        .cornerRadius(8)
+                        .padding()
                     }
-                    
-                    codeExample("""
-                    CTCard(isInteractive: true, action: {
-                        // Your action here
-                        print("Card tapped!")
-                    }) {
-                        HStack {
-                            Text("Tap me!")
-                                .padding()
-                            
-                            Spacer()
-                            
-                            Image(systemName: "arrow.right")
-                                .padding()
-                        }
-                        .background(Color.ctPrimary.opacity(0.1))
-                        .foregroundColor(.ctPrimary)
-                        .cornerRadius(8)
-                    }
-                    """, isShowing: $showBasicCode)
+                    """)
                 }
             }
         }
@@ -147,36 +115,41 @@ struct CardExamples: View {
             Text("CTCard comes with predefined styles for common use cases.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Flat style card
+            // Default style card
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Flat Style")
+                    Text("Default Style")
                         .font(.headline)
                     
-                    CTCard(style: .flat) {
+                    CTCard(style: .default) {
                         cardContent()
                     }
                     
                     codeExample("""
-                    CTCard(style: .flat) {
+                    CTCard(style: .default) {
+                        // Card content
+                    }
+                    
+                    // Or simply:
+                    CTCard {
                         // Card content
                     }
                     """)
                 }
             }
             
-            // Outlined style card
+            // Bordered style card
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Outlined Style")
+                    Text("Bordered Style")
                         .font(.headline)
                     
-                    CTCard(style: .outlined) {
+                    CTCard(style: .bordered) {
                         cardContent()
                     }
                     
                     codeExample("""
-                    CTCard(style: .outlined) {
+                    CTCard(style: .bordered) {
                         // Card content
                     }
                     """)
@@ -200,24 +173,6 @@ struct CardExamples: View {
                     """)
                 }
             }
-            
-            // Filled style card
-            CTCard {
-                VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Filled Style")
-                        .font(.headline)
-                    
-                    CTCard(style: .filled) {
-                        cardContent()
-                    }
-                    
-                    codeExample("""
-                    CTCard(style: .filled) {
-                        // Card content
-                    }
-                    """)
-                }
-            }
         }
     }
     
@@ -231,53 +186,71 @@ struct CardExamples: View {
             Text("CTCard can be customized with various style properties.")
                 .padding(.bottom, CTSpacing.s)
             
-            // Custom style
+            // Background color
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
-                    Text("Custom Style")
+                    Text("Custom Background")
                         .font(.headline)
                     
-                    CTCard(style: CTCardStyle.custom(backgroundColor: Color.blue.opacity(0.1), borderColor: Color.blue), cornerRadius: cornerRadius, borderWidth: borderWidth) {
+                    CTCard(backgroundColor: Color.ctPrimary.opacity(0.1)) {
+                        cardContent()
+                    }
+                    
+                    codeExample("""
+                    CTCard(backgroundColor: Color.ctPrimary.opacity(0.1)) {
+                        // Card content
+                    }
+                    """)
+                }
+            }
+            
+            // Border customization
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Custom Border")
+                        .font(.headline)
+                    
+                    CTCard(
+                        borderWidth: 2,
+                        borderColor: .ctPrimary
+                    ) {
                         cardContent()
                     }
                     
                     codeExample("""
                     CTCard(
-                        style: CTCardStyle.custom(
-                            backgroundColor: Color.blue.opacity(0.1), 
-                            borderColor: Color.blue
-                        ),
-                        cornerRadius: \(Int(cornerRadius)),
-                        borderWidth: \(Int(borderWidth))
+                        borderWidth: 2,
+                        borderColor: .ctPrimary
                     ) {
                         // Card content
                     }
-                    """, isShowing: $showCustomCode)
+                    """)
                 }
             }
             
-            // Custom shadow
+            // Shadow customization
             CTCard {
                 VStack(alignment: .leading, spacing: CTSpacing.s) {
                     Text("Custom Shadow")
                         .font(.headline)
                     
-                    CTCard(style: .elevated, shadowRadius: 8) {
+                    CTCard(
+                        shadowRadius: 8,
+                        shadowColor: .ctPrimary.opacity(0.3),
+                        shadowOffset: CGSize(width: 2, height: 4)
+                    ) {
                         cardContent()
-                    } header: {
-                        EmptyView()
-                    } footer: {
-                        EmptyView()
                     }
                     
                     codeExample("""
                     CTCard(
-                        style: .elevated,
-                        shadowRadius: 8
+                        shadowRadius: 8,
+                        shadowColor: .ctPrimary.opacity(0.3),
+                        shadowOffset: CGSize(width: 2, height: 4)
                     ) {
                         // Card content
                     }
-                    """, isShowing: $showCustomCode)
+                    """)
                 }
             }
         }
@@ -333,7 +306,49 @@ struct CardExamples: View {
                         .padding()
                         .background(Color.gray.opacity(0.1))
                     }
-                    """, isShowing: $showHeaderFooterCode)
+                    """)
+                }
+            }
+            
+            // Card with footer
+            CTCard {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
+                    Text("Card with Footer")
+                        .font(.headline)
+                    
+                    CTCard {
+                        cardContent()
+                    } footer: {
+                        HStack {
+                            Spacer()
+                            
+                            Button("Cancel", action: {})
+                                .buttonStyle(.bordered)
+                            
+                            Button("Save", action: {})
+                                .buttonStyle(.borderedProminent)
+                        }
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                    }
+                    
+                    codeExample("""
+                    CTCard {
+                        // Card content
+                    } footer: {
+                        HStack {
+                            Spacer()
+                            
+                            Button("Cancel", action: {})
+                                .buttonStyle(.bordered)
+                            
+                            Button("Save", action: {})
+                                .buttonStyle(.borderedProminent)
+                        }
+                        .padding()
+                        .background(Color.gray.opacity(0.1))
+                    }
+                    """)
                 }
             }
             
@@ -377,7 +392,7 @@ struct CardExamples: View {
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .background(Color.gray.opacity(0.1))
                     }
-                    """, isShowing: $showHeaderFooterCode)
+                    """)
                 }
             }
         }
@@ -401,12 +416,10 @@ struct CardExamples: View {
                         Text("Card Style:")
                             .font(.headline)
                         
-                        Picker("Style", selection: $selectedStyle) {
+                        Picker("Card Style", selection: $selectedStyle) {
+                            Text("Default").tag(CTCardStyle.default)
+                            Text("Bordered").tag(CTCardStyle.bordered)
                             Text("Elevated").tag(CTCardStyle.elevated)
-                            Text("Flat").tag(CTCardStyle.flat)
-                            Text("Outlined").tag(CTCardStyle.outlined)
-                            Text("Filled").tag(CTCardStyle.filled)
-                            Text("Custom").tag(CTCardStyle.custom(backgroundColor: Color.blue.opacity(0.1), borderColor: Color.blue))
                         }
                         .pickerStyle(SegmentedPickerStyle())
                     }
@@ -420,8 +433,8 @@ struct CardExamples: View {
                             .font(.headline)
                     }
                     
-                    // Custom properties
-                    if case .custom = selectedStyle {
+                    // Custom properties (only if not using predefined style)
+                    if selectedStyle == .default {
                         VStack(alignment: .leading, spacing: CTSpacing.m) {
                             // Padding control
                             VStack(alignment: .leading, spacing: CTSpacing.xs) {
@@ -470,125 +483,98 @@ struct CardExamples: View {
             
             // Preview
             CTCard {
-                VStack {
+                VStack(alignment: .leading, spacing: CTSpacing.s) {
                     Text("Preview")
                         .font(.headline)
-                        .padding(.top)
                     
-                    let cardView: AnyView = {
-                        if case .custom = selectedStyle {
+                    Group {
+                        if selectedStyle != .default {
                             if showHeader && showFooter {
-                                return AnyView(
-                                    CTCard(
-                                        style: CTCardStyle.custom(backgroundColor: backgroundColor, borderColor: borderColor),
-                                        cornerRadius: cornerRadius,
-                                        borderWidth: borderWidth,
-                                        shadowRadius: shadowRadius
-                                    ) {
-                                        cardContent()
-                                    } header: {
-                                        cardHeader()
-                                    } footer: {
-                                        cardFooter()
-                                    }
-                                )
+                                CTCard(style: selectedStyle) {
+                                    cardContent()
+                                } header: {
+                                    cardHeader()
+                                } footer: {
+                                    cardFooter()
+                                }
                             } else if showHeader {
-                                return AnyView(
-                                    CTCard(
-                                        style: CTCardStyle.custom(backgroundColor: backgroundColor, borderColor: borderColor),
-                                        cornerRadius: cornerRadius,
-                                        borderWidth: borderWidth,
-                                        shadowRadius: shadowRadius
-                                    ) {
-                                        cardContent()
-                                    } header: {
-                                        cardHeader()
-                                    } footer: {
-                                        EmptyView()
-                                    }
-                                )
+                                CTCard(style: selectedStyle) {
+                                    cardContent()
+                                } header: {
+                                    cardHeader()
+                                }
                             } else if showFooter {
-                                return AnyView(
-                                    CTCard(
-                                        style: CTCardStyle.custom(backgroundColor: backgroundColor, borderColor: borderColor),
-                                        cornerRadius: cornerRadius,
-                                        borderWidth: borderWidth,
-                                        shadowRadius: shadowRadius
-                                    ) {
-                                        cardContent()
-                                    } header: {
-                                        EmptyView()
-                                    } footer: {
-                                        cardFooter()
-                                    }
-                                )
+                                CTCard(style: selectedStyle) {
+                                    cardContent()
+                                } footer: {
+                                    cardFooter()
+                                }
                             } else {
-                                return AnyView(
-                                    CTCard(
-                                        style: CTCardStyle.custom(backgroundColor: backgroundColor, borderColor: borderColor),
-                                        cornerRadius: cornerRadius,
-                                        borderWidth: borderWidth,
-                                        shadowRadius: shadowRadius
-                                    ) {
-                                        cardContent()
-                                    } header: {
-                                        EmptyView()
-                                    } footer: {
-                                        EmptyView()
-                                    }
-                                )
+                                CTCard(style: selectedStyle) {
+                                    cardContent()
+                                }
                             }
                         } else {
                             if showHeader && showFooter {
-                                return AnyView(
-                                    CTCard(style: selectedStyle) {
-                                        cardContent()
-                                    } header: {
-                                        cardHeader()
-                                    } footer: {
-                                        cardFooter()
-                                    }
-                                )
+                                CTCard(
+                                    padding: padding,
+                                    cornerRadius: cornerRadius,
+                                    borderWidth: borderWidth,
+                                    borderColor: borderColor,
+                                    backgroundColor: backgroundColor,
+                                    shadowRadius: shadowRadius
+                                ) {
+                                    cardContent()
+                                } header: {
+                                    cardHeader()
+                                } footer: {
+                                    cardFooter()
+                                }
                             } else if showHeader {
-                                return AnyView(
-                                    CTCard(style: selectedStyle) {
-                                        cardContent()
-                                    } header: {
-                                        cardHeader()
-                                    } footer: {
-                                        EmptyView()
-                                    }
-                                )
+                                CTCard(
+                                    padding: padding,
+                                    cornerRadius: cornerRadius,
+                                    borderWidth: borderWidth,
+                                    borderColor: borderColor,
+                                    backgroundColor: backgroundColor,
+                                    shadowRadius: shadowRadius
+                                ) {
+                                    cardContent()
+                                } header: {
+                                    cardHeader()
+                                }
                             } else if showFooter {
-                                return AnyView(
-                                    CTCard(style: selectedStyle) {
-                                        cardContent()
-                                    } header: {
-                                        EmptyView()
-                                    } footer: {
-                                        cardFooter()
-                                    }
-                                )
+                                CTCard(
+                                    padding: padding,
+                                    cornerRadius: cornerRadius,
+                                    borderWidth: borderWidth,
+                                    borderColor: borderColor,
+                                    backgroundColor: backgroundColor,
+                                    shadowRadius: shadowRadius
+                                ) {
+                                    cardContent()
+                                } footer: {
+                                    cardFooter()
+                                }
                             } else {
-                                return AnyView(
-                                    CTCard(style: selectedStyle) {
-                                        cardContent()
-                                    } header: {
-                                        EmptyView()
-                                    } footer: {
-                                        EmptyView()
-                                    }
-                                )
+                                CTCard(
+                                    padding: padding,
+                                    cornerRadius: cornerRadius,
+                                    borderWidth: borderWidth,
+                                    borderColor: borderColor,
+                                    backgroundColor: backgroundColor,
+                                    shadowRadius: shadowRadius
+                                ) {
+                                    cardContent()
+                                }
                             }
                         }
-                    }()
+                    }
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(8)
                     
-                    cardView
-                        .padding()
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(8)
-                    
-                    codeExample(generateCode(), isShowing: .constant(true))
+                    codeExample(generateCode())
                 }
             }
         }
@@ -664,7 +650,7 @@ struct CardExamples: View {
     /// Creates a formatted code example view
     /// - Parameter code: The code string to display
     /// - Returns: A formatted code view
-    private func codeExample(_ code: String, isShowing: Binding<Bool> = .constant(true)) -> some View {
+    private func codeExample(_ code: String) -> some View {
         VStack(alignment: .leading) {
             Text("Code Example:")
                 .font(.subheadline)
@@ -678,7 +664,6 @@ struct CardExamples: View {
             .background(Color.black.opacity(0.03))
             .cornerRadius(8)
         }
-        .opacity(isShowing.wrappedValue ? 1 : 0)
     }
     
     /// Generates code based on the current interactive settings
@@ -687,92 +672,71 @@ struct CardExamples: View {
         var code = ""
         
         // Start of the CTCard
-        if case .custom = selectedStyle {
+        if selectedStyle != .default {
+            code += "CTCard(style: .\(selectedStyle))"
+        } else {
             code += "CTCard(\n"
-            code += "    style: CTCardStyle.custom(\n"
-            code += "        backgroundColor: \(colorToString(backgroundColor)),\n"
-            code += "        borderColor: \(colorToString(borderColor))\n"
-            code += "    ),\n"
+            
+            // Padding
+            if padding != CTSpacing.m {
+                code += "    padding: \(Int(padding)),\n"
+            }
             
             // Corner radius
             if cornerRadius != 8 {
                 code += "    cornerRadius: \(Int(cornerRadius)),\n"
             }
             
-            // Border width
+            // Border
             if borderWidth > 0 {
                 code += "    borderWidth: \(Int(borderWidth)),\n"
+                if borderColor != .gray {
+                    code += "    borderColor: .ctPrimary,\n"
+                }
             }
             
-            // Shadow radius
-            if shadowRadius != 4 {
+            // Background
+            if backgroundColor != Color.ctBackground {
+                code += "    backgroundColor: Color.ctPrimary.opacity(0.1),\n"
+            }
+            
+            // Shadow
+            if shadowRadius > 0 {
                 code += "    shadowRadius: \(Int(shadowRadius)),\n"
             }
-        } else {
-            code += "CTCard(style: .\(styleToString(selectedStyle))"
+            
+            // End of parameters
+            code += ")"
         }
         
-        // Add header and footer sections
+        // Content section
         if showHeader && showFooter {
-            code += ") {\n"
-            code += "    // Content\n"
+            code += " {\n"
+            code += "    // Card content\n"
             code += "} header: {\n"
-            code += "    // Header\n"
+            code += "    // Header content\n"
             code += "} footer: {\n"
-            code += "    // Footer\n"
+            code += "    // Footer content\n"
             code += "}"
         } else if showHeader {
-            code += ") {\n"
-            code += "    // Content\n"
+            code += " {\n"
+            code += "    // Card content\n"
             code += "} header: {\n"
-            code += "    // Header\n"
-            code += "} footer: {\n"
-            code += "    EmptyView()\n"
+            code += "    // Header content\n"
             code += "}"
         } else if showFooter {
-            code += ") {\n"
-            code += "    // Content\n"
-            code += "} header: {\n"
-            code += "    EmptyView()\n"
+            code += " {\n"
+            code += "    // Card content\n"
             code += "} footer: {\n"
-            code += "    // Footer\n"
+            code += "    // Footer content\n"
             code += "}"
         } else {
-            code += ") {\n"
-            code += "    // Content\n"
-            code += "} header: {\n"
-            code += "    EmptyView()\n"
-            code += "} footer: {\n"
-            code += "    EmptyView()\n"
+            code += " {\n"
+            code += "    // Card content\n"
             code += "}"
         }
         
         return code
-    }
-    
-    /// Converts a style to its string representation
-    /// - Parameter style: The card style
-    /// - Returns: String representation of the style
-    private func styleToString(_ style: CTCardStyle) -> String {
-        switch style {
-        case .elevated:
-            return "elevated"
-        case .flat:
-            return "flat"
-        case .outlined:
-            return "outlined"
-        case .filled:
-            return "filled"
-        case .custom:
-            return "custom"
-        }
-    }
-    
-    /// Converts a color to its string representation
-    /// - Parameter color: The color to convert
-    /// - Returns: String representation of the color
-    private func colorToString(_ color: Color) -> String {
-        "Color(/* custom color */)"
     }
 }
 
