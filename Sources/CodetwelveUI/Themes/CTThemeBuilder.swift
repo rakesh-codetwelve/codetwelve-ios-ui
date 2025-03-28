@@ -1,0 +1,1 @@
+let theme = isDarkMode ? CTDarkTheme() as CTTheme : CTLightTheme() as CTTheme 

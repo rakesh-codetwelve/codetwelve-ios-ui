@@ -1,0 +1,1441 @@
+# CodeTwelve-iOS-UIKit Technical Specification
+
+## 1. System Overview
+
+### 1.1 Core Purpose and Value Proposition
+
+CodeTwelve-iOS-UIKit is a comprehensive native reusable iOS design library built with SwiftUI, inspired by the shadcn design system. The library provides a complete collection of customizable, accessible UI components that follow modern design principles while being easy to integrate into iOS applications via Swift Package Manager.
+
+**Key Value Propositions:**
+- **Consistency**: Unified design language across all UI components
+- **Accessibility**: Built-in support for iOS accessibility features
+- **Customization**: Flexible theming and styling options
+- **Developer Experience**: Well-documented with preview examples
+- **Performance**: Optimized for SwiftUI rendering and animations
+
+### 1.2 Key Workflows
+
+#### 1.2.1 Component Integration Workflow
+1. Developer adds CodeTwelve-iOS-UIKit package via Swift Package Manager
+2. Developer imports `CodetwelveUI` in their SwiftUI files
+3. Developer uses components with the `CT` prefix (e.g., `CTButton`, `CTCard`)
+4. Developer customizes components via provided parameters
+5. Components automatically adapt to the app's environment (dark/light mode)
+
+#### 1.2.2 Theming Workflow
+1. Developer initializes the `CTThemeManager` with a default theme
+2. Application uses theme values automatically via environment values
+3. Theme can be switched at runtime using `CTThemeManager.setTheme()`
+4. Custom themes can be created by extending `CTTheme`
+5. Components adapt to theme changes automatically
+
+#### 1.2.3 Accessibility Workflow
+1. Components have built-in accessibility features (labels, traits, etc.)
+2. Components adapt to Dynamic Type settings automatically
+3. High contrast mode is supported via theme adaptations
+4. Voice Over descriptions are provided for interactive elements
+5. Reduced motion settings are respected via `CTAnimationManager`
+
+### 1.3 System Architecture
+
+The system follows a modular component architecture with the following layers:
+
+#### 1.3.1 Core Layer
+- **Design Tokens**: Foundational design values (colors, typography, spacing)
+- **Theme System**: Theme definitions and environment integration
+- **Utility Layer**: Helper functions and extensions
+
+#### 1.3.2 Component Layer
+- **Base Components**: Fundamental building blocks (buttons, text, inputs)
+- **Composite Components**: Complex components built from base components
+- **Layout Components**: Structural components for organizing UI elements
+
+#### 1.3.3 Integration Layer
+- **Examples**: Sample implementations and usage patterns
+- **Documentation**: Component API documentation and usage guides
+- **Testing**: Comprehensive test suite for components and utilities
+
+## 2. Project Structure
+
+### 2.1 Package Structure
+
+```
+CodeTwelve-iOS-UIKit/
+├── Package.swift
+├── README.md
+├── Sources/
+│   └── CodetwelveUI/
+│       ├── Components/
+│       │   ├── Basic/
+│       │   │   ├── CTButton.swift
+│       │   │   ├── CTIcon.swift
+│       │   │   ├── CTText.swift
+│       │   │   └── CTDivider.swift
+│       │   ├── Layout/
+│       │   │   ├── CTStack.swift
+│       │   │   ├── CTContainer.swift
+│       │   │   ├── CTCard.swift
+│       │   │   ├── CTAccordion.swift
+│       │   │   ├── CTAspectRatio.swift
+│       │   │   ├── CTGrid.swift
+│       │   │   └── CTScrollArea.swift
+│       │   ├── Forms/
+│       │   │   ├── CTTextField.swift
+│       │   │   ├── CTSecureField.swift
+│       │   │   ├── CTTextArea.swift
+│       │   │   ├── CTCheckbox.swift
+│       │   │   ├── CTRadioGroup.swift
+│       │   │   ├── CTToggle.swift
+│       │   │   ├── CTSelect.swift
+│       │   │   ├── CTSlider.swift
+│       │   │   └── CTDatePicker.swift
+│       │   ├── Feedback/
+│       │   │   ├── CTToast.swift
+│       │   │   ├── CTAlert.swift
+│       │   │   ├── CTAlertDialog.swift
+│       │   │   ├── CTProgress.swift
+│       │   │   ├── CTSkeletonLoader.swift
+│       │   │   └── CTBadge.swift
+│       │   ├── Navigation/
+│       │   │   ├── CTTabBar.swift
+│       │   │   ├── CTNavigationMenu.swift
+│       │   │   ├── CTBottomSheet.swift
+│       │   │   ├── CTSidebar.swift
+│       │   │   ├── CTHamburgerMenu.swift
+│       │   │   ├── CTDrawer.swift
+│       │   │   ├── CTPagination.swift
+│       │   │   ├── CTPopover.swift
+│       │   │   └── CTCommandPalette.swift
+│       │   ├── Data/
+│       │   │   ├── CTList.swift
+│       │   │   ├── CTTable.swift
+│       │   │   ├── CTDataTable.swift
+│       │   │   ├── CTAvatar.swift
+│       │   │   ├── CTTag.swift
+│       │   │   ├── CTContextMenu.swift
+│       │   │   ├── CTDropdownMenu.swift
+│       │   │   └── CTHoverCard.swift
+│       │   └── Media/
+│       │       ├── CTImage.swift
+│       │       ├── CTVideo.swift
+│       │       └── CTCarousel.swift
+│       ├── Tokens/
+│       │   ├── CTColors.swift
+│       │   ├── CTTypography.swift
+│       │   ├── CTSpacing.swift
+│       │   └── CTAnimations.swift
+│       ├── Themes/
+│       │   ├── CTTheme.swift
+│       │   ├── CTThemeManager.swift
+│       │   ├── Themes/
+│       │   │   ├── CTDefaultTheme.swift
+│       │   │   ├── CTDarkTheme.swift
+│       │   │   └── CTLightTheme.swift
+│       │   └── CTThemeBuilder.swift
+│       ├── Extensions/
+│       │   ├── View+Shadow.swift
+│       │   ├── View+Conditional.swift
+│       │   ├── Color+Hex.swift
+│       │   └── View+Accessibility.swift
+│       ├── Utilities/
+│       │   ├── CTDeviceUtilities.swift
+│       │   ├── CTLayoutUtilities.swift
+│       │   └── CTAccessibilityUtilities.swift
+│       └── Hooks/
+│           ├── CTUseKeyboard.swift
+│           ├── CTUseResponder.swift
+│           └── CTUseHaptics.swift
+├── Examples/
+│   ├── CodeTwelveExamples/
+│   │   ├── ComponentCatalog.swift
+│   │   ├── Examples/
+│   │   │   ├── ButtonExamples.swift
+│   │   │   ├── CardExamples.swift
+│   │   │   ├── FormExamples.swift
+│   │   │   └── ... (other component examples)
+│   │   └── ThemeExplorer.swift
+│   └── CodeTwelveExamples.xcodeproj
+├── Tests/
+│   └── CodetwelveUITests/
+│       ├── ComponentTests/
+│       │   ├── CTButtonTests.swift
+│       │   ├── CTCardTests.swift
+│       │   └── ... (other component tests)
+│       ├── ThemeTests/
+│       │   ├── CTThemeManagerTests.swift
+│       │   └── CTThemeTests.swift
+│       ├── UtilityTests/
+│       │   ├── CTColorExtensionTests.swift
+│       │   └── CTAccessibilityUtilitiesTests.swift
+│       └── AccessibilityTests/
+│           ├── CTButtonAccessibilityTests.swift
+│           └── ... (other accessibility tests)
+└── Documentation/
+    ├── GettingStarted.md
+    ├── ThemedComponents.md
+    ├── AccessibilityGuide.md
+    ├── ComponentGuidelines.md
+    └── API/
+        ├── Components.md
+        ├── Theming.md
+        └── Utilities.md
+```
+
+### 2.2 Core File Structure
+
+Each component file follows a consistent structure:
+
+```swift
+// File: CTButton.swift
+
+/// A customizable button component with various styles.
+///
+/// `CTButton` provides a consistent button interface throughout your application
+/// with support for different visual styles, sizes, and states.
+///
+/// # Example
+///
+/// ```swift
+/// CTButton("Press Me", style: .primary) {
+///     print("Button pressed")
+/// }
+/// ```
+public struct CTButton: View {
+    // MARK: - Public Properties
+    
+    // MARK: - Private Properties
+    
+    // MARK: - Initializers
+    
+    // MARK: - Body
+    
+    // MARK: - Private Methods
+}
+
+// MARK: - Supporting Types
+
+// MARK: - Previews
+```
+
+## 3. Feature Specification
+
+### 3.1 Component System
+
+#### 3.1.1 Base Component Architecture
+
+All components in CodeTwelve-iOS-UIKit follow a consistent architecture pattern:
+
+1. **Public API**: Clear, concise parameters with sensible defaults
+2. **Style Options**: Enum-based style definitions (primary, secondary, etc.)
+3. **Size Options**: Enum-based size definitions (small, medium, large)
+4. **State Handling**: Support for enabled, disabled, loading states
+5. **Accessibility**: Built-in accessibility support
+6. **Theme Integration**: Automatic theme adaptation
+
+**Implementation Steps:**
+1. Create base protocols for common component behaviors
+2. Implement component-specific styles and sizes
+3. Create the public-facing component API
+4. Implement private helper views and methods
+5. Add preview examples
+
+**Example Implementation (Button Component):**
+
+```swift
+// CTButton.swift
+import SwiftUI
+
+/// A customizable button component with various styles.
+public struct CTButton: View {
+    // MARK: - Public Properties
+    private let label: String
+    private let style: CTButtonStyle
+    private let size: CTButtonSize
+    private let isLoading: Bool
+    private let isDisabled: Bool
+    private let action: () -> Void
+    
+    // MARK: - Initializers
+    
+    /// Initialize a new button with text label
+    /// - Parameters:
+    ///   - label: The text displayed on the button
+    ///   - style: The visual style of the button
+    ///   - size: The size of the button
+    ///   - isLoading: Whether the button is in a loading state
+    ///   - isDisabled: Whether the button is disabled
+    ///   - action: The action to perform when the button is pressed
+    public init(
+        _ label: String,
+        style: CTButtonStyle = .primary,
+        size: CTButtonSize = .medium,
+        isLoading: Bool = false,
+        isDisabled: Bool = false,
+        action: @escaping () -> Void
+    ) {
+        self.label = label
+        self.style = style
+        self.size = size
+        self.isLoading = isLoading
+        self.isDisabled = isDisabled
+        self.action = action
+    }
+    
+    // MARK: - Body
+    
+    public var body: some View {
+        Button(action: performAction) {
+            HStack(spacing: CTSpacing.xs) {
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: style.foregroundColor))
+                        .scaleEffect(0.7)
+                }
+                
+                Text(label)
+                    .font(size.font)
+            }
+            .padding(size.padding)
+            .frame(height: size.height)
+            .frame(minWidth: size.minWidth)
+            .background(style.backgroundColor)
+            .foregroundColor(style.foregroundColor)
+            .cornerRadius(CTSpacing.xs)
+            .overlay(
+                RoundedRectangle(cornerRadius: CTSpacing.xs)
+                    .stroke(style.borderColor, lineWidth: 1)
+            )
+            .opacity(isDisabled ? 0.6 : 1.0)
+        }
+        .disabled(isDisabled || isLoading)
+        .accessibilityLabel(label)
+        .accessibilityHint("Tap to \(label.lowercased())")
+        .accessibilityAddTraits(.isButton)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func performAction() {
+        // Add haptic feedback
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        
+        action()
+    }
+}
+
+// MARK: - Supporting Types
+
+public enum CTButtonStyle {
+    case primary
+    case secondary
+    case destructive
+    case outline
+    case ghost
+    case link
+    
+    var backgroundColor: Color {
+        switch self {
+        case .primary:
+            return Color.ctPrimary
+        case .secondary:
+            return Color.ctSecondary
+        case .destructive:
+            return Color.ctDestructive
+        case .outline, .ghost, .link:
+            return Color.clear
+        }
+    }
+    
+    var foregroundColor: Color {
+        switch self {
+        case .primary, .secondary, .destructive:
+            return Color.ctTextOnAccent
+        case .outline:
+            return Color.ctPrimary
+        case .ghost, .link:
+            return Color.ctText
+        }
+    }
+    
+    var borderColor: Color {
+        switch self {
+        case .outline:
+            return Color.ctPrimary
+        default:
+            return Color.clear
+        }
+    }
+}
+
+public enum CTButtonSize {
+    case small
+    case medium
+    case large
+    
+    var padding: EdgeInsets {
+        switch self {
+        case .small:
+            return EdgeInsets(top: CTSpacing.xs, leading: CTSpacing.s, bottom: CTSpacing.xs, trailing: CTSpacing.s)
+        case .medium:
+            return EdgeInsets(top: CTSpacing.s, leading: CTSpacing.m, bottom: CTSpacing.s, trailing: CTSpacing.m)
+        case .large:
+            return EdgeInsets(top: CTSpacing.m, leading: CTSpacing.l, bottom: CTSpacing.m, trailing: CTSpacing.l)
+        }
+    }
+    
+    var font: Font {
+        switch self {
+        case .small:
+            return CTTypography.caption()
+        case .medium:
+            return CTTypography.body()
+        case .large:
+            return CTTypography.subheading()
+        }
+    }
+    
+    var height: CGFloat {
+        switch self {
+        case .small:
+            return 32
+        case .medium:
+            return 44
+        case .large:
+            return 56
+        }
+    }
+    
+    var minWidth: CGFloat {
+        switch self {
+        case .small:
+            return 80
+        case .medium:
+            return 120
+        case .large:
+            return 160
+        }
+    }
+}
+
+// MARK: - Previews
+
+struct CTButton_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: CTSpacing.m) {
+            Group {
+                CTButton("Primary Button", style: .primary) {}
+                CTButton("Secondary Button", style: .secondary) {}
+                CTButton("Destructive Button", style: .destructive) {}
+                CTButton("Outline Button", style: .outline) {}
+                CTButton("Ghost Button", style: .ghost) {}
+                CTButton("Link Button", style: .link) {}
+            }
+            
+            Group {
+                CTButton("Small Button", size: .small) {}
+                CTButton("Medium Button", size: .medium) {}
+                CTButton("Large Button", size: .large) {}
+            }
+            
+            Group {
+                CTButton("Loading Button", isLoading: true) {}
+                CTButton("Disabled Button", isDisabled: true) {}
+            }
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
+    }
+}
+```
+
+#### 3.1.2 Component Categories
+
+Each component falls into one of the following categories:
+
+1. **Basic Components**: Fundamental building blocks
+2. **Layout Components**: Structural components
+3. **Form Components**: Input and control components
+4. **Feedback Components**: User feedback and notification components
+5. **Navigation Components**: Navigation and routing components
+6. **Data Components**: Data display and visualization components
+7. **Media Components**: Media display and playback components
+
+Each category has specific implementation requirements and accessibility considerations.
+
+### 3.2 Theming System
+
+#### 3.2.1 Theme Architecture
+
+The theming system is built on a protocol-based architecture with environment values for propagation.
+
+**Implementation Steps:**
+1. Define the `CTTheme` protocol with required properties
+2. Create concrete theme implementations (default, dark, light)
+3. Implement `CTThemeManager` for theme switching
+4. Create environment key and values for theme propagation
+5. Add theme builder for custom theme creation
+
+**Example Implementation:**
+
+```swift
+// CTTheme.swift
+import SwiftUI
+
+/// Protocol defining the required properties for a CodeTwelve theme
+public protocol CTTheme {
+    // Colors
+    var primary: Color { get }
+    var secondary: Color { get }
+    var background: Color { get }
+    var surface: Color { get }
+    var text: Color { get }
+    var textSecondary: Color { get }
+    var textOnAccent: Color { get }
+    var destructive: Color { get }
+    var success: Color { get }
+    var warning: Color { get }
+    var info: Color { get }
+    
+    // Borders
+    var border: Color { get }
+    var borderWidth: CGFloat { get }
+    var borderRadius: CGFloat { get }
+    
+    // Shadows
+    var shadowColor: Color { get }
+    var shadowOpacity: Double { get }
+    var shadowRadius: CGFloat { get }
+    var shadowOffset: CGSize { get }
+    
+    // Name
+    var name: String { get }
+}
+
+// CTThemeManager.swift
+import SwiftUI
+import Combine
+
+/// Manager for handling theme switching and storage
+public class CTThemeManager: ObservableObject {
+    public static let shared = CTThemeManager()
+    
+    @Published public private(set) var currentTheme: CTTheme
+    
+    private init() {
+        // Initialize with default theme
+        self.currentTheme = CTDefaultTheme()
+    }
+    
+    /// Set the active theme
+    /// - Parameter theme: The theme to set as active
+    public func setTheme(_ theme: CTTheme) {
+        self.currentTheme = theme
+    }
+    
+    /// Set theme by name
+    /// - Parameter name: The name of the theme to set
+    public func setTheme(named name: String) {
+        switch name {
+        case "default":
+            setTheme(CTDefaultTheme())
+        case "dark":
+            setTheme(CTDarkTheme())
+        case "light":
+            setTheme(CTLightTheme())
+        default:
+            // If theme not found, keep current
+            break
+        }
+    }
+}
+
+// Environment extension
+private struct CTThemeKey: EnvironmentKey {
+    static let defaultValue: CTTheme = CTDefaultTheme()
+}
+
+public extension EnvironmentValues {
+    var ctTheme: CTTheme {
+        get { self[CTThemeKey.self] }
+        set { self[CTThemeKey.self] = newValue }
+    }
+}
+
+// View extension for theme access
+public extension View {
+    /// Apply the CodeTwelve theme to this view and its subviews
+    /// - Parameter theme: The theme to apply
+    /// - Returns: The modified view with the theme applied
+    func ctTheme(_ theme: CTTheme) -> some View {
+        self.environment(\.ctTheme, theme)
+    }
+}
+```
+
+#### 3.2.2 Theme Implementation
+
+Each theme implements the `CTTheme` protocol with concrete values.
+
+**Example Implementation (Default Theme):**
+
+```swift
+// CTDefaultTheme.swift
+import SwiftUI
+
+/// The default theme for CodeTwelve UI
+public struct CTDefaultTheme: CTTheme {
+    public var name: String = "default"
+    
+    // Colors
+    public var primary: Color = Color(hex: "#007AFF")
+    public var secondary: Color = Color(hex: "#5856D6")
+    public var background: Color = Color(hex: "#F2F2F7")
+    public var surface: Color = Color.white
+    public var text: Color = Color(hex: "#1C1C1E")
+    public var textSecondary: Color = Color(hex: "#8E8E93")
+    public var textOnAccent: Color = Color.white
+    public var destructive: Color = Color(hex: "#FF3B30")
+    public var success: Color = Color(hex: "#34C759")
+    public var warning: Color = Color(hex: "#FF9500")
+    public var info: Color = Color(hex: "#5AC8FA")
+    
+    // Borders
+    public var border: Color = Color(hex: "#C6C6C8")
+    public var borderWidth: CGFloat = 1
+    public var borderRadius: CGFloat = 8
+    
+    // Shadows
+    public var shadowColor: Color = Color.black
+    public var shadowOpacity: Double = 0.1
+    public var shadowRadius: CGFloat = 4
+    public var shadowOffset: CGSize = CGSize(width: 0, height: 2)
+    
+    public init() {}
+}
+```
+
+### 3.3 Animation System
+
+#### 3.3.1 Animation Architecture
+
+The animation system provides consistent animations with semantic naming and accessibility considerations.
+
+**Implementation Steps:**
+1. Define animation durations and curves
+2. Create semantic animation presets
+3. Implement animation manager for global control
+4. Add reduced motion support
+5. Create animation extension for views
+
+**Example Implementation:**
+
+```swift
+// CTAnimations.swift
+import SwiftUI
+
+/// Animation presets for CodeTwelve UI
+public enum CTAnimation {
+    // Duration
+    public static let durationFast: Double = 0.15
+    public static let durationMedium: Double = 0.3
+    public static let durationSlow: Double = 0.5
+    
+    // Curves
+    public static let easeInOut = Animation.easeInOut(duration: durationMedium)
+    public static let easeOut = Animation.easeOut(duration: durationMedium)
+    public static let spring = Animation.spring(response: 0.3, dampingFraction: 0.6)
+    
+    // Semantic animations
+    public static let buttonPress = Animation.easeOut(duration: durationFast)
+    public static let fadeIn = Animation.easeOut(duration: durationMedium)
+    public static let slideIn = Animation.spring(response: 0.5, dampingFraction: 0.7)
+    public static let expand = Animation.spring(response: 0.4, dampingFraction: 0.6)
+}
+
+// CTAnimationManager.swift
+import SwiftUI
+import Combine
+
+/// Manager for controlling animations globally
+public class CTAnimationManager: ObservableObject {
+    public static let shared = CTAnimationManager()
+    
+    @Published public private(set) var isAnimationEnabled: Bool = true
+    
+    private init() {
+        // Check for reduced motion setting
+        if UIAccessibility.isReduceMotionEnabled {
+            isAnimationEnabled = false
+        }
+        
+        // Listen for changes to reduce motion setting
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(reduceMotionChanged),
+            name: UIAccessibility.reduceMotionStatusDidChangeNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func reduceMotionChanged() {
+        isAnimationEnabled = !UIAccessibility.isReduceMotionEnabled
+    }
+    
+    /// Enable or disable animations globally
+    /// - Parameter enabled: Whether animations should be enabled
+    public func setAnimationsEnabled(_ enabled: Bool) {
+        isAnimationEnabled = enabled
+    }
+}
+
+// View extension for animations
+public extension View {
+    /// Apply a CodeTwelve animation respecting accessibility settings
+    /// - Parameter animation: The animation to apply
+    /// - Returns: The view with the animation applied
+    func ctAnimation(_ animation: Animation) -> some View {
+        let isEnabled = CTAnimationManager.shared.isAnimationEnabled
+        return self.animation(isEnabled ? animation : .none)
+    }
+}
+```
+
+### 3.4 Accessibility System
+
+#### 3.4.1 Accessibility Architecture
+
+The accessibility system ensures all components are accessible and follow best practices.
+
+**Implementation Steps:**
+1. Create accessibility utilities for common tasks
+2. Implement Dynamic Type support in typography
+3. Add high contrast mode detection and adaptation
+4. Ensure VoiceOver optimization for all components
+5. Add reduced motion support via animation manager
+
+**Example Implementation:**
+
+```swift
+// View+Accessibility.swift
+import SwiftUI
+
+public extension View {
+    /// Apply standard accessibility modifiers for a button
+    /// - Parameters:
+    ///   - label: The accessibility label
+    ///   - hint: The accessibility hint (optional)
+    /// - Returns: The view with accessibility modifiers applied
+    func ctButtonAccessibility(label: String, hint: String? = nil) -> some View {
+        self
+            .accessibilityLabel(label)
+            .accessibilityHint(hint ?? "Tap to \(label.lowercased())")
+            .accessibilityAddTraits(.isButton)
+    }
+    
+    /// Apply standard accessibility modifiers for a toggle
+    /// - Parameters:
+    ///   - label: The accessibility label
+    ///   - isOn: Whether the toggle is on
+    /// - Returns: The view with accessibility modifiers applied
+    func ctToggleAccessibility(label: String, isOn: Bool) -> some View {
+        self
+            .accessibilityLabel(label)
+            .accessibilityHint(isOn ? "Tap to turn off" : "Tap to turn on")
+            .accessibilityValue(isOn ? "On" : "Off")
+            .accessibilityAddTraits(.isButton)
+    }
+    
+    /// Apply standard accessibility modifiers for an input field
+    /// - Parameters:
+    ///   - label: The accessibility label
+    ///   - value: The current value
+    ///   - hint: The accessibility hint (optional)
+    /// - Returns: The view with accessibility modifiers applied
+    func ctInputAccessibility(label: String, value: String, hint: String? = nil) -> some View {
+        self
+            .accessibilityLabel(label)
+            .accessibilityValue(value.isEmpty ? "Empty" : value)
+            .accessibilityHint(hint ?? "Double tap to edit")
+    }
+}
+
+// CTAccessibilityUtilities.swift
+import SwiftUI
+import Combine
+
+/// Utilities for accessibility in CodeTwelve UI
+public enum CTAccessibilityUtilities {
+    /// Check if high contrast mode is enabled
+    public static var isHighContrastEnabled: Bool {
+        UIAccessibility.isDarkerSystemColorsEnabled
+    }
+    
+    /// Check if bold text is enabled
+    public static var isBoldTextEnabled: Bool {
+        UIAccessibility.isBoldTextEnabled
+    }
+    
+    /// Check if reduced motion is enabled
+    public static var isReducedMotionEnabled: Bool {
+        UIAccessibility.isReduceMotionEnabled
+    }
+    
+    /// Get appropriate text for VoiceOver based on loading state
+    /// - Parameters:
+    ///   - isLoading: Whether the component is in loading state
+    ///   - baseLabel: The base accessibility label
+    /// - Returns: The appropriate accessibility label
+    public static func loadingStateLabel(isLoading: Bool, baseLabel: String) -> String {
+        isLoading ? "\(baseLabel), Loading" : baseLabel
+    }
+    
+    /// Get the appropriate color for high contrast if needed
+    /// - Parameters:
+    ///   - normalColor: The normal color
+    ///   - highContrastColor: The high contrast color
+    /// - Returns: The appropriate color based on system settings
+    public static func adaptiveColor(normalColor: Color, highContrastColor: Color) -> Color {
+        isHighContrastEnabled ? highContrastColor : normalColor
+    }
+}
+```
+
+### 3.5 Key Components Implementation
+
+For each component category, here are detailed specifications for key components:
+
+#### 3.5.1 Button Component
+
+The button component is a fundamental interactive element with multiple styles, sizes, and states.
+
+**User Story:** As a developer, I want to use a consistent button component with various visual styles so that I can maintain UI consistency while providing appropriate visual hierarchy.
+
+**Implementation Steps:**
+1. Create the `CTButton` struct with parameters for label, style, size, loading state, and disabled state
+2. Implement the button body with conditional rendering for loading state
+3. Add haptic feedback on press
+4. Apply appropriate accessibility modifiers
+5. Add previews for all button variants
+
+**Error Handling:**
+- Provide fallback styling if theme colors are unavailable
+- Handle empty label text with appropriate sizing
+
+**Example Usage:**
+```swift
+// Basic usage
+CTButton("Sign In") {
+    // Handle sign in
+}
+
+// Styled button
+CTButton("Delete", style: .destructive) {
+    // Handle delete
+}
+
+// Loading state
+CTButton("Submit", isLoading: isSubmitting) {
+    // Handle submit
+}
+```
+
+#### 3.5.2 Card Component
+
+The card component is a container for grouped content with optional header and footer.
+
+**User Story:** As a developer, I want to use a card component to group related content with consistent styling and optional header/footer sections.
+
+**Implementation Steps:**
+1. Create the `CTCard` struct with parameters for padding, background, border, and elevation
+2. Implement header and footer view builders
+3. Add shadow and border styling based on elevation
+4. Ensure proper spacing between header, content, and footer
+5. Add previews with various configurations
+
+**Error Handling:**
+- Provide default styling if theme values are unavailable
+- Handle edge cases for small content or missing sections
+
+**Example Usage:**
+```swift
+CTCard {
+    // Card content
+    Text("This is card content")
+} header: {
+    Text("Card Header")
+} footer: {
+    Text("Card Footer")
+}
+```
+
+#### 3.5.3 TextField Component
+
+The text field component is an input element for single-line text entry with various states and validations.
+
+**User Story:** As a developer, I want to use a consistent text field component with built-in validation and state handling.
+
+**Implementation Steps:**
+1. Create the `CTTextField` struct with parameters for label, placeholder, text binding, validation, and state
+2. Implement validation logic and error display
+3. Add support for leading and trailing icons
+4. Implement focus and blur handling
+5. Apply appropriate accessibility modifiers
+6. Add previews for various states (default, focused, error, disabled)
+
+**Error Handling:**
+- Display validation errors with appropriate styling
+- Handle focus/blur state transitions
+
+**Example Usage:**
+```swift
+@State private var name = ""
+@State private var nameError: String? = nil
+
+CTTextField(
+    "Name",
+    placeholder: "Enter your name",
+    text: $name,
+    error: $nameError,
+    validation: { value in
+        if value.isEmpty {
+            return "Name is required"
+        }
+        return nil
+    }
+)
+```
+
+#### 3.5.4 Toast Component
+
+The toast component displays temporary notifications with various severities and auto-dismissal.
+
+**User Story:** As a developer, I want to show temporary toast notifications to provide feedback to users with appropriate styling based on severity.
+
+**Implementation Steps:**
+1. Create the `CTToast` struct with parameters for message, type, duration, and dismissal handler
+2. Implement the toast manager for queuing and displaying toasts
+3. Add animations for appearance and dismissal
+4. Implement auto-dismissal with timer
+5. Apply appropriate accessibility announcements
+6. Add previews for different toast types
+
+**Error Handling:**
+- Handle multiple toasts with queueing system
+- Ensure proper cleanup of timers
+
+**Example Usage:**
+```swift
+// Show a success toast
+CTToastManager.shared.show(
+    message: "Successfully saved!",
+    type: .success
+)
+
+// Show an error toast with custom duration
+CTToastManager.shared.show(
+    message: "Failed to save. Please try again.",
+    type: .error,
+    duration: 5.0
+)
+```
+
+### 3.6 Package Configuration
+
+The Swift Package Manager configuration defines the module structure and dependencies.
+
+**Implementation Steps:**
+1. Create the Package.swift file with appropriate targets
+2. Define the minimum iOS version requirement (iOS 16+)
+3. Configure resources processing for assets
+4. Set up test targets
+5. Configure documentation generation
+
+**Example Implementation:**
+
+```swift
+// Package.swift
+// swift-tools-version:5.5
+import PackageDescription
+
+let package = Package(
+    name: "CodetwelveUI",
+    platforms: [
+        .iOS(.v16)
+    ],
+    products: [
+        .library(
+            name: "CodetwelveUI",
+            targets: ["CodetwelveUI"]),
+    ],
+    dependencies: [
+        // No external dependencies
+    ],
+    targets: [
+        .target(
+            name: "CodetwelveUI",
+            dependencies: [],
+            resources: [.process("Resources")]),
+        .testTarget(
+            name: "CodetwelveUITests",
+            dependencies: ["CodetwelveUI"]),
+    ]
+)
+```
+
+## 4. Testing Strategy
+
+### 4.1 Unit Testing
+
+Unit tests verify the functionality of individual components and utilities.
+
+#### 4.1.1 Component Testing
+
+**Testing Steps:**
+1. Test component initialization with various parameters
+2. Test style and size variations
+3. Test state changes (enabled, disabled, loading)
+4. Test callback execution
+
+**Example Implementation (Button Tests):**
+
+```swift
+// CTButtonTests.swift
+import XCTest
+import SwiftUI
+@testable import CodetwelveUI
+
+final class CTButtonTests: XCTestCase {
+    func testButtonAction() {
+        // Given
+        var actionCalled = false
+        let button = CTButton("Test") {
+            actionCalled = true
+        }
+        
+        // When
+        button.simulateTap()
+        
+        // Then
+        XCTAssertTrue(actionCalled, "Button action should be called when tapped")
+    }
+    
+    func testButtonDisabledState() {
+        // Given
+        var actionCalled = false
+        let button = CTButton("Test", isDisabled: true) {
+            actionCalled = true
+        }
+        
+        // When
+        button.simulateTap()
+        
+        // Then
+        XCTAssertFalse(actionCalled, "Button action should not be called when disabled")
+    }
+    
+    func testButtonLoadingState() {
+        // Given
+        var actionCalled = false
+        let button = CTButton("Test", isLoading: true) {
+            actionCalled = true
+        }
+        
+        // When
+        button.simulateTap()
+        
+        // Then
+        XCTAssertFalse(actionCalled, "Button action should not be called when loading")
+    }
+}
+
+// Extension for testing
+extension CTButton {
+    func simulateTap() {
+        if !isDisabled && !isLoading {
+            action()
+        }
+    }
+}
+```
+
+#### 4.1.2 Theme Testing
+
+**Testing Steps:**
+1. Test theme initialization
+2. Test environment value propagation
+3. Test theme switching
+4. Test color adaptations for dark/light mode
+
+**Example Implementation (Theme Tests):**
+
+```swift
+// CTThemeManagerTests.swift
+import XCTest
+@testable import CodetwelveUI
+
+final class CTThemeManagerTests: XCTestCase {
+    func testThemeInitialization() {
+        // When
+        let themeManager = CTThemeManager.shared
+        
+        // Then
+        XCTAssertNotNil(themeManager.currentTheme)
+        XCTAssertEqual(themeManager.currentTheme.name, "default")
+    }
+    
+    func testThemeSwitching() {
+        // Given
+        let themeManager = CTThemeManager.shared
+        let darkTheme = CTDarkTheme()
+        
+        // When
+        themeManager.setTheme(darkTheme)
+        
+        // Then
+        XCTAssertEqual(themeManager.currentTheme.name, "dark")
+    }
+    
+    func testThemeSwitchingByName() {
+        // Given
+        let themeManager = CTThemeManager.shared
+        
+        // When
+        themeManager.setTheme(named: "light")
+        
+        // Then
+        XCTAssertEqual(themeManager.currentTheme.name, "light")
+    }
+}
+```
+
+### 4.2 Accessibility Testing
+
+Accessibility tests verify that components meet accessibility requirements.
+
+**Testing Steps:**
+1. Test Dynamic Type scaling
+2. Test VoiceOver support
+3. Test high contrast mode adaptations
+4. Test reduced motion compliance
+
+**Example Implementation (Button Accessibility Tests):**
+
+```swift
+// CTButtonAccessibilityTests.swift
+import XCTest
+@testable import CodetwelveUI
+
+final class CTButtonAccessibilityTests: XCTestCase {
+    func testButtonAccessibilityLabel() {
+        // Given
+        let button = CTButton("Test Button") {}
+        
+        // Then
+        XCTAssertEqual(button.accessibilityLabel, "Test Button")
+    }
+    
+    func testButtonAccessibilityTraits() {
+        // Given
+        let button = CTButton("Test Button") {}
+        
+        // Then
+        XCTAssertTrue(button.accessibilityTraits.contains(.isButton))
+    }
+    
+    func testButtonLoadingStateAccessibility() {
+        // Given
+        let button = CTButton("Test Button", isLoading: true) {}
+        
+        // Then
+        // Verify loading state is communicated via accessibility
+        XCTAssertTrue(button.accessibilityLabel.contains("Loading"))
+    }
+    
+    func testButtonDisabledStateAccessibility() {
+        // Given
+        let button = CTButton("Test Button", isDisabled: true) {}
+        
+        // Then
+        // Verify disabled state is reflected in accessibility
+        XCTAssertTrue(button.isAccessibilityElement)
+        XCTAssertTrue(button.accessibilityTraits.contains(.notEnabled))
+    }
+}
+```
+
+### 4.3 Integration Testing
+
+Integration tests verify that components work together as expected.
+
+**Testing Steps:**
+1. Test component combinations
+2. Test theme propagation through component hierarchies
+3. Test state propagation between components
+4. Test animation coordination
+
+**Example Implementation (Form Integration Tests):**
+
+```swift
+// CTFormIntegrationTests.swift
+import XCTest
+@testable import CodetwelveUI
+
+final class CTFormIntegrationTests: XCTestCase {
+    func testFormValidation() {
+        // Given
+        var nameText = ""
+        var emailText = ""
+        var nameError: String? = nil
+        var emailError: String? = nil
+        var submitCalled = false
+        
+        let nameField = CTTextField(
+            "Name",
+            text: Binding(
+                get: { nameText },
+                set: { nameText = $0 }
+            ),
+            error: Binding(
+                get: { nameError },
+                set: { nameError = $0 }
+            ),
+            validation: { value in
+                return value.isEmpty ? "Name is required" : nil
+            }
+        )
+        
+        let emailField = CTTextField(
+            "Email",
+            text: Binding(
+                get: { emailText },
+                set: { emailText = $0 }
+            ),
+            error: Binding(
+                get: { emailError },
+                set: { emailError = $0 }
+            ),
+            validation: { value in
+                return value.isEmpty ? "Email is required" : nil
+            }
+        )
+        
+        let submitButton = CTButton("Submit") {
+            submitCalled = true
+        }
+        
+        // When - trying to submit with empty fields
+        nameField.validate()
+        emailField.validate()
+        
+        // Then
+        XCTAssertEqual(nameError, "Name is required")
+        XCTAssertEqual(emailError, "Email is required")
+        
+        // When - filling fields and revalidating
+        nameText = "John Doe"
+        emailText = "john@example.com"
+        nameField.validate()
+        emailField.validate()
+        
+        // Then
+        XCTAssertNil(nameError)
+        XCTAssertNil(emailError)
+        
+        // Now we can submit
+        submitButton.simulateTap()
+        XCTAssertTrue(submitCalled)
+    }
+}
+
+// Extension for testing
+extension CTTextField {
+    func validate() {
+        if let validationFunc = self.validation {
+            self.error = validationFunc(self.text)
+        }
+    }
+}
+```
+
+## 5. Documentation Plan
+
+### 5.1 API Documentation
+
+API documentation provides comprehensive information on component usage and customization.
+
+**Implementation Steps:**
+1. Add XML documentation comments to all public APIs
+2. Include usage examples for each component
+3. Document parameters, return values, and preconditions
+4. Generate documentation using DocC
+
+**Example API Documentation (Button):**
+
+```swift
+/// A customizable button component with various styles and states.
+///
+/// `CTButton` provides a consistent button interface throughout your application
+/// with support for different visual styles, sizes, and states including loading and disabled.
+///
+/// # Example
+/// ```swift
+/// CTButton("Sign In", style: .primary) {
+///     print("Button tapped")
+/// }
+///
+/// // Loading state
+/// CTButton("Processing", isLoading: true) {
+///     print("This won't be called while loading")
+/// }
+///
+/// // Disabled state
+/// CTButton("Submit", isDisabled: !formIsValid) {
+///     submitForm()
+/// }
+/// ```
+///
+/// - Parameters:
+///   - label: The text displayed on the button
+///   - style: The visual style of the button (default: .primary)
+///   - size: The size of the button (default: .medium)
+///   - isLoading: Whether the button is in a loading state (default: false)
+///   - isDisabled: Whether the button is disabled (default: false)
+///   - action: The action to perform when the button is pressed
+public struct CTButton: View {
+    // Implementation details
+}
+```
+
+### 5.2 Usage Guides
+
+Usage guides provide step-by-step instructions for common use cases.
+
+**Implementation Steps:**
+1. Create getting started guide
+2. Add component usage examples
+3. Create theming guide
+4. Add accessibility implementation guide
+5. Include best practices for performance
+
+**Example Guide (Getting Started):**
+
+```markdown
+# Getting Started with CodeTwelve UI
+
+CodeTwelve UI is a comprehensive SwiftUI component library that provides customizable, accessible UI components for iOS applications.
+
+## Installation
+
+### Swift Package Manager
+
+Add CodeTwelve UI to your project via Swift Package Manager:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/codetwelve/codetwelve-ios-ui.git", from: "1.0.0")
+]
+```
+
+## Basic Usage
+
+Import the library in your SwiftUI files:
+
+```swift
+import CodetwelveUI
+```
+
+Use components with the `CT` prefix:
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: CTSpacing.m) {
+            CTText("Welcome to CodeTwelve UI", style: .heading1)
+            
+            CTButton("Get Started") {
+                print("Button tapped")
+            }
+        }
+        .padding()
+    }
+}
+```
+
+## Theming
+
+CodeTwelve UI comes with built-in themes that can be applied to your entire application:
+
+```swift
+@main
+struct MyApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .ctTheme(CTDarkTheme())
+        }
+    }
+}
+```
+
+You can also create custom themes by implementing the `CTTheme` protocol.
+```
+
+## 6. Release Plan
+
+### 6.1 Versioning Strategy
+
+**Implementation Steps:**
+1. Use semantic versioning (MAJOR.MINOR.PATCH)
+2. Start with version 1.0.0 for initial release
+3. Increment PATCH for bug fixes
+4. Increment MINOR for new features
+5. Increment MAJOR for breaking changes
+
+### 6.2 Release Checklist
+
+**Steps for Each Release:**
+1. Run all tests to ensure passing
+2. Generate documentation
+3. Update changelog
+4. Tag release in git
+5. Create release notes
+6. Publish to repository
+
+## 7. Performance Considerations
+
+### 7.1 Optimization Strategies
+
+**Implementation Steps:**
+1. Use lazy loading for complex components
+2. Implement view recycling for lists
+3. Minimize view hierarchy depth
+4. Use opacity and scale for visibility instead of conditional rendering where appropriate
+5. Cache computed values when possible
+
+### 7.2 Performance Testing
+
+**Implementation Steps:**
+1. Measure render times for complex components
+2. Test scrolling performance with large data sets
+3. Profile memory usage with Instruments
+4. Test on older devices to ensure compatibility
+
+## 8. Future Enhancements
+
+### 8.1 Planned Enhancements
+
+**Future Features:**
+1. Component creator tool
+2. Animation editor
+3. Extended theming capabilities
+4. Additional chart components
+5. Localization enhancements
+
+### 8.2 Compatibility Planning
+
+**Compatibility Considerations:**
+1. Maintain backward compatibility with iOS 16+
+2. Plan for future iOS version support
+3. Consider visionOS compatibility
+4. Explore macOS Catalyst support

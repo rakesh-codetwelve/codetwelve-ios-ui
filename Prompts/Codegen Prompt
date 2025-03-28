@@ -1,0 +1,2953 @@
+You are an AI code generator responsible for implementing a web application based on a provided technical specification and implementation plan.
+
+Your task is to systematically implement each step of the plan, one at a time.
+
+First, carefully review the following inputs:
+
+<project_request>
+# Project Name
+CodeTwelve-iOS-UIKit
+
+## Project Description
+A comprehensive native reusable iOS design library inspired by shadcn, built with SwiftUI. CodeTwelve-iOS-UIKit will provide a complete collection of customizable, accessible UI components following modern design principles while being easy to integrate into iOS applications via Swift Package Manager.
+
+## Target Audience
+Native iOS SwiftUI developers
+
+## Desired Features
+### Core Components
+- [ ] Accordion
+- [ ] Alert
+- [ ] Alert Dialog
+- [ ] Aspect Ratio
+- [ ] Avatar
+- [ ] Badge
+- [ ] Button (primary, secondary, destructive, outline, ghost, link)
+- [ ] Calendar
+- [ ] Card
+- [ ] Carousel
+- [ ] Checkbox
+- [ ] Collapsible
+- [ ] Command (command palette)
+- [ ] Context Menu
+- [ ] Data Table
+- [ ] Date Picker
+- [ ] Dialog
+- [ ] Drawer
+- [ ] Dropdown Menu
+- [ ] Form components
+  - [ ] Input fields
+  - [ ] Text areas
+  - [ ] Radio groups
+  - [ ] Select/dropdown menus
+  - [ ] Switches
+- [ ] Hover Card
+- [ ] Keyboard Shortcut display
+- [ ] Menubar
+- [ ] Navigation Menu
+- [ ] Pagination
+- [ ] Popover
+- [ ] Progress indicators
+- [ ] Scroll Area
+- [ ] Segmented Controls
+- [ ] Select (dropdown)
+- [ ] Separator
+- [ ] Sheet
+- [ ] Skeleton loaders
+- [ ] Slider
+- [ ] Sonner (toast notifications)
+- [ ] Tabs
+- [ ] Textarea
+- [ ] Toast
+- [ ] Toggle
+- [ ] Tooltip
+- [ ] Hamburger Menu
+
+### Theming System
+- [ ] Multiple built-in themes (matching shadcn's theme options)
+- [ ] Theme customization options
+- [ ] Dark/light mode support
+- [ ] Theme switching capability
+- [ ] Design tokens and variables matching shadcn's approach
+- [ ] Theme builder tool
+
+### Animation System
+- [ ] Smooth transitions between states
+- [ ] Loading state animations
+- [ ] Interactive feedback animations
+- [ ] Matching shadcn's animation style while leveraging SwiftUI capabilities
+
+### Accessibility
+- [ ] Dynamic Type support
+- [ ] Bold text compatibility
+- [ ] High contrast options
+- [ ] VoiceOver optimization
+- [ ] Support for accessibility traits and labels
+
+### Architecture
+- [ ] Modular component structure
+- [ ] Customization API
+- [ ] Swift Package Manager integration
+- [ ] Following SwiftUI best practices for state management
+- [ ] iOS 16+ compatibility
+- [ ] Standard versioning practices
+
+### Testing
+- [ ] Unit tests for all components
+- [ ] UI tests for interactive elements
+- [ ] Accessibility tests
+- [ ] Performance tests
+- [ ] Documentation tests (ensuring examples work)
+
+### Development Tools
+- [ ] Component preview system
+- [ ] Theme builder/editor
+- [ ] Design token explorer
+- [ ] Integration examples
+
+### Localization
+- [ ] Component text localization support
+- [ ] RTL language support
+- [ ] Documentation in multiple languages
+
+### Documentation
+- [ ] Component usage examples
+- [ ] Integration guide
+- [ ] Theme customization documentation
+- [ ] Accessibility implementation guide
+- [ ] API reference
+- [ ] Component composition patterns and examples
+- [ ] Best practices for implementation
+
+## Design Requests
+- [ ] Consistent design language across all components
+- [ ] Full theme support matching shadcn's theme capabilities
+- [ ] Responsive designs that adapt to different iOS device sizes
+- [ ] Compatible with system appearance settings
+
+## Other Notes
+- Comprehensive showcase application demonstrating all components and themes
+- Open-source license to be determined
+- Focus on performance optimization using SwiftUI best practices
+- Standard security practices for form inputs and data handling
+- Project timeline: Complete delivery within 5 days
+- All components to be delivered in the initial release
+</project_request>
+
+<project_rules>
+# Project Instructions
+
+Use specification and guidelines as you build the Codetwelve-iOS-UI library.
+
+Write the complete code for every component. Do not get lazy.
+
+Your goal is to completely finish whatever component is requested.
+
+You will see tags in the code. These are context tags that you should use to help you understand the codebase.
+
+## Overview
+
+This is a SwiftUI native iOS design library inspired by shadcn, providing customizable, accessible UI components.
+
+## Tech Stack
+
+- SwiftUI for all components
+- UIKit interoperability where necessary
+- Swift Package Manager for distribution
+- Swift Concurrency for async operations
+- Combine for reactive programming
+- XCTest for unit and UI testing
+
+## Project Structure
+
+- `Sources` - Main source code
+  - `CodetwelveUI` - Main library module
+    - `Components` - All UI components
+      - `Button` - Button components
+      - `Cards` - Card components
+      - `Forms` - Form controls
+      - `Feedback` - Toast, alerts, etc.
+      - `Layout` - Structural components
+      - `Navigation` - Navigation components
+      - `Data` - Data display components
+    - `Tokens` - Design tokens
+      - `Colors` - Color definitions
+      - `Typography` - Type definitions
+      - `Spacing` - Spacing system
+      - `Animations` - Animation tokens
+    - `Extensions` - Swift extensions
+    - `Utilities` - Utility functions and helpers
+    - `Hooks` - SwiftUI property wrappers and custom hooks
+    - `Themes` - Theming system
+- `Examples` - Example app showcasing components
+- `Tests` - Unit and UI tests
+  - `ComponentTests` - Tests for components
+  - `UtilityTests` - Tests for utilities
+- `Documentation` - Documentation and guides
+- `Resources` - Assets and resources
+
+## Rules
+
+Follow these rules when building the library.
+
+### General Rules
+
+- Use `import CodetwelveUI` to import anything from the library
+- Use camelCase for all variables and functions
+- Use PascalCase for all types, protocols, and file names
+- Use `CT` prefix for all public components and types
+- All components should be in separate files named after the component (e.g., `CTButton.swift`)
+- Use protocol-oriented programming where appropriate
+- Every file should include documentation comments
+- Always include accessibility support in components
+
+#### Dependency Rules
+
+- Minimize external dependencies
+- If an external dependency is necessary, clearly document it
+- All dependencies should be specified in the Package.swift file
+- Version dependencies appropriately with semantic versioning
+
+#### Documentation Rules
+
+- Document all public APIs using Swift's documentation comments
+- Include usage examples in documentation
+- Document parameters, return values, and throws clauses
+- Preview all components in the documentation
+- Use README.md for overall library documentation
+- Create separate documentation files for complex components or concepts
+
+Example of documentation:
+
+```swift
+/// A customizable button component with various styles.
+///
+/// `CTButton` provides a consistent button interface throughout your application
+/// with support for different visual styles, sizes, and states.
+///
+/// # Example
+///
+/// ```swift
+/// CTButton("Press Me", style: .primary) {
+///     print("Button pressed")
+/// }
+/// ```
+///
+/// - Parameters:
+///   - label: The text displayed on the button.
+///   - style: The visual style of the button.
+///   - size: The size of the button.
+///   - action: The action to perform when the button is pressed.
+public struct CTButton: View {
+    // Implementation details
+}
+```
+
+### Component Rules
+
+Follow these rules when creating components.
+
+#### General Component Rules
+
+- All components should be SwiftUI `View`s
+- Components should be structs unless there's a specific reason to use a class
+- Design for reusability and composition
+- Support both light and dark mode
+- Support Dynamic Type for text
+- Support right-to-left languages
+- Support VoiceOver and other accessibility features
+- Allow customization via parameters, not subclassing
+
+#### Naming Conventions
+
+- Component names should be prefixed with `CT` (e.g., `CTButton`, `CTCard`)
+- Style enums should be named `ComponentNameStyle` (e.g., `CTButtonStyle`)
+- Size enums should be named `ComponentNameSize` (e.g., `CTButtonSize`)
+- Helper components should be nested inside their parent component and private when possible
+- Extension files should be named `Type+Extension.swift` (e.g., `View+Shadow.swift`)
+
+#### Component Structure
+
+Each component should follow this structure:
+
+1. Public facing component with a clean API
+2. Internal implementation components or functions
+3. Style enums and other supporting types
+4. Previews for SwiftUI Canvas
+
+Example:
+
+```swift
+public struct CTButton: View {
+    // Public properties
+    private let label: String
+    private let style: CTButtonStyle
+    private let size: CTButtonSize
+    private let action: () -> Void
+    
+    // Public initializer
+    public init(_ label: String, 
+                style: CTButtonStyle = .primary, 
+                size: CTButtonSize = .medium,
+                action: @escaping () -> Void) {
+        self.label = label
+        self.style = style
+        self.size = size
+        self.action = action
+    }
+    
+    public var body: some View {
+        Button(action: action) {
+            Text(label)
+                .font(size.font)
+                .padding(size.padding)
+        }
+        .background(style.backgroundColor)
+        .foregroundColor(style.foregroundColor)
+        .cornerRadius(8)
+    }
+}
+
+// Supporting types
+public enum CTButtonStyle {
+    case primary
+    case secondary
+    case tertiary
+    case destructive
+    
+    var backgroundColor: Color {
+        switch self {
+        case .primary:
+            return .accentColor
+        case .secondary:
+            return .gray.opacity(0.2)
+        case .tertiary:
+            return .clear
+        case .destructive:
+            return .red
+        }
+    }
+    
+    var foregroundColor: Color {
+        switch self {
+        case .primary, .destructive:
+            return .white
+        case .secondary, .tertiary:
+            return .primary
+        }
+    }
+}
+
+public enum CTButtonSize {
+    case small
+    case medium
+    case large
+    
+    var padding: EdgeInsets {
+        switch self {
+        case .small:
+            return EdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8)
+        case .medium:
+            return EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16)
+        case .large:
+            return EdgeInsets(top: 12, leading: 24, bottom: 12, trailing: 24)
+        }
+    }
+    
+    var font: Font {
+        switch self {
+        case .small:
+            return .caption
+        case .medium:
+            return .body
+        case .large:
+            return .title3
+        }
+    }
+}
+
+// Previews
+struct CTButton_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 20) {
+            CTButton("Primary Button", style: .primary) {}
+            CTButton("Secondary Button", style: .secondary) {}
+            CTButton("Tertiary Button", style: .tertiary) {}
+            CTButton("Destructive Button", style: .destructive) {}
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
+        .previewDisplayName("Button Styles")
+        
+        VStack(spacing: 20) {
+            CTButton("Small Button", size: .small) {}
+            CTButton("Medium Button", size: .medium) {}
+            CTButton("Large Button", size: .large) {}
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
+        .previewDisplayName("Button Sizes")
+    }
+}
+```
+
+### Theming Rules
+
+Follow these rules when implementing the theming system.
+
+#### Color System
+
+- Define a comprehensive color system with semantic naming
+- Support both light and dark mode variants
+- Use Color assets in Asset Catalogs where appropriate
+- Provide color extensions for easy access
+- Allow theme overriding
+
+Example:
+
+```swift
+public enum CTColors {
+    public static var primary: Color {
+        Color("ct-primary", bundle: .module)
+    }
+    
+    public static var secondary: Color {
+        Color("ct-secondary", bundle: .module)
+    }
+    
+    public static var background: Color {
+        Color("ct-background", bundle: .module)
+    }
+    
+    public static var text: Color {
+        Color("ct-text", bundle: .module)
+    }
+    
+    // More colors...
+}
+
+// Extension for easier access
+public extension Color {
+    static var ctPrimary: Color { CTColors.primary }
+    static var ctSecondary: Color { CTColors.secondary }
+    static var ctBackground: Color { CTColors.background }
+    static var ctText: Color { CTColors.text }
+}
+```
+
+#### Typography System
+
+- Define a type system with consistent fonts and sizes
+- Support Dynamic Type
+- Use semantic naming for text styles
+- Provide font modifiers for easy application
+
+Example:
+
+```swift
+public enum CTTypography {
+    public static func heading1() -> Font {
+        .system(.largeTitle, design: .default).weight(.bold)
+    }
+    
+    public static func heading2() -> Font {
+        .system(.title, design: .default).weight(.bold)
+    }
+    
+    public static func body() -> Font {
+        .system(.body, design: .default)
+    }
+    
+    // More text styles...
+}
+
+// Extension for easier access
+public extension View {
+    func ctHeading1() -> some View {
+        self.font(CTTypography.heading1())
+    }
+    
+    func ctHeading2() -> some View {
+        self.font(CTTypography.heading2())
+    }
+    
+    func ctBody() -> some View {
+        self.font(CTTypography.body())
+    }
+}
+```
+
+#### Spacing System
+
+- Use a consistent spacing scale
+- Provide spacing tokens for margins and padding
+- Use semantic naming for spacing values
+
+Example:
+
+```swift
+public enum CTSpacing {
+    public static let xxs: CGFloat = 2
+    public static let xs: CGFloat = 4
+    public static let s: CGFloat = 8
+    public static let m: CGFloat = 16
+    public static let l: CGFloat = 24
+    public static let xl: CGFloat = 32
+    public static let xxl: CGFloat = 48
+    
+    // Semantic aliases
+    public static let buttonSpacing: CGFloat = s
+    public static let cardPadding: CGFloat = m
+    public static let sectionSpacing: CGFloat = xl
+}
+```
+
+### Animation Rules
+
+Follow these rules when implementing animations.
+
+- Define reusable animations with semantic naming
+- Keep animations subtle and meaningful
+- Allow disabling animations for accessibility
+- Use consistent timing functions
+
+Example:
+
+```swift
+public enum CTAnimation {
+    public static let standard = Animation.easeInOut(duration: 0.3)
+    public static let quick = Animation.easeOut(duration: 0.15)
+    public static let slow = Animation.easeInOut(duration: 0.5)
+    
+    // Semantic animations
+    public static let buttonPress = quick
+    public static let cardExpand = standard
+    public static let modalPresent = standard
+}
+
+// Extension for applying animations
+public extension View {
+    func ctAnimation(_ animation: Animation) -> some View {
+        self.animation(CTAnimationManager.shared.isAnimationEnabled ? animation : .none)
+    }
+}
+
+// Animation manager for global control
+public class CTAnimationManager {
+    public static let shared = CTAnimationManager()
+    public var isAnimationEnabled: Bool = true
+}
+```
+
+### Accessibility Rules
+
+Follow these rules to ensure components are accessible.
+
+- Provide meaningful accessibility labels and hints
+- Support VoiceOver
+- Support Dynamic Type
+- Support increased contrast
+- Ensure sufficient color contrast
+- Support reduced motion
+- Test all components with accessibility features enabled
+
+Example:
+
+```swift
+public struct CTAccessibleButton: View {
+    private let label: String
+    private let action: () -> Void
+    
+    public init(_ label: String, action: @escaping () -> Void) {
+        self.label = label
+        self.action = action
+    }
+    
+    public var body: some View {
+        Button(action: action) {
+            Text(label)
+        }
+        .accessibilityLabel(label)
+        .accessibilityHint("Tap to \(label.lowercased())")
+        .accessibilityAddTraits(.isButton)
+    }
+}
+```
+
+### Testing Rules
+
+Follow these rules when writing tests.
+
+- Unit test all components for basic functionality
+- Test edge cases and failure scenarios
+- Test accessibility features
+- Test different device sizes and orientations
+- Write snapshot tests for UI components
+- Organize tests to mirror the main source code structure
+
+Example:
+
+```swift
+import XCTest
+@testable import CodetwelveUI
+
+final class CTButtonTests: XCTestCase {
+    func testButtonAction() {
+        // Given
+        var actionCalled = false
+        let button = CTButton("Test") {
+            actionCalled = true
+        }
+        
+        // When
+        button.testTap()
+        
+        // Then
+        XCTAssertTrue(actionCalled, "Button action should be called when tapped")
+    }
+    
+    func testButtonAccessibility() {
+        // Given
+        let button = CTButton("Accessible Label") {}
+        
+        // Then
+        XCTAssertEqual(button.accessibilityLabel, "Accessible Label")
+        XCTAssertTrue(button.accessibilityTraits.contains(.isButton))
+    }
+}
+
+// Helper extension for testing button taps
+extension CTButton {
+    func testTap() {
+        self.action()
+    }
+}
+```
+
+### Distribution Rules
+
+Follow these rules for library distribution.
+
+- Use Swift Package Manager for distribution
+- Version the library using semantic versioning
+- Document breaking changes clearly
+- Include release notes for each version
+- Mark APIs as deprecated before removing them
+- Maintain backward compatibility when possible
+
+Example Package.swift:
+
+```swift
+// swift-tools-version:5.5
+import PackageDescription
+
+let package = Package(
+    name: "CodetwelveUI",
+    platforms: [
+        .iOS(.v14)
+    ],
+    products: [
+        .library(
+            name: "CodetwelveUI",
+            targets: ["CodetwelveUI"]),
+    ],
+    dependencies: [
+        // No external dependencies ideally
+    ],
+    targets: [
+        .target(
+            name: "CodetwelveUI",
+            dependencies: [],
+            resources: [.process("Resources")]),
+        .testTarget(
+            name: "CodetwelveUITests",
+            dependencies: ["CodetwelveUI"]),
+    ]
+)
+```
+
+## Deployment Rules
+
+Follow these rules when deploying new versions.
+
+- Use semantic versioning (MAJOR.MINOR.PATCH)
+- Increment PATCH for bug fixes
+- Increment MINOR for new features
+- Increment MAJOR for breaking changes
+- Tag releases in git
+- Publish documentation with each release
+- Include migration guides for major versions
+
+## Examples App
+
+The examples app should demonstrate all components in various configurations and should be organized by component category.
+
+Example of an examples app structure:
+
+```swift
+struct ComponentCatalog: View {
+    var body: some View {
+        NavigationView {
+            List {
+                NavigationLink("Buttons", destination: ButtonExamples())
+                NavigationLink("Cards", destination: CardExamples())
+                NavigationLink("Forms", destination: FormExamples())
+                // More component categories...
+            }
+            .navigationTitle("Codetwelve UI")
+        }
+    }
+}
+
+struct ButtonExamples: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: CTSpacing.l) {
+                Group {
+                    Text("Button Styles").ctHeading2()
+                    
+                    CTButton("Primary Button", style: .primary) {}
+                    CTButton("Secondary Button", style: .secondary) {}
+                    CTButton("Tertiary Button", style: .tertiary) {}
+                    CTButton("Destructive Button", style: .destructive) {}
+                }
+                
+                Divider()
+                
+                Group {
+                    Text("Button Sizes").ctHeading2()
+                    
+                    CTButton("Small Button", size: .small) {}
+                    CTButton("Medium Button", size: .medium) {}
+                    CTButton("Large Button", size: .large) {}
+                }
+            }
+            .padding()
+        }
+        .navigationTitle("Buttons")
+    }
+}
+```
+
+## Component List
+
+Here's a list of components to implement:
+
+### Basic Components
+- CTButton - Button component with various styles
+- CTIcon - Icon component using SF Symbols
+- CTText - Text component with styling
+- CTDivider - Divider with customization options
+
+### Layout Components
+- CTStack - Enhanced VStack/HStack with spacing options
+- CTContainer - Container with padding and background
+- CTCard - Card component with header, footer, and content
+- CTGrid - Grid layout component
+
+### Form Components
+- CTTextField - Text input field
+- CTSecureField - Secure input field
+- CTTextArea - Multi-line text input
+- CTCheckbox - Checkbox component
+- CTRadioGroup - Radio button group
+- CTToggle - Toggle switch
+- CTSelect - Dropdown selection
+- CTSlider - Slider component
+- CTDatePicker - Date picker component
+
+### Navigation Components
+- CTTabBar - Custom tab bar
+- CTNavigationBar - Enhanced navigation bar
+- CTBottomSheet - Bottom sheet component
+- CTSidebar - Sidebar navigation component
+- CTHamburgerMenu - Hamburger menu component
+
+### Feedback Components
+- CTToast - Toast notification
+- CTAlert - Alert dialog
+- CTProgress - Progress indicators
+- CTSkeletonLoader - Skeleton loading placeholders
+- CTBadge - Badge component for notifications
+
+### Data Display Components
+- CTList - Enhanced list component
+- CTTable - Table component for data
+- CTChart - Basic chart components
+- CTAvatar - Avatar component with fallback
+- CTTag - Tag component for metadata
+
+### Media Components
+- CTImage - Image component with loading states
+- CTVideo - Video player component
+- CTCarousel - Image/content carousel
+
+</project_rules>
+
+<technical_specification>
+# CodeTwelve-iOS-UIKit Technical Specification
+
+## 1. System Overview
+
+### 1.1 Core Purpose and Value Proposition
+
+CodeTwelve-iOS-UIKit is a comprehensive native reusable iOS design library built with SwiftUI, inspired by the shadcn design system. The library provides a complete collection of customizable, accessible UI components that follow modern design principles while being easy to integrate into iOS applications via Swift Package Manager.
+
+**Key Value Propositions:**
+- **Consistency**: Unified design language across all UI components
+- **Accessibility**: Built-in support for iOS accessibility features
+- **Customization**: Flexible theming and styling options
+- **Developer Experience**: Well-documented with preview examples
+- **Performance**: Optimized for SwiftUI rendering and animations
+
+### 1.2 Key Workflows
+
+#### 1.2.1 Component Integration Workflow
+1. Developer adds CodeTwelve-iOS-UIKit package via Swift Package Manager
+2. Developer imports `CodetwelveUI` in their SwiftUI files
+3. Developer uses components with the `CT` prefix (e.g., `CTButton`, `CTCard`)
+4. Developer customizes components via provided parameters
+5. Components automatically adapt to the app's environment (dark/light mode)
+
+#### 1.2.2 Theming Workflow
+1. Developer initializes the `CTThemeManager` with a default theme
+2. Application uses theme values automatically via environment values
+3. Theme can be switched at runtime using `CTThemeManager.setTheme()`
+4. Custom themes can be created by extending `CTTheme`
+5. Components adapt to theme changes automatically
+
+#### 1.2.3 Accessibility Workflow
+1. Components have built-in accessibility features (labels, traits, etc.)
+2. Components adapt to Dynamic Type settings automatically
+3. High contrast mode is supported via theme adaptations
+4. Voice Over descriptions are provided for interactive elements
+5. Reduced motion settings are respected via `CTAnimationManager`
+
+### 1.3 System Architecture
+
+The system follows a modular component architecture with the following layers:
+
+#### 1.3.1 Core Layer
+- **Design Tokens**: Foundational design values (colors, typography, spacing)
+- **Theme System**: Theme definitions and environment integration
+- **Utility Layer**: Helper functions and extensions
+
+#### 1.3.2 Component Layer
+- **Base Components**: Fundamental building blocks (buttons, text, inputs)
+- **Composite Components**: Complex components built from base components
+- **Layout Components**: Structural components for organizing UI elements
+
+#### 1.3.3 Integration Layer
+- **Examples**: Sample implementations and usage patterns
+- **Documentation**: Component API documentation and usage guides
+- **Testing**: Comprehensive test suite for components and utilities
+
+## 2. Project Structure
+
+### 2.1 Package Structure
+
+```
+CodeTwelve-iOS-UIKit/
+├── Package.swift
+├── README.md
+├── Sources/
+│   └── CodetwelveUI/
+│       ├── Components/
+│       │   ├── Basic/
+│       │   │   ├── CTButton.swift
+│       │   │   ├── CTIcon.swift
+│       │   │   ├── CTText.swift
+│       │   │   └── CTDivider.swift
+│       │   ├── Layout/
+│       │   │   ├── CTStack.swift
+│       │   │   ├── CTContainer.swift
+│       │   │   ├── CTCard.swift
+│       │   │   ├── CTAccordion.swift
+│       │   │   ├── CTAspectRatio.swift
+│       │   │   ├── CTGrid.swift
+│       │   │   └── CTScrollArea.swift
+│       │   ├── Forms/
+│       │   │   ├── CTTextField.swift
+│       │   │   ├── CTSecureField.swift
+│       │   │   ├── CTTextArea.swift
+│       │   │   ├── CTCheckbox.swift
+│       │   │   ├── CTRadioGroup.swift
+│       │   │   ├── CTToggle.swift
+│       │   │   ├── CTSelect.swift
+│       │   │   ├── CTSlider.swift
+│       │   │   └── CTDatePicker.swift
+│       │   ├── Feedback/
+│       │   │   ├── CTToast.swift
+│       │   │   ├── CTAlert.swift
+│       │   │   ├── CTAlertDialog.swift
+│       │   │   ├── CTProgress.swift
+│       │   │   ├── CTSkeletonLoader.swift
+│       │   │   └── CTBadge.swift
+│       │   ├── Navigation/
+│       │   │   ├── CTTabBar.swift
+│       │   │   ├── CTNavigationMenu.swift
+│       │   │   ├── CTBottomSheet.swift
+│       │   │   ├── CTSidebar.swift
+│       │   │   ├── CTHamburgerMenu.swift
+│       │   │   ├── CTDrawer.swift
+│       │   │   ├── CTPagination.swift
+│       │   │   ├── CTPopover.swift
+│       │   │   └── CTCommandPalette.swift
+│       │   ├── Data/
+│       │   │   ├── CTList.swift
+│       │   │   ├── CTTable.swift
+│       │   │   ├── CTDataTable.swift
+│       │   │   ├── CTAvatar.swift
+│       │   │   ├── CTTag.swift
+│       │   │   ├── CTContextMenu.swift
+│       │   │   ├── CTDropdownMenu.swift
+│       │   │   └── CTHoverCard.swift
+│       │   └── Media/
+│       │       ├── CTImage.swift
+│       │       ├── CTVideo.swift
+│       │       └── CTCarousel.swift
+│       ├── Tokens/
+│       │   ├── CTColors.swift
+│       │   ├── CTTypography.swift
+│       │   ├── CTSpacing.swift
+│       │   └── CTAnimations.swift
+│       ├── Themes/
+│       │   ├── CTTheme.swift
+│       │   ├── CTThemeManager.swift
+│       │   ├── Themes/
+│       │   │   ├── CTDefaultTheme.swift
+│       │   │   ├── CTDarkTheme.swift
+│       │   │   └── CTLightTheme.swift
+│       │   └── CTThemeBuilder.swift
+│       ├── Extensions/
+│       │   ├── View+Shadow.swift
+│       │   ├── View+Conditional.swift
+│       │   ├── Color+Hex.swift
+│       │   └── View+Accessibility.swift
+│       ├── Utilities/
+│       │   ├── CTDeviceUtilities.swift
+│       │   ├── CTLayoutUtilities.swift
+│       │   └── CTAccessibilityUtilities.swift
+│       └── Hooks/
+│           ├── CTUseKeyboard.swift
+│           ├── CTUseResponder.swift
+│           └── CTUseHaptics.swift
+├── Examples/
+│   ├── CodeTwelveExamples/
+│   │   ├── ComponentCatalog.swift
+│   │   ├── Examples/
+│   │   │   ├── ButtonExamples.swift
+│   │   │   ├── CardExamples.swift
+│   │   │   ├── FormExamples.swift
+│   │   │   └── ... (other component examples)
+│   │   └── ThemeExplorer.swift
+│   └── CodeTwelveExamples.xcodeproj
+├── Tests/
+│   └── CodetwelveUITests/
+│       ├── ComponentTests/
+│       │   ├── CTButtonTests.swift
+│       │   ├── CTCardTests.swift
+│       │   └── ... (other component tests)
+│       ├── ThemeTests/
+│       │   ├── CTThemeManagerTests.swift
+│       │   └── CTThemeTests.swift
+│       ├── UtilityTests/
+│       │   ├── CTColorExtensionTests.swift
+│       │   └── CTAccessibilityUtilitiesTests.swift
+│       └── AccessibilityTests/
+│           ├── CTButtonAccessibilityTests.swift
+│           └── ... (other accessibility tests)
+└── Documentation/
+    ├── GettingStarted.md
+    ├── ThemedComponents.md
+    ├── AccessibilityGuide.md
+    ├── ComponentGuidelines.md
+    └── API/
+        ├── Components.md
+        ├── Theming.md
+        └── Utilities.md
+```
+
+### 2.2 Core File Structure
+
+Each component file follows a consistent structure:
+
+```swift
+// File: CTButton.swift
+
+/// A customizable button component with various styles.
+///
+/// `CTButton` provides a consistent button interface throughout your application
+/// with support for different visual styles, sizes, and states.
+///
+/// # Example
+///
+/// ```swift
+/// CTButton("Press Me", style: .primary) {
+///     print("Button pressed")
+/// }
+/// ```
+public struct CTButton: View {
+    // MARK: - Public Properties
+    
+    // MARK: - Private Properties
+    
+    // MARK: - Initializers
+    
+    // MARK: - Body
+    
+    // MARK: - Private Methods
+}
+
+// MARK: - Supporting Types
+
+// MARK: - Previews
+```
+
+## 3. Feature Specification
+
+### 3.1 Component System
+
+#### 3.1.1 Base Component Architecture
+
+All components in CodeTwelve-iOS-UIKit follow a consistent architecture pattern:
+
+1. **Public API**: Clear, concise parameters with sensible defaults
+2. **Style Options**: Enum-based style definitions (primary, secondary, etc.)
+3. **Size Options**: Enum-based size definitions (small, medium, large)
+4. **State Handling**: Support for enabled, disabled, loading states
+5. **Accessibility**: Built-in accessibility support
+6. **Theme Integration**: Automatic theme adaptation
+
+**Implementation Steps:**
+1. Create base protocols for common component behaviors
+2. Implement component-specific styles and sizes
+3. Create the public-facing component API
+4. Implement private helper views and methods
+5. Add preview examples
+
+**Example Implementation (Button Component):**
+
+```swift
+// CTButton.swift
+import SwiftUI
+
+/// A customizable button component with various styles.
+public struct CTButton: View {
+    // MARK: - Public Properties
+    private let label: String
+    private let style: CTButtonStyle
+    private let size: CTButtonSize
+    private let isLoading: Bool
+    private let isDisabled: Bool
+    private let action: () -> Void
+    
+    // MARK: - Initializers
+    
+    /// Initialize a new button with text label
+    /// - Parameters:
+    ///   - label: The text displayed on the button
+    ///   - style: The visual style of the button
+    ///   - size: The size of the button
+    ///   - isLoading: Whether the button is in a loading state
+    ///   - isDisabled: Whether the button is disabled
+    ///   - action: The action to perform when the button is pressed
+    public init(
+        _ label: String,
+        style: CTButtonStyle = .primary,
+        size: CTButtonSize = .medium,
+        isLoading: Bool = false,
+        isDisabled: Bool = false,
+        action: @escaping () -> Void
+    ) {
+        self.label = label
+        self.style = style
+        self.size = size
+        self.isLoading = isLoading
+        self.isDisabled = isDisabled
+        self.action = action
+    }
+    
+    // MARK: - Body
+    
+    public var body: some View {
+        Button(action: performAction) {
+            HStack(spacing: CTSpacing.xs) {
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: style.foregroundColor))
+                        .scaleEffect(0.7)
+                }
+                
+                Text(label)
+                    .font(size.font)
+            }
+            .padding(size.padding)
+            .frame(height: size.height)
+            .frame(minWidth: size.minWidth)
+            .background(style.backgroundColor)
+            .foregroundColor(style.foregroundColor)
+            .cornerRadius(CTSpacing.xs)
+            .overlay(
+                RoundedRectangle(cornerRadius: CTSpacing.xs)
+                    .stroke(style.borderColor, lineWidth: 1)
+            )
+            .opacity(isDisabled ? 0.6 : 1.0)
+        }
+        .disabled(isDisabled || isLoading)
+        .accessibilityLabel(label)
+        .accessibilityHint("Tap to \(label.lowercased())")
+        .accessibilityAddTraits(.isButton)
+    }
+    
+    // MARK: - Private Methods
+    
+    private func performAction() {
+        // Add haptic feedback
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        
+        action()
+    }
+}
+
+// MARK: - Supporting Types
+
+public enum CTButtonStyle {
+    case primary
+    case secondary
+    case destructive
+    case outline
+    case ghost
+    case link
+    
+    var backgroundColor: Color {
+        switch self {
+        case .primary:
+            return Color.ctPrimary
+        case .secondary:
+            return Color.ctSecondary
+        case .destructive:
+            return Color.ctDestructive
+        case .outline, .ghost, .link:
+            return Color.clear
+        }
+    }
+    
+    var foregroundColor: Color {
+        switch self {
+        case .primary, .secondary, .destructive:
+            return Color.ctTextOnAccent
+        case .outline:
+            return Color.ctPrimary
+        case .ghost, .link:
+            return Color.ctText
+        }
+    }
+    
+    var borderColor: Color {
+        switch self {
+        case .outline:
+            return Color.ctPrimary
+        default:
+            return Color.clear
+        }
+    }
+}
+
+public enum CTButtonSize {
+    case small
+    case medium
+    case large
+    
+    var padding: EdgeInsets {
+        switch self {
+        case .small:
+            return EdgeInsets(top: CTSpacing.xs, leading: CTSpacing.s, bottom: CTSpacing.xs, trailing: CTSpacing.s)
+        case .medium:
+            return EdgeInsets(top: CTSpacing.s, leading: CTSpacing.m, bottom: CTSpacing.s, trailing: CTSpacing.m)
+        case .large:
+            return EdgeInsets(top: CTSpacing.m, leading: CTSpacing.l, bottom: CTSpacing.m, trailing: CTSpacing.l)
+        }
+    }
+    
+    var font: Font {
+        switch self {
+        case .small:
+            return CTTypography.caption()
+        case .medium:
+            return CTTypography.body()
+        case .large:
+            return CTTypography.subheading()
+        }
+    }
+    
+    var height: CGFloat {
+        switch self {
+        case .small:
+            return 32
+        case .medium:
+            return 44
+        case .large:
+            return 56
+        }
+    }
+    
+    var minWidth: CGFloat {
+        switch self {
+        case .small:
+            return 80
+        case .medium:
+            return 120
+        case .large:
+            return 160
+        }
+    }
+}
+
+// MARK: - Previews
+
+struct CTButton_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: CTSpacing.m) {
+            Group {
+                CTButton("Primary Button", style: .primary) {}
+                CTButton("Secondary Button", style: .secondary) {}
+                CTButton("Destructive Button", style: .destructive) {}
+                CTButton("Outline Button", style: .outline) {}
+                CTButton("Ghost Button", style: .ghost) {}
+                CTButton("Link Button", style: .link) {}
+            }
+            
+            Group {
+                CTButton("Small Button", size: .small) {}
+                CTButton("Medium Button", size: .medium) {}
+                CTButton("Large Button", size: .large) {}
+            }
+            
+            Group {
+                CTButton("Loading Button", isLoading: true) {}
+                CTButton("Disabled Button", isDisabled: true) {}
+            }
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
+    }
+}
+```
+
+#### 3.1.2 Component Categories
+
+Each component falls into one of the following categories:
+
+1. **Basic Components**: Fundamental building blocks
+2. **Layout Components**: Structural components
+3. **Form Components**: Input and control components
+4. **Feedback Components**: User feedback and notification components
+5. **Navigation Components**: Navigation and routing components
+6. **Data Components**: Data display and visualization components
+7. **Media Components**: Media display and playback components
+
+Each category has specific implementation requirements and accessibility considerations.
+
+### 3.2 Theming System
+
+#### 3.2.1 Theme Architecture
+
+The theming system is built on a protocol-based architecture with environment values for propagation.
+
+**Implementation Steps:**
+1. Define the `CTTheme` protocol with required properties
+2. Create concrete theme implementations (default, dark, light)
+3. Implement `CTThemeManager` for theme switching
+4. Create environment key and values for theme propagation
+5. Add theme builder for custom theme creation
+
+**Example Implementation:**
+
+```swift
+// CTTheme.swift
+import SwiftUI
+
+/// Protocol defining the required properties for a CodeTwelve theme
+public protocol CTTheme {
+    // Colors
+    var primary: Color { get }
+    var secondary: Color { get }
+    var background: Color { get }
+    var surface: Color { get }
+    var text: Color { get }
+    var textSecondary: Color { get }
+    var textOnAccent: Color { get }
+    var destructive: Color { get }
+    var success: Color { get }
+    var warning: Color { get }
+    var info: Color { get }
+    
+    // Borders
+    var border: Color { get }
+    var borderWidth: CGFloat { get }
+    var borderRadius: CGFloat { get }
+    
+    // Shadows
+    var shadowColor: Color { get }
+    var shadowOpacity: Double { get }
+    var shadowRadius: CGFloat { get }
+    var shadowOffset: CGSize { get }
+    
+    // Name
+    var name: String { get }
+}
+
+// CTThemeManager.swift
+import SwiftUI
+import Combine
+
+/// Manager for handling theme switching and storage
+public class CTThemeManager: ObservableObject {
+    public static let shared = CTThemeManager()
+    
+    @Published public private(set) var currentTheme: CTTheme
+    
+    private init() {
+        // Initialize with default theme
+        self.currentTheme = CTDefaultTheme()
+    }
+    
+    /// Set the active theme
+    /// - Parameter theme: The theme to set as active
+    public func setTheme(_ theme: CTTheme) {
+        self.currentTheme = theme
+    }
+    
+    /// Set theme by name
+    /// - Parameter name: The name of the theme to set
+    public func setTheme(named name: String) {
+        switch name {
+        case "default":
+            setTheme(CTDefaultTheme())
+        case "dark":
+            setTheme(CTDarkTheme())
+        case "light":
+            setTheme(CTLightTheme())
+        default:
+            // If theme not found, keep current
+            break
+        }
+    }
+}
+
+// Environment extension
+private struct CTThemeKey: EnvironmentKey {
+    static let defaultValue: CTTheme = CTDefaultTheme()
+}
+
+public extension EnvironmentValues {
+    var ctTheme: CTTheme {
+        get { self[CTThemeKey.self] }
+        set { self[CTThemeKey.self] = newValue }
+    }
+}
+
+// View extension for theme access
+public extension View {
+    /// Apply the CodeTwelve theme to this view and its subviews
+    /// - Parameter theme: The theme to apply
+    /// - Returns: The modified view with the theme applied
+    func ctTheme(_ theme: CTTheme) -> some View {
+        self.environment(\.ctTheme, theme)
+    }
+}
+```
+
+#### 3.2.2 Theme Implementation
+
+Each theme implements the `CTTheme` protocol with concrete values.
+
+**Example Implementation (Default Theme):**
+
+```swift
+// CTDefaultTheme.swift
+import SwiftUI
+
+/// The default theme for CodeTwelve UI
+public struct CTDefaultTheme: CTTheme {
+    public var name: String = "default"
+    
+    // Colors
+    public var primary: Color = Color(hex: "#007AFF")
+    public var secondary: Color = Color(hex: "#5856D6")
+    public var background: Color = Color(hex: "#F2F2F7")
+    public var surface: Color = Color.white
+    public var text: Color = Color(hex: "#1C1C1E")
+    public var textSecondary: Color = Color(hex: "#8E8E93")
+    public var textOnAccent: Color = Color.white
+    public var destructive: Color = Color(hex: "#FF3B30")
+    public var success: Color = Color(hex: "#34C759")
+    public var warning: Color = Color(hex: "#FF9500")
+    public var info: Color = Color(hex: "#5AC8FA")
+    
+    // Borders
+    public var border: Color = Color(hex: "#C6C6C8")
+    public var borderWidth: CGFloat = 1
+    public var borderRadius: CGFloat = 8
+    
+    // Shadows
+    public var shadowColor: Color = Color.black
+    public var shadowOpacity: Double = 0.1
+    public var shadowRadius: CGFloat = 4
+    public var shadowOffset: CGSize = CGSize(width: 0, height: 2)
+    
+    public init() {}
+}
+```
+
+### 3.3 Animation System
+
+#### 3.3.1 Animation Architecture
+
+The animation system provides consistent animations with semantic naming and accessibility considerations.
+
+**Implementation Steps:**
+1. Define animation durations and curves
+2. Create semantic animation presets
+3. Implement animation manager for global control
+4. Add reduced motion support
+5. Create animation extension for views
+
+**Example Implementation:**
+
+```swift
+// CTAnimations.swift
+import SwiftUI
+
+/// Animation presets for CodeTwelve UI
+public enum CTAnimation {
+    // Duration
+    public static let durationFast: Double = 0.15
+    public static let durationMedium: Double = 0.3
+    public static let durationSlow: Double = 0.5
+    
+    // Curves
+    public static let easeInOut = Animation.easeInOut(duration: durationMedium)
+    public static let easeOut = Animation.easeOut(duration: durationMedium)
+    public static let spring = Animation.spring(response: 0.3, dampingFraction: 0.6)
+    
+    // Semantic animations
+    public static let buttonPress = Animation.easeOut(duration: durationFast)
+    public static let fadeIn = Animation.easeOut(duration: durationMedium)
+    public static let slideIn = Animation.spring(response: 0.5, dampingFraction: 0.7)
+    public static let expand = Animation.spring(response: 0.4, dampingFraction: 0.6)
+}
+
+// CTAnimationManager.swift
+import SwiftUI
+import Combine
+
+/// Manager for controlling animations globally
+public class CTAnimationManager: ObservableObject {
+    public static let shared = CTAnimationManager()
+    
+    @Published public private(set) var isAnimationEnabled: Bool = true
+    
+    private init() {
+        // Check for reduced motion setting
+        if UIAccessibility.isReduceMotionEnabled {
+            isAnimationEnabled = false
+        }
+        
+        // Listen for changes to reduce motion setting
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(reduceMotionChanged),
+            name: UIAccessibility.reduceMotionStatusDidChangeNotification,
+            object: nil
+        )
+    }
+    
+    @objc private func reduceMotionChanged() {
+        isAnimationEnabled = !UIAccessibility.isReduceMotionEnabled
+    }
+    
+    /// Enable or disable animations globally
+    /// - Parameter enabled: Whether animations should be enabled
+    public func setAnimationsEnabled(_ enabled: Bool) {
+        isAnimationEnabled = enabled
+    }
+}
+
+// View extension for animations
+public extension View {
+    /// Apply a CodeTwelve animation respecting accessibility settings
+    /// - Parameter animation: The animation to apply
+    /// - Returns: The view with the animation applied
+    func ctAnimation(_ animation: Animation) -> some View {
+        let isEnabled = CTAnimationManager.shared.isAnimationEnabled
+        return self.animation(isEnabled ? animation : .none)
+    }
+}
+```
+
+### 3.4 Accessibility System
+
+#### 3.4.1 Accessibility Architecture
+
+The accessibility system ensures all components are accessible and follow best practices.
+
+**Implementation Steps:**
+1. Create accessibility utilities for common tasks
+2. Implement Dynamic Type support in typography
+3. Add high contrast mode detection and adaptation
+4. Ensure VoiceOver optimization for all components
+5. Add reduced motion support via animation manager
+
+**Example Implementation:**
+
+```swift
+// View+Accessibility.swift
+import SwiftUI
+
+public extension View {
+    /// Apply standard accessibility modifiers for a button
+    /// - Parameters:
+    ///   - label: The accessibility label
+    ///   - hint: The accessibility hint (optional)
+    /// - Returns: The view with accessibility modifiers applied
+    func ctButtonAccessibility(label: String, hint: String? = nil) -> some View {
+        self
+            .accessibilityLabel(label)
+            .accessibilityHint(hint ?? "Tap to \(label.lowercased())")
+            .accessibilityAddTraits(.isButton)
+    }
+    
+    /// Apply standard accessibility modifiers for a toggle
+    /// - Parameters:
+    ///   - label: The accessibility label
+    ///   - isOn: Whether the toggle is on
+    /// - Returns: The view with accessibility modifiers applied
+    func ctToggleAccessibility(label: String, isOn: Bool) -> some View {
+        self
+            .accessibilityLabel(label)
+            .accessibilityHint(isOn ? "Tap to turn off" : "Tap to turn on")
+            .accessibilityValue(isOn ? "On" : "Off")
+            .accessibilityAddTraits(.isButton)
+    }
+    
+    /// Apply standard accessibility modifiers for an input field
+    /// - Parameters:
+    ///   - label: The accessibility label
+    ///   - value: The current value
+    ///   - hint: The accessibility hint (optional)
+    /// - Returns: The view with accessibility modifiers applied
+    func ctInputAccessibility(label: String, value: String, hint: String? = nil) -> some View {
+        self
+            .accessibilityLabel(label)
+            .accessibilityValue(value.isEmpty ? "Empty" : value)
+            .accessibilityHint(hint ?? "Double tap to edit")
+    }
+}
+
+// CTAccessibilityUtilities.swift
+import SwiftUI
+import Combine
+
+/// Utilities for accessibility in CodeTwelve UI
+public enum CTAccessibilityUtilities {
+    /// Check if high contrast mode is enabled
+    public static var isHighContrastEnabled: Bool {
+        UIAccessibility.isDarkerSystemColorsEnabled
+    }
+    
+    /// Check if bold text is enabled
+    public static var isBoldTextEnabled: Bool {
+        UIAccessibility.isBoldTextEnabled
+    }
+    
+    /// Check if reduced motion is enabled
+    public static var isReducedMotionEnabled: Bool {
+        UIAccessibility.isReduceMotionEnabled
+    }
+    
+    /// Get appropriate text for VoiceOver based on loading state
+    /// - Parameters:
+    ///   - isLoading: Whether the component is in loading state
+    ///   - baseLabel: The base accessibility label
+    /// - Returns: The appropriate accessibility label
+    public static func loadingStateLabel(isLoading: Bool, baseLabel: String) -> String {
+        isLoading ? "\(baseLabel), Loading" : baseLabel
+    }
+    
+    /// Get the appropriate color for high contrast if needed
+    /// - Parameters:
+    ///   - normalColor: The normal color
+    ///   - highContrastColor: The high contrast color
+    /// - Returns: The appropriate color based on system settings
+    public static func adaptiveColor(normalColor: Color, highContrastColor: Color) -> Color {
+        isHighContrastEnabled ? highContrastColor : normalColor
+    }
+}
+```
+
+### 3.5 Key Components Implementation
+
+For each component category, here are detailed specifications for key components:
+
+#### 3.5.1 Button Component
+
+The button component is a fundamental interactive element with multiple styles, sizes, and states.
+
+**User Story:** As a developer, I want to use a consistent button component with various visual styles so that I can maintain UI consistency while providing appropriate visual hierarchy.
+
+**Implementation Steps:**
+1. Create the `CTButton` struct with parameters for label, style, size, loading state, and disabled state
+2. Implement the button body with conditional rendering for loading state
+3. Add haptic feedback on press
+4. Apply appropriate accessibility modifiers
+5. Add previews for all button variants
+
+**Error Handling:**
+- Provide fallback styling if theme colors are unavailable
+- Handle empty label text with appropriate sizing
+
+**Example Usage:**
+```swift
+// Basic usage
+CTButton("Sign In") {
+    // Handle sign in
+}
+
+// Styled button
+CTButton("Delete", style: .destructive) {
+    // Handle delete
+}
+
+// Loading state
+CTButton("Submit", isLoading: isSubmitting) {
+    // Handle submit
+}
+```
+
+#### 3.5.2 Card Component
+
+The card component is a container for grouped content with optional header and footer.
+
+**User Story:** As a developer, I want to use a card component to group related content with consistent styling and optional header/footer sections.
+
+**Implementation Steps:**
+1. Create the `CTCard` struct with parameters for padding, background, border, and elevation
+2. Implement header and footer view builders
+3. Add shadow and border styling based on elevation
+4. Ensure proper spacing between header, content, and footer
+5. Add previews with various configurations
+
+**Error Handling:**
+- Provide default styling if theme values are unavailable
+- Handle edge cases for small content or missing sections
+
+**Example Usage:**
+```swift
+CTCard {
+    // Card content
+    Text("This is card content")
+} header: {
+    Text("Card Header")
+} footer: {
+    Text("Card Footer")
+}
+```
+
+#### 3.5.3 TextField Component
+
+The text field component is an input element for single-line text entry with various states and validations.
+
+**User Story:** As a developer, I want to use a consistent text field component with built-in validation and state handling.
+
+**Implementation Steps:**
+1. Create the `CTTextField` struct with parameters for label, placeholder, text binding, validation, and state
+2. Implement validation logic and error display
+3. Add support for leading and trailing icons
+4. Implement focus and blur handling
+5. Apply appropriate accessibility modifiers
+6. Add previews for various states (default, focused, error, disabled)
+
+**Error Handling:**
+- Display validation errors with appropriate styling
+- Handle focus/blur state transitions
+
+**Example Usage:**
+```swift
+@State private var name = ""
+@State private var nameError: String? = nil
+
+CTTextField(
+    "Name",
+    placeholder: "Enter your name",
+    text: $name,
+    error: $nameError,
+    validation: { value in
+        if value.isEmpty {
+            return "Name is required"
+        }
+        return nil
+    }
+)
+```
+
+#### 3.5.4 Toast Component
+
+The toast component displays temporary notifications with various severities and auto-dismissal.
+
+**User Story:** As a developer, I want to show temporary toast notifications to provide feedback to users with appropriate styling based on severity.
+
+**Implementation Steps:**
+1. Create the `CTToast` struct with parameters for message, type, duration, and dismissal handler
+2. Implement the toast manager for queuing and displaying toasts
+3. Add animations for appearance and dismissal
+4. Implement auto-dismissal with timer
+5. Apply appropriate accessibility announcements
+6. Add previews for different toast types
+
+**Error Handling:**
+- Handle multiple toasts with queueing system
+- Ensure proper cleanup of timers
+
+**Example Usage:**
+```swift
+// Show a success toast
+CTToastManager.shared.show(
+    message: "Successfully saved!",
+    type: .success
+)
+
+// Show an error toast with custom duration
+CTToastManager.shared.show(
+    message: "Failed to save. Please try again.",
+    type: .error,
+    duration: 5.0
+)
+```
+
+### 3.6 Package Configuration
+
+The Swift Package Manager configuration defines the module structure and dependencies.
+
+**Implementation Steps:**
+1. Create the Package.swift file with appropriate targets
+2. Define the minimum iOS version requirement (iOS 16+)
+3. Configure resources processing for assets
+4. Set up test targets
+5. Configure documentation generation
+
+**Example Implementation:**
+
+```swift
+// Package.swift
+// swift-tools-version:5.5
+import PackageDescription
+
+let package = Package(
+    name: "CodetwelveUI",
+    platforms: [
+        .iOS(.v16)
+    ],
+    products: [
+        .library(
+            name: "CodetwelveUI",
+            targets: ["CodetwelveUI"]),
+    ],
+    dependencies: [
+        // No external dependencies
+    ],
+    targets: [
+        .target(
+            name: "CodetwelveUI",
+            dependencies: [],
+            resources: [.process("Resources")]),
+        .testTarget(
+            name: "CodetwelveUITests",
+            dependencies: ["CodetwelveUI"]),
+    ]
+)
+```
+
+## 4. Testing Strategy
+
+### 4.1 Unit Testing
+
+Unit tests verify the functionality of individual components and utilities.
+
+#### 4.1.1 Component Testing
+
+**Testing Steps:**
+1. Test component initialization with various parameters
+2. Test style and size variations
+3. Test state changes (enabled, disabled, loading)
+4. Test callback execution
+
+**Example Implementation (Button Tests):**
+
+```swift
+// CTButtonTests.swift
+import XCTest
+import SwiftUI
+@testable import CodetwelveUI
+
+final class CTButtonTests: XCTestCase {
+    func testButtonAction() {
+        // Given
+        var actionCalled = false
+        let button = CTButton("Test") {
+            actionCalled = true
+        }
+        
+        // When
+        button.simulateTap()
+        
+        // Then
+        XCTAssertTrue(actionCalled, "Button action should be called when tapped")
+    }
+    
+    func testButtonDisabledState() {
+        // Given
+        var actionCalled = false
+        let button = CTButton("Test", isDisabled: true) {
+            actionCalled = true
+        }
+        
+        // When
+        button.simulateTap()
+        
+        // Then
+        XCTAssertFalse(actionCalled, "Button action should not be called when disabled")
+    }
+    
+    func testButtonLoadingState() {
+        // Given
+        var actionCalled = false
+        let button = CTButton("Test", isLoading: true) {
+            actionCalled = true
+        }
+        
+        // When
+        button.simulateTap()
+        
+        // Then
+        XCTAssertFalse(actionCalled, "Button action should not be called when loading")
+    }
+}
+
+// Extension for testing
+extension CTButton {
+    func simulateTap() {
+        if !isDisabled && !isLoading {
+            action()
+        }
+    }
+}
+```
+
+#### 4.1.2 Theme Testing
+
+**Testing Steps:**
+1. Test theme initialization
+2. Test environment value propagation
+3. Test theme switching
+4. Test color adaptations for dark/light mode
+
+**Example Implementation (Theme Tests):**
+
+```swift
+// CTThemeManagerTests.swift
+import XCTest
+@testable import CodetwelveUI
+
+final class CTThemeManagerTests: XCTestCase {
+    func testThemeInitialization() {
+        // When
+        let themeManager = CTThemeManager.shared
+        
+        // Then
+        XCTAssertNotNil(themeManager.currentTheme)
+        XCTAssertEqual(themeManager.currentTheme.name, "default")
+    }
+    
+    func testThemeSwitching() {
+        // Given
+        let themeManager = CTThemeManager.shared
+        let darkTheme = CTDarkTheme()
+        
+        // When
+        themeManager.setTheme(darkTheme)
+        
+        // Then
+        XCTAssertEqual(themeManager.currentTheme.name, "dark")
+    }
+    
+    func testThemeSwitchingByName() {
+        // Given
+        let themeManager = CTThemeManager.shared
+        
+        // When
+        themeManager.setTheme(named: "light")
+        
+        // Then
+        XCTAssertEqual(themeManager.currentTheme.name, "light")
+    }
+}
+```
+
+### 4.2 Accessibility Testing
+
+Accessibility tests verify that components meet accessibility requirements.
+
+**Testing Steps:**
+1. Test Dynamic Type scaling
+2. Test VoiceOver support
+3. Test high contrast mode adaptations
+4. Test reduced motion compliance
+
+**Example Implementation (Button Accessibility Tests):**
+
+```swift
+// CTButtonAccessibilityTests.swift
+import XCTest
+@testable import CodetwelveUI
+
+final class CTButtonAccessibilityTests: XCTestCase {
+    func testButtonAccessibilityLabel() {
+        // Given
+        let button = CTButton("Test Button") {}
+        
+        // Then
+        XCTAssertEqual(button.accessibilityLabel, "Test Button")
+    }
+    
+    func testButtonAccessibilityTraits() {
+        // Given
+        let button = CTButton("Test Button") {}
+        
+        // Then
+        XCTAssertTrue(button.accessibilityTraits.contains(.isButton))
+    }
+    
+    func testButtonLoadingStateAccessibility() {
+        // Given
+        let button = CTButton("Test Button", isLoading: true) {}
+        
+        // Then
+        // Verify loading state is communicated via accessibility
+        XCTAssertTrue(button.accessibilityLabel.contains("Loading"))
+    }
+    
+    func testButtonDisabledStateAccessibility() {
+        // Given
+        let button = CTButton("Test Button", isDisabled: true) {}
+        
+        // Then
+        // Verify disabled state is reflected in accessibility
+        XCTAssertTrue(button.isAccessibilityElement)
+        XCTAssertTrue(button.accessibilityTraits.contains(.notEnabled))
+    }
+}
+```
+
+### 4.3 Integration Testing
+
+Integration tests verify that components work together as expected.
+
+**Testing Steps:**
+1. Test component combinations
+2. Test theme propagation through component hierarchies
+3. Test state propagation between components
+4. Test animation coordination
+
+**Example Implementation (Form Integration Tests):**
+
+```swift
+// CTFormIntegrationTests.swift
+import XCTest
+@testable import CodetwelveUI
+
+final class CTFormIntegrationTests: XCTestCase {
+    func testFormValidation() {
+        // Given
+        var nameText = ""
+        var emailText = ""
+        var nameError: String? = nil
+        var emailError: String? = nil
+        var submitCalled = false
+        
+        let nameField = CTTextField(
+            "Name",
+            text: Binding(
+                get: { nameText },
+                set: { nameText = $0 }
+            ),
+            error: Binding(
+                get: { nameError },
+                set: { nameError = $0 }
+            ),
+            validation: { value in
+                return value.isEmpty ? "Name is required" : nil
+            }
+        )
+        
+        let emailField = CTTextField(
+            "Email",
+            text: Binding(
+                get: { emailText },
+                set: { emailText = $0 }
+            ),
+            error: Binding(
+                get: { emailError },
+                set: { emailError = $0 }
+            ),
+            validation: { value in
+                return value.isEmpty ? "Email is required" : nil
+            }
+        )
+        
+        let submitButton = CTButton("Submit") {
+            submitCalled = true
+        }
+        
+        // When - trying to submit with empty fields
+        nameField.validate()
+        emailField.validate()
+        
+        // Then
+        XCTAssertEqual(nameError, "Name is required")
+        XCTAssertEqual(emailError, "Email is required")
+        
+        // When - filling fields and revalidating
+        nameText = "John Doe"
+        emailText = "john@example.com"
+        nameField.validate()
+        emailField.validate()
+        
+        // Then
+        XCTAssertNil(nameError)
+        XCTAssertNil(emailError)
+        
+        // Now we can submit
+        submitButton.simulateTap()
+        XCTAssertTrue(submitCalled)
+    }
+}
+
+// Extension for testing
+extension CTTextField {
+    func validate() {
+        if let validationFunc = self.validation {
+            self.error = validationFunc(self.text)
+        }
+    }
+}
+```
+
+## 5. Documentation Plan
+
+### 5.1 API Documentation
+
+API documentation provides comprehensive information on component usage and customization.
+
+**Implementation Steps:**
+1. Add XML documentation comments to all public APIs
+2. Include usage examples for each component
+3. Document parameters, return values, and preconditions
+4. Generate documentation using DocC
+
+**Example API Documentation (Button):**
+
+```swift
+/// A customizable button component with various styles and states.
+///
+/// `CTButton` provides a consistent button interface throughout your application
+/// with support for different visual styles, sizes, and states including loading and disabled.
+///
+/// # Example
+/// ```swift
+/// CTButton("Sign In", style: .primary) {
+///     print("Button tapped")
+/// }
+///
+/// // Loading state
+/// CTButton("Processing", isLoading: true) {
+///     print("This won't be called while loading")
+/// }
+///
+/// // Disabled state
+/// CTButton("Submit", isDisabled: !formIsValid) {
+///     submitForm()
+/// }
+/// ```
+///
+/// - Parameters:
+///   - label: The text displayed on the button
+///   - style: The visual style of the button (default: .primary)
+///   - size: The size of the button (default: .medium)
+///   - isLoading: Whether the button is in a loading state (default: false)
+///   - isDisabled: Whether the button is disabled (default: false)
+///   - action: The action to perform when the button is pressed
+public struct CTButton: View {
+    // Implementation details
+}
+```
+
+### 5.2 Usage Guides
+
+Usage guides provide step-by-step instructions for common use cases.
+
+**Implementation Steps:**
+1. Create getting started guide
+2. Add component usage examples
+3. Create theming guide
+4. Add accessibility implementation guide
+5. Include best practices for performance
+
+**Example Guide (Getting Started):**
+
+```markdown
+# Getting Started with CodeTwelve UI
+
+CodeTwelve UI is a comprehensive SwiftUI component library that provides customizable, accessible UI components for iOS applications.
+
+## Installation
+
+### Swift Package Manager
+
+Add CodeTwelve UI to your project via Swift Package Manager:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/codetwelve/codetwelve-ios-ui.git", from: "1.0.0")
+]
+```
+
+## Basic Usage
+
+Import the library in your SwiftUI files:
+
+```swift
+import CodetwelveUI
+```
+
+Use components with the `CT` prefix:
+
+```swift
+struct ContentView: View {
+    var body: some View {
+        VStack(spacing: CTSpacing.m) {
+            CTText("Welcome to CodeTwelve UI", style: .heading1)
+            
+            CTButton("Get Started") {
+                print("Button tapped")
+            }
+        }
+        .padding()
+    }
+}
+```
+
+## Theming
+
+CodeTwelve UI comes with built-in themes that can be applied to your entire application:
+
+```swift
+@main
+struct MyApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .ctTheme(CTDarkTheme())
+        }
+    }
+}
+```
+
+You can also create custom themes by implementing the `CTTheme` protocol.
+```
+
+## 6. Release Plan
+
+### 6.1 Versioning Strategy
+
+**Implementation Steps:**
+1. Use semantic versioning (MAJOR.MINOR.PATCH)
+2. Start with version 1.0.0 for initial release
+3. Increment PATCH for bug fixes
+4. Increment MINOR for new features
+5. Increment MAJOR for breaking changes
+
+### 6.2 Release Checklist
+
+**Steps for Each Release:**
+1. Run all tests to ensure passing
+2. Generate documentation
+3. Update changelog
+4. Tag release in git
+5. Create release notes
+6. Publish to repository
+
+## 7. Performance Considerations
+
+### 7.1 Optimization Strategies
+
+**Implementation Steps:**
+1. Use lazy loading for complex components
+2. Implement view recycling for lists
+3. Minimize view hierarchy depth
+4. Use opacity and scale for visibility instead of conditional rendering where appropriate
+5. Cache computed values when possible
+
+### 7.2 Performance Testing
+
+**Implementation Steps:**
+1. Measure render times for complex components
+2. Test scrolling performance with large data sets
+3. Profile memory usage with Instruments
+4. Test on older devices to ensure compatibility
+
+## 8. Future Enhancements
+
+### 8.1 Planned Enhancements
+
+**Future Features:**
+1. Component creator tool
+2. Animation editor
+3. Extended theming capabilities
+4. Additional chart components
+5. Localization enhancements
+
+### 8.2 Compatibility Planning
+
+**Compatibility Considerations:**
+1. Maintain backward compatibility with iOS 16+
+2. Plan for future iOS version support
+3. Consider visionOS compatibility
+4. Explore macOS Catalyst support
+
+</technical_specification>
+
+<implementation_plan>
+# Implementation Plan for CodeTwelve-iOS-UIKit
+
+## Project Setup and Foundation
+- [✅] Step 1: Create Swift Package Structure
+  - **Task**: Initialize the Swift Package Manager structure for the project with appropriate targets for the main library and tests.
+  - **Files**:
+    - `Package.swift`: Create the Swift Package with appropriate targets and dependencies
+    - `README.md`: Create initial documentation
+    - `.gitignore`: Standard Swift Package gitignore
+  - **Step Dependencies**: None
+  - **User Instructions**: None
+
+- [✅] Step 2: Set up Project Directory Structure
+  - **Task**: Create the directory structure for the project according to the technical specification.
+  - **Files**:
+    - `Sources/CodetwelveUI/`: Create main directory for the library
+    - `Sources/CodetwelveUI/Components/`: Subdirectories for component categories
+    - `Sources/CodetwelveUI/Tokens/`: Directory for design tokens
+    - `Sources/CodetwelveUI/Themes/`: Directory for theme system
+    - `Sources/CodetwelveUI/Extensions/`: Directory for Swift extensions
+    - `Sources/CodetwelveUI/Utilities/`: Directory for utility functions
+    - `Sources/CodetwelveUI/Hooks/`: Directory for SwiftUI property wrappers
+    - `Sources/CodetwelveUI/Resources/`: Directory for assets
+    - `Tests/CodetwelveUITests/`: Directory for tests
+  - **Step Dependencies**: Step 1
+  - **User Instructions**: None
+
+- [✅] Step 3: Implement Color System
+  - **Task**: Create the color system with semantic naming, supporting both light and dark mode variants.
+  - **Files**:
+    - `Sources/CodetwelveUI/Tokens/CTColors.swift`: Define color tokens
+    - `Sources/CodetwelveUI/Extensions/Color+Hex.swift`: Extension for initializing colors from hex values
+    - `Sources/CodetwelveUI/Resources/Colors.xcassets`: Color assets catalog
+  - **Step Dependencies**: Step 2
+  - **User Instructions**: None
+
+- [✅] Step 4: Implement Typography System
+  - **Task**: Create the typography system with consistent fonts and sizes, supporting Dynamic Type.
+  - **Files**:
+    - `Sources/CodetwelveUI/Tokens/CTTypography.swift`: Define typography tokens
+    - `Sources/CodetwelveUI/Extensions/View+Typography.swift`: View extensions for typography
+  - **Step Dependencies**: Step 2
+  - **User Instructions**: None
+
+- [✅] Step 5: Implement Spacing System
+  - **Task**: Create the spacing system with consistent spacing scale and semantic names.
+  - **Files**:
+    - `Sources/CodetwelveUI/Tokens/CTSpacing.swift`: Define spacing tokens
+  - **Step Dependencies**: Step 2
+  - **User Instructions**: None
+
+- [✅] Step 6: Implement Animation System
+  - **Task**: Create the animation system with durations, curves, and semantic presets.
+  - **Files**:
+    - `Sources/CodetwelveUI/Tokens/CTAnimations.swift`: Define animation presets
+    - `Sources/CodetwelveUI/Utilities/CTAnimationManager.swift`: Manager for animation control
+    - `Sources/CodetwelveUI/Extensions/View+Animation.swift`: View extensions for animations
+  - **Step Dependencies**: Step 2
+  - **User Instructions**: None
+
+- [✅] Step 7: Implement Utility Extensions
+  - **Task**: Create utility extensions for views, colors, and other common functionality.
+  - **Files**:
+    - `Sources/CodetwelveUI/Extensions/View+Shadow.swift`: Extensions for shadow effects
+    - `Sources/CodetwelveUI/Extensions/View+Conditional.swift`: Extensions for conditional modifiers
+    - `Sources/CodetwelveUI/Utilities/CTDeviceUtilities.swift`: Utilities for device information
+    - `Sources/CodetwelveUI/Utilities/CTLayoutUtilities.swift`: Utilities for layout calculations
+  - **Step Dependencies**: Step 2
+  - **User Instructions**: None
+
+- [✅] Step 8: Implement Accessibility Utilities
+  - **Task**: Create accessibility utilities for common tasks and view extensions.
+  - **Files**:
+    - `Sources/CodetwelveUI/Extensions/View+Accessibility.swift`: Extensions for accessibility
+    - `Sources/CodetwelveUI/Utilities/CTAccessibilityUtilities.swift`: Accessibility helpers
+  - **Step Dependencies**: Step 2
+  - **User Instructions**: None
+
+## Theming System
+- [✅] Step 9: Implement Theme Protocol and Manager
+  - **Task**: Create the theme protocol, theme manager, and environment integration.
+  - **Files**:
+    - `Sources/CodetwelveUI/Themes/CTTheme.swift`: Define theme protocol
+    - `Sources/CodetwelveUI/Themes/CTThemeManager.swift`: Manager for theme switching
+    - `Sources/CodetwelveUI/Extensions/View+Theme.swift`: Extensions for applying themes
+  - **Step Dependencies**: Step 3, Step 4, Step 5
+  - **User Instructions**: None
+
+- [✅] Step 10: Implement Default Themes
+  - **Task**: Create the default, dark, and light themes implementing the CTTheme protocol.
+  - **Files**:
+    - `Sources/CodetwelveUI/Themes/Themes/CTDefaultTheme.swift`: Default theme implementation
+    - `Sources/CodetwelveUI/Themes/Themes/CTDarkTheme.swift`: Dark theme implementation
+    - `Sources/CodetwelveUI/Themes/Themes/CTLightTheme.swift`: Light theme implementation
+  - **Step Dependencies**: Step 9
+  - **User Instructions**: None
+
+- [✅] Step 11: Implement Theme Builder
+  - **Task**: Create a theme builder for custom theme creation.
+  - **Files**:
+    - `Sources/CodetwelveUI/Themes/CTThemeBuilder.swift`: Theme builder implementation
+  - **Step Dependencies**: Step 9
+  - **User Instructions**: None
+
+## Basic Components
+- [✅] Step 12: Implement Button Component
+  - **Task**: Create the button component with various styles, sizes, and states.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Basic/CTButton.swift`: Button component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTButtonTests.swift`: Tests for button component
+    - `Tests/CodetwelveUITests/AccessibilityTests/CTButtonAccessibilityTests.swift`: Accessibility tests
+  - **Step Dependencies**: Step 9, Step 10, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 13: Implement Text Component
+  - **Task**: Create the text component with styling based on the typography system.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Basic/CTText.swift`: Text component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTTextTests.swift`: Tests for text component
+  - **Step Dependencies**: Step 4, Step 9
+  - **User Instructions**: None
+
+- [✅] Step 14: Implement Icon Component
+  - **Task**: Create the icon component using SF Symbols with customization options.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Basic/CTIcon.swift`: Icon component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTIconTests.swift`: Tests for icon component
+  - **Step Dependencies**: Step 9
+  - **User Instructions**: None
+
+- [✅] Step 15: Implement Divider Component
+  - **Task**: Create the divider component with customization options.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Basic/CTDivider.swift`: Divider component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTDividerTests.swift`: Tests for divider component
+  - **Step Dependencies**: Step 9, Step 5
+  - **User Instructions**: None
+
+## Layout Components
+- [✅] Step 16: Implement Stack Component
+  - **Task**: Create enhanced VStack/HStack with spacing options.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Layout/CTStack.swift`: Stack component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTStackTests.swift`: Tests for stack component
+  - **Step Dependencies**: Step 5, Step 9
+  - **User Instructions**: None
+
+- [✅] Step 17: Implement Container Component
+  - **Task**: Create container with padding and background customization.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Layout/CTContainer.swift`: Container component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTContainerTests.swift`: Tests for container component
+  - **Step Dependencies**: Step 5, Step 9
+  - **User Instructions**: None
+
+- [✅] Step 18: Implement Card Component
+  - **Task**: Create card component with header, footer, and content areas.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Layout/CTCard.swift`: Card component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTCardTests.swift`: Tests for card component
+  - **Step Dependencies**: Step 17, Step 5, Step 9
+  - **User Instructions**: None
+
+- [✅] Step 19: Implement Grid Component
+  - **Task**: Create grid layout component with customization options.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Layout/CTGrid.swift`: Grid component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTGridTests.swift`: Tests for grid component
+  - **Step Dependencies**: Step 5, Step 9
+  - **User Instructions**: None
+
+- [✅] Step 20: Implement Accordion Component
+  - **Task**: Create accordion component for expandable/collapsible content.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Layout/CTAccordion.swift`: Accordion component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTAccordionTests.swift`: Tests for accordion component
+  - **Step Dependencies**: Step 16, Step 17, Step 12, Step 13, Step 6
+  - **User Instructions**: None
+
+- [✅] Step 21: Implement Aspect Ratio Component
+  - **Task**: Create aspect ratio component to maintain width/height proportions.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Layout/CTAspectRatio.swift`: Aspect ratio component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTAspectRatioTests.swift`: Tests for aspect ratio component
+  - **Step Dependencies**: Step 9
+  - **User Instructions**: None
+
+- [✅] Step 22: Implement Scroll Area Component
+  - **Task**: Create enhanced scroll area with customizable scrollbars and insets.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Layout/CTScrollArea.swift`: Scroll area component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTScrollAreaTests.swift`: Tests for scroll area component
+  - **Step Dependencies**: Step 9, Step 5
+  - **User Instructions**: None
+
+## Form Components
+- [✅] Step 23: Implement TextField Component
+  - **Task**: Create text input field with validation and state handling.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTTextField.swift`: Text field component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTTextFieldTests.swift`: Tests for text field component
+    - `Tests/CodetwelveUITests/AccessibilityTests/CTTextFieldAccessibilityTests.swift`: Accessibility tests
+  - **Step Dependencies**: Step 12, Step 13, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 24: Implement SecureField Component
+  - **Task**: Create secure input field for password entry.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTSecureField.swift`: Secure field component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTSecureFieldTests.swift`: Tests for secure field component
+  - **Step Dependencies**: Step 23
+  - **User Instructions**: None
+
+- [✅] Step 25: Implement TextArea Component
+  - **Task**: Create multi-line text input with validation and state handling.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTTextArea.swift`: Text area component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTTextAreaTests.swift`: Tests for text area component
+  - **Step Dependencies**: Step 23
+  - **User Instructions**: None
+
+- [✅] Step 26: Implement Checkbox Component
+  - **Task**: Create checkbox component with customizable appearance and states.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTCheckbox.swift`: Checkbox component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTCheckboxTests.swift`: Tests for checkbox component
+    - `Tests/CodetwelveUITests/AccessibilityTests/CTCheckboxAccessibilityTests.swift`: Accessibility tests
+  - **Step Dependencies**: Step 12, Step 14, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 27: Implement Radio Group Component
+  - **Task**: Create radio button group for single selection from multiple options.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTRadioGroup.swift`: Radio group component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTRadioGroupTests.swift`: Tests for radio group component
+  - **Step Dependencies**: Step 12, Step 14, Step 13, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 28: Implement Toggle Component
+  - **Task**: Create toggle switch component with customizable appearance.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTToggle.swift`: Toggle component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTToggleTests.swift`: Tests for toggle component
+    - `Tests/CodetwelveUITests/AccessibilityTests/CTToggleAccessibilityTests.swift`: Accessibility tests
+  - **Step Dependencies**: Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 29: Implement Select Component
+  - **Task**: Create dropdown selection component.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTSelect.swift`: Select component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTSelectTests.swift`: Tests for select component
+  - **Step Dependencies**: Step 12, Step 13, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 30: Implement Slider Component
+  - **Task**: Create slider component with customizable appearance and behavior.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTSlider.swift`: Slider component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTSliderTests.swift`: Tests for slider component
+    - `Tests/CodetwelveUITests/AccessibilityTests/CTSliderAccessibilityTests.swift`: Accessibility tests
+  - **Step Dependencies**: Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 31: Implement Date Picker Component
+  - **Task**: Create date picker component with customizable appearance.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Forms/CTDatePicker.swift`: Date picker component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTDatePickerTests.swift`: Tests for date picker component
+  - **Step Dependencies**: Step 12, Step 13, Step 9, Step 8
+  - **User Instructions**: None
+
+## Feedback Components
+- [✅] Step 32: Implement Toast Component
+  - **Task**: Create toast notification system with various severities and auto-dismissal.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Feedback/CTToast.swift`: Toast component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTToastTests.swift`: Tests for toast component
+  - **Step Dependencies**: Step 12, Step 13, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 33: Implement Alert Component
+  - **Task**: Create alert component for displaying important messages.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Feedback/CTAlert.swift`: Alert component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTAlertTests.swift`: Tests for alert component
+  - **Step Dependencies**: Step 12, Step 13, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 34: Implement Alert Dialog Component
+  - **Task**: Create dialog component for displaying modal alerts with actions.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Feedback/CTAlertDialog.swift`: Alert dialog component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTAlertDialogTests.swift`: Tests for alert dialog component
+  - **Step Dependencies**: Step 33, Step 12, Step 9, Step 6
+  - **User Instructions**: None
+
+- [✅] Step 35: Implement Progress Component
+  - **Task**: Create progress indicators (linear and circular) with customization options.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Feedback/CTProgress.swift`: Progress component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTProgressTests.swift`: Tests for progress component
+  - **Step Dependencies**: Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 36: Implement Skeleton Loader Component
+  - **Task**: Create skeleton loading placeholders for content loading states.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Feedback/CTSkeletonLoader.swift`: Skeleton loader implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTSkeletonLoaderTests.swift`: Tests for skeleton loader
+  - **Step Dependencies**: Step 9, Step 6
+  - **User Instructions**: None
+
+- [✅] Step 37: Implement Badge Component
+  - **Task**: Create badge component for notifications and labels.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Feedback/CTBadge.swift`: Badge component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTBadgeTests.swift`: Tests for badge component
+  - **Step Dependencies**: Step 9, Step 13
+  - **User Instructions**: None
+
+## Navigation Components
+- [✅] Step 38: Implement Tab Bar Component
+  - **Task**: Create custom tab bar with customizable appearance and behavior.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Navigation/CTTabBar.swift`: Tab bar component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTTabBarTests.swift`: Tests for tab bar component
+  - **Step Dependencies**: Step 12, Step 14, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 39: Implement Navigation Menu Component
+  - **Task**: Create navigation menu with customizable items and appearance.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Navigation/CTNavigationMenu.swift`: Navigation menu implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTNavigationMenuTests.swift`: Tests for navigation menu
+  - **Step Dependencies**: Step 12, Step 14, Step 13, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 40: Implement Bottom Sheet Component
+  - **Task**: Create bottom sheet component for presenting content from the bottom of the screen.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Navigation/CTBottomSheet.swift`: Bottom sheet implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTBottomSheetTests.swift`: Tests for bottom sheet
+  - **Step Dependencies**: Step 17, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 41: Implement Drawer Component
+  - **Task**: Create drawer component that slides in from the side of the screen.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Navigation/CTDrawer.swift`: Drawer component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTDrawerTests.swift`: Tests for drawer component
+  - **Step Dependencies**: Step 17, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 42: Implement Hamburger Menu Component
+  - **Task**: Create hamburger menu component for navigation in mobile interfaces.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Navigation/CTHamburgerMenu.swift`: Hamburger menu implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTHamburgerMenuTests.swift`: Tests for hamburger menu
+  - **Step Dependencies**: Step 41, Step 39, Step 9, Step 6
+  - **User Instructions**: None
+
+- [✅] Step 43: Implement Pagination Component
+  - **Task**: Create pagination component for navigating through pages of content.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Navigation/CTPagination.swift`: Pagination component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTPaginationTests.swift`: Tests for pagination component
+  - **Step Dependencies**: Step 12, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 44: Implement Popover Component
+  - **Task**: Create popover component for displaying content in a floating container.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Navigation/CTPopover.swift`: Popover component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTPopoverTests.swift`: Tests for popover component
+  - **Step Dependencies**: Step 17, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 45: Implement Command Palette Component
+  - **Task**: Create command palette component for keyboard-driven navigation.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Navigation/CTCommandPalette.swift`: Command palette implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTCommandPaletteTests.swift`: Tests for command palette
+  - **Step Dependencies**: Step 12, Step 13, Step 23, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+## Data Components
+- [✅] Step 46: Implement Avatar Component
+  - **Task**: Create avatar component with fallback for missing images.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Data/CTAvatar.swift`: Avatar component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTAvatarTests.swift`: Tests for avatar component
+  - **Step Dependencies**: Step 14, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 47: Implement Tag Component
+  - **Task**: Create tag component for metadata and categories.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Data/CTTag.swift`: Tag component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTTagTests.swift`: Tests for tag component
+  - **Step Dependencies**: Step 12, Step 13, Step 9
+  - **User Instructions**: None
+
+- [✅] Step 48: Implement List Component
+  - **Task**: Create enhanced list component with customization options.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Data/CTList.swift`: List component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTListTests.swift`: Tests for list component
+  - **Step Dependencies**: Step 17, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 49: Implement Table Component
+  - **Task**: Create table component for displaying structured data.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Data/CTTable.swift`: Table component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTTableTests.swift`: Tests for table component
+  - **Step Dependencies**: Step 13, Step 17, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 50: Implement Data Table Component
+  - **Task**: Create data table component with sorting, filtering, and pagination.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Data/CTDataTable.swift`: Data table component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTDataTableTests.swift`: Tests for data table component
+  - **Step Dependencies**: Step 49, Step 43, Step 12, Step 23, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 51: Implement Context Menu Component
+  - **Task**: Create context menu component for displaying options on long press.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Data/CTContextMenu.swift`: Context menu implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTContextMenuTests.swift`: Tests for context menu
+  - **Step Dependencies**: Step 12, Step 13, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 52: Implement Dropdown Menu Component
+  - **Task**: Create dropdown menu component for displaying options.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Data/CTDropdownMenu.swift`: Dropdown menu implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTDropdownMenuTests.swift`: Tests for dropdown menu
+  - **Step Dependencies**: Step 12, Step 13, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 53: Implement Hover Card Component
+  - **Task**: Create hover card component for displaying additional information on hover.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Data/CTHoverCard.swift`: Hover card component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTHoverCardTests.swift`: Tests for hover card component
+  - **Step Dependencies**: Step 18, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+## Media Components
+- [✅] Step 54: Implement Image Component
+  - **Task**: Create image component with loading states and fallback.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Media/CTImage.swift`: Image component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTImageTests.swift`: Tests for image component
+  - **Step Dependencies**: Step 36, Step 9, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 55: Implement Carousel Component
+  - **Task**: Create carousel component for displaying images or content in a slideshow.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Media/CTCarousel.swift`: Carousel component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTCarouselTests.swift`: Tests for carousel component
+  - **Step Dependencies**: Step 54, Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+- [✅] Step 56: Implement Video Component
+  - **Task**: Create video player component with playback controls.
+  - **Files**:
+    - `Sources/CodetwelveUI/Components/Media/CTVideo.swift`: Video component implementation
+    - `Tests/CodetwelveUITests/ComponentTests/CTVideoTests.swift`: Tests for video component
+  - **Step Dependencies**: Step 9, Step 6, Step 8
+  - **User Instructions**: None
+
+## Integration Testing
+- [✅] Step 57: Implement Form Integration Tests
+  - **Task**: Create integration tests for form components working together.
+  - **Files**:
+    - `Tests/CodetwelveUITests/IntegrationTests/CTFormIntegrationTests.swift`: Form integration tests
+  - **Step Dependencies**: Step 23, Step 24, Step 25, Step 26, Step 27, Step 28, Step 29, Step 30, Step 31
+  - **User Instructions**: None
+
+- [✅] Step 58: Implement Navigation Integration Tests
+  - **Task**: Create integration tests for navigation components working together.
+  - **Files**:
+    - `Tests/CodetwelveUITests/IntegrationTests/CTNavigationIntegrationTests.swift`: Navigation integration tests
+  - **Step Dependencies**: Step 38, Step 39, Step 40, Step 41, Step 42, Step 43, Step 44, Step 45
+  - **User Instructions**: None
+
+## Example Application
+- [ ] Step 59: Implement Example Application Structure
+  - **Task**: Create the basic structure for the example application.
+  - **Files**:
+    - `Examples/CodeTwelveExamples/CodeTwelveExamplesApp.swift`: Example app entry point
+    - `Examples/CodeTwelveExamples/ComponentCatalog.swift`: Main navigation view
+    - `Examples/CodeTwelveExamples/ThemeExplorer.swift`: Theme explorer view
+  - **Step Dependencies**: Step 9, Step 10, Step 11
+  - **User Instructions**: None
+
+- [ ] Step 60: Implement Basic Component Examples
+  - **Task**: Create example views for basic components.
+  - **Files**:
+    - `Examples/CodeTwelveExamples/Examples/ButtonExamples.swift`: Button examples
+    - `Examples/CodeTwelveExamples/Examples/TextExamples.swift`: Text examples
+    - `Examples/CodeTwelveExamples/Examples/IconExamples.swift`: Icon examples
+    - `Examples/CodeTwelveExamples/Examples/DividerExamples.swift`: Divider examples
+  - **Step Dependencies**: Step 59, Step 12, Step 13, Step 14, Step 15
+  - **User Instructions**: None
+
+- [ ] Step 61: Implement Layout Component Examples
+  - **Task**: Create example views for layout components.
+  - **Files**:
+    - `Examples/CodeTwelveExamples/Examples/StackExamples.swift`: Stack examples
+    - `Examples/CodeTwelveExamples/Examples/ContainerExamples.swift`: Container examples
+    - `Examples/CodeTwelveExamples/Examples/CardExamples.swift`: Card examples
+    - `Examples/CodeTwelveExamples/Examples/GridExamples.swift`: Grid examples
+    - `Examples/CodeTwelveExamples/Examples/AccordionExamples.swift`: Accordion examples
+  - **Step Dependencies**: Step 59, Step 16, Step 17, Step 18, Step 19, Step 20
+  - **User Instructions**: None
+
+- [ ] Step 62: Implement Form Component Examples
+  - **Task**: Create example views for form components.
+  - **Files**:
+    - `Examples/CodeTwelveExamples/Examples/TextFieldExamples.swift`: Text field examples
+    - `Examples/CodeTwelveExamples/Examples/CheckboxExamples.swift`: Checkbox examples
+    - `Examples/CodeTwelveExamples/Examples/RadioGroupExamples.swift`: Radio group examples
+    - `Examples/CodeTwelveExamples/Examples/ToggleExamples.swift`: Toggle examples
+    - `Examples/CodeTwelveExamples/Examples/SelectExamples.swift`: Select examples
+  - **Step Dependencies**: Step 59, Step 23, Step 24, Step 25, Step 26, Step 27, Step 28, Step 29, Step 30, Step 31
+  - **User Instructions**: None
+
+- [ ] Step 63: Implement Feedback Component Examples
+  - **Task**: Create example views for feedback components.
+  - **Files**:
+    - `Examples/CodeTwelveExamples/Examples/ToastExamples.swift`: Toast examples
+    - `Examples/CodeTwelveExamples/Examples/AlertExamples.swift`: Alert examples
+    - `Examples/CodeTwelveExamples/Examples/ProgressExamples.swift`: Progress examples
+    - `Examples/CodeTwelveExamples/Examples/SkeletonLoaderExamples.swift`: Skeleton loader examples
+    - `Examples/CodeTwelveExamples/Examples/BadgeExamples.swift`: Badge examples
+  - **Step Dependencies**: Step 59, Step 32, Step 33, Step 34, Step 35, Step 36, Step 37
+  - **User Instructions**: None
+
+- [ ] Step 64: Implement Navigation Component Examples
+  - **Task**: Create example views for navigation components.
+  - **Files**:
+    - `Examples/CodeTwelveExamples/Examples/TabBarExamples.swift`: Tab bar examples
+    - `Examples/CodeTwelveExamples/Examples/NavigationMenuExamples.swift`: Navigation menu examples
+    - `Examples/CodeTwelveExamples/Examples/DrawerExamples.swift`: Drawer examples
+    - `Examples/CodeTwelveExamples/Examples/PaginationExamples.swift`: Pagination examples
+    - `Examples/CodeTwelveExamples/Examples/CommandPaletteExamples.swift`: Command palette examples
+  - **Step Dependencies**: Step 59, Step 38, Step 39, Step 40, Step 41, Step 42, Step 43, Step 44, Step 45
+  - **User Instructions**: None
+
+- [ ] Step 65: Implement Data Component Examples
+  - **Task**: Create example views for data components.
+  - **Files**:
+    - `Examples/CodeTwelveExamples/Examples/AvatarExamples.swift`: Avatar examples
+    - `Examples/CodeTwelveExamples/Examples/TagExamples.swift`: Tag examples
+    - `Examples/CodeTwelveExamples/Examples/ListExamples.swift`: List examples
+    - `Examples/CodeTwelveExamples/Examples/TableExamples.swift`: Table examples
+    - `Examples/CodeTwelveExamples/Examples/DataTableExamples.swift`: Data table examples
+  - **Step Dependencies**: Step 59, Step 46, Step 47, Step 48, Step 49, Step 50, Step 51, Step 52, Step 53
+  - **User Instructions**: None
+
+## Documentation
+- [ ] Step 66: Create Getting Started Guide
+  - **Task**: Create a comprehensive getting started guide.
+  - **Files**:
+    - `Documentation/GettingStarted.md`: Getting started documentation
+  - **Step Dependencies**: Step 12, Step 13, Step 9, Step 10
+  - **User Instructions**: None
+
+- [ ] Step 67: Create Theming Guide
+  - **Task**: Create a guide for using and customizing themes.
+  - **Files**:
+    - `Documentation/ThemedComponents.md`: Theming documentation
+  - **Step Dependencies**: Step 9, Step 10, Step 11
+  - **User Instructions**: None
+
+- [ ] Step 68: Create Accessibility Guide
+  - **Task**: Create a guide for implementing accessibility features.
+  - **Files**:
+    - `Documentation/AccessibilityGuide.md`: Accessibility documentation
+  - **Step Dependencies**: Step 8
+  - **User Instructions**: None
+
+- [ ] Step 69: Create Component Guidelines
+  - **Task**: Create guidelines for component usage and best practices.
+  - **Files**:
+    - `Documentation/ComponentGuidelines.md`: Component guidelines documentation
+  - **Step Dependencies**: Step 12, Step 13, Step 14, Step 15, Step 16, Step 17, Step 18
+  - **User Instructions**: None
+
+- [ ] Step 70: Create API Reference
+  - **Task**: Create detailed API reference documentation.
+  - **Files**:
+    - `Documentation/API/Components.md`: Components API documentation
+    - `Documentation/API/Theming.md`: Theming API documentation
+    - `Documentation/API/Utilities.md`: Utilities API documentation
+  - **Step Dependencies**: All component steps
+  - **User Instructions**: None
+
+## Final Steps
+- [ ] Step 71: Update README with Comprehensive Information
+  - **Task**: Update the README with comprehensive information about the library.
+  - **Files**:
+    - `README.md`: Update with comprehensive information
+  - **Step Dependencies**: Step 66, Step 67, Step 68, Step 69, Step 70
+  - **User Instructions**: None
+
+- [ ] Step 72: Create CHANGELOG
+  - **Task**: Create a changelog for the initial release.
+  - **Files**:
+    - `CHANGELOG.md`: Initial changelog
+  - **Step Dependencies**: None
+  - **User Instructions**: None
+
+- [ ] Step 73: Create CONTRIBUTING Guide
+  - **Task**: Create a guide for contributing to the project.
+  - **Files**:
+    - `CONTRIBUTING.md`: Contributing guidelines
+  - **Step Dependencies**: None
+  - **User Instructions**: None
+
+- [ ] Step 74: Create LICENSE
+  - **Task**: Add appropriate license to the project.
+  - **Files**:
+    - `LICENSE`: License file
+  - **Step Dependencies**: None
+  - **User Instructions**: None
+
+## Summary
+
+This implementation plan outlines a structured approach to building the CodeTwelve-iOS-UIKit library. The plan starts with setting up the project structure and implementing the foundation elements like design tokens, theme system, and utilities. It then progresses to implementing components in a logical order, starting with basic components and moving on to more complex ones.
+
+Key considerations in this plan include:
+
+1. **Foundation First**: The plan establishes the design tokens, theme system, and utilities before implementing components. This ensures a consistent foundation for all components.
+
+2. **Progressive Complexity**: Components are implemented in order of complexity, starting with basic components like buttons and text, and progressing to more complex components like data tables and carousels.
+
+3. **Consistent Architecture**: Each component follows a consistent architecture with customizable parameters, style options, size options, and accessibility features.
+
+4. **Testing**: Each component includes unit tests, accessibility tests, and integration tests where appropriate.
+
+5. **Documentation**: The plan includes comprehensive documentation with API references, usage guides, and examples.
+
+6. **Example Application**: An example application is included to showcase all components and demonstrate their usage.
+
+The plan can be executed sequentially, with each step building upon the previous ones. The dependencies between steps are clearly outlined to ensure a smooth implementation process.
+
+</implementation_plan>
+
+<existing_code>
+{{YOUR_CODE}}
+</existing_code>
+
+Your task is to:
+1. Identify the next incomplete step from the implementation plan (marked with `- [ ]`)
+2. Generate the necessary code for all files specified in that step
+3. Return the generated code
+
+The implementation plan is just a suggestion meant to provide a high-level overview of the objective. Use it to guide you, but you do not have to adhere to it strictly. Make sure to follow the given rules as you work along the lines of the plan.
+
+For EVERY file you modify or create, you MUST provide the COMPLETE file contents in the format above.
+
+Each file should be wrapped in a code block with its file path above it and a "Here's what I did and why":
+
+Here's what I did and why: [text here...]
+Filepath: src/components/Example.tsx
+```
+/**
+ * @description 
+ * This component handles [specific functionality].
+ * It is responsible for [specific responsibilities].
+ * 
+ * Key features:
+ * - Feature 1: Description
+ * - Feature 2: Description
+ * 
+ * @dependencies
+ * - DependencyA: Used for X
+ * - DependencyB: Used for Y
+ * 
+ * @notes
+ * - Important implementation detail 1
+ * - Important implementation detail 2
+ */
+
+BEGIN WRITING FILE CODE
+// Complete implementation with extensive inline comments & documentation...
+```
+
+Documentation requirements:
+- File-level documentation explaining the purpose and scope
+- Component/function-level documentation detailing inputs, outputs, and behavior
+- Inline comments explaining complex logic or business rules
+- Type documentation for all interfaces and types
+- Notes about edge cases and error handling
+- Any assumptions or limitations
+
+Guidelines:
+- Implement exactly one step at a time
+- Ensure all code follows the project rules and technical specification
+- Include ALL necessary imports and dependencies
+- Write clean, well-documented code with appropriate error handling
+- Always provide COMPLETE file contents - never use ellipsis (...) or placeholder comments
+- Never skip any sections of any file - provide the entire file every time
+- Handle edge cases and add input validation where appropriate
+- Follow TypeScript best practices and ensure type safety
+- Include necessary tests as specified in the testing strategy
+
+Begin by identifying the next incomplete step from the plan, then generate the required code (with complete file contents and documentation).
+
+Above each file, include a "Here's what I did and why" explanation of what you did for that file.
+
+Then end with "STEP X COMPLETE. Here's what I did and why:" followed by an explanation of what you did and then a "USER INSTRUCTIONS: Please do the following:" followed by manual instructions for the user for things you can't do like installing libraries, updating configurations on services, etc.
+
+You also have permission to update the implementation plan if needed. If you update the implementation plan, include each modified step in full and return them as markdown code blocks at the end of the user instructions. No need to mark the current step as complete - that is implied.
