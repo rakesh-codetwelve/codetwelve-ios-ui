@@ -15,6 +15,14 @@ targets:
     deploymentTarget: "16.0"
     sources:
       - path: Sources/CodetwelveUI
+        excludes:
+          - "**/.gitkeep"
+          - "**/.DS_Store"
+    resources:
+      - path: Sources/CodetwelveUI/Resources
+        excludes:
+          - "**/.gitkeep"
+          - "**/.DS_Store"
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.codetwelve.CodetwelveUI
@@ -23,6 +31,9 @@ targets:
         GENERATE_INFOPLIST_FILE: YES
         SWIFT_OPTIMIZATION_LEVEL: "-Onone"
         SWIFT_TREAT_WARNINGS_AS_ERRORS: YES
+    postBuildScripts:
+      - name: "Remove .gitkeep files"
+        script: "find \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/CodetwelveUI.framework\" -name '.gitkeep' -delete || true"
     scheme:
       testTargets:
         - CodetwelveUITests

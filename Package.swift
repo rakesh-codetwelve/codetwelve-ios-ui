@@ -19,7 +19,13 @@ let package = Package(
             name: "CodetwelveUI",
             dependencies: [],
             path: "Sources/CodetwelveUI",
-            resources: [.process("Resources")]),
+            exclude: [
+                "**/.gitkeep",
+                "**/.DS_Store"
+            ],
+            resources: [
+                .process("Resources", excluding: ["**/.gitkeep", "**/.DS_Store"])
+            ]),
         .testTarget(
             name: "CodetwelveUITests",
             dependencies: ["CodetwelveUI"],
