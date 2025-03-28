@@ -382,83 +382,83 @@ struct CheckboxExamples: View {
                 .padding(.top, CTSpacing.s)
             }
             .padding()
-                        .background(Color.ctSurface)
-                        .cornerRadius(12)
-                        
-                        codeExample("""
-                        @State private var privacyPolicyAccepted = false
-                        @State private var termsAccepted = false
-                        @State private var marketingEmailsAccepted = false
-                        
-                        // Privacy settings form
-                        VStack(alignment: .leading, spacing: CTSpacing.m) {
-                            Text("Privacy Settings")
-                                .font(.headline)
-                            
-                            CTCheckbox(
-                                "I have read and accept the Privacy Policy",
-                                isChecked: $privacyPolicyAccepted
-                            )
-                            
-                            CTCheckbox(
-                                "I have read and accept the Terms of Service",
-                                isChecked: $termsAccepted
-                            )
-                            
-                            CTCheckbox(
-                                "I would like to receive marketing emails",
-                                isChecked: $marketingEmailsAccepted
-                            )
-                            
-                            CTButton(
-                                "Submit",
-                                style: .primary,
-                                isDisabled: !privacyPolicyAccepted || !termsAccepted
-                            ) {
-                                // Handle submission
-                            }
-                        }
-                        """)
-                    }
-                }
-                
-                // MARK: - Helper Methods
-                
-                /// Displays a code example with proper formatting
-                private func codeExample(_ code: String) -> some View {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("Example Code")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                showCode.toggle()
-                            }) {
-                                Text(showCode ? "Hide Code" : "Show Code")
-                                    .font(.caption)
-                                    .foregroundColor(.blue)
-                            }
-                        }
-                        
-                        if showCode {
-                            Text(code)
-                                .font(.system(.caption, design: .monospaced))
-                                .padding()
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color(.systemGray6))
-                                .cornerRadius(8)
-                        }
-                    }
-                }
-            }
+                  .background(Color.ctSurface)
+                  .cornerRadius(12)
+                  
+                  codeExample("""
+                  @State private var privacyPolicyAccepted = false
+                  @State private var termsAccepted = false
+                  @State private var marketingEmailsAccepted = false
+                  
+                  // Privacy settings form
+                  VStack(alignment: .leading, spacing: CTSpacing.m) {
+                      Text("Privacy Settings")
+                          .font(.headline)
+                      
+                      CTCheckbox(
+                          "I have read and accept the Privacy Policy",
+                          isChecked: $privacyPolicyAccepted
+                      )
+                      
+                      CTCheckbox(
+                          "I have read and accept the Terms of Service",
+                          isChecked: $termsAccepted
+                      )
+                      
+                      CTCheckbox(
+                          "I would like to receive marketing emails",
+                          isChecked: $marketingEmailsAccepted
+                      )
+                      
+                      CTButton(
+                          "Submit",
+                          style: .primary,
+                          isDisabled: !privacyPolicyAccepted || !termsAccepted
+                      ) {
+                          // Handle submission
+                      }
+                  }
+                  """)
+              }
+          }
+          
+          // MARK: - Helper Methods
+          
+          /// Displays a code example with proper formatting
+          private func codeExample(_ code: String) -> some View {
+              VStack(alignment: .leading) {
+                  HStack {
+                      Text("Example Code")
+                          .font(.subheadline)
+                          .foregroundColor(.secondary)
+                      
+                      Spacer()
+                      
+                      Button(action: {
+                          showCode.toggle()
+                      }) {
+                          Text(showCode ? "Hide Code" : "Show Code")
+                              .font(.caption)
+                              .foregroundColor(.blue)
+                      }
+                  }
+                  
+                  if showCode {
+                      Text(code)
+                          .font(.system(.caption, design: .monospaced))
+                          .padding()
+                          .frame(maxWidth: .infinity, alignment: .leading)
+                          .background(Color(.systemGray6))
+                          .cornerRadius(8)
+                  }
+              }
+          }
+      }
 
-            struct CheckboxExamples_Previews: PreviewProvider {
-                static var previews: some View {
-                    NavigationView {
-                        CheckboxExamples()
-                    }
-                }
-            }
+      struct CheckboxExamples_Previews: PreviewProvider {
+          static var previews: some View {
+              NavigationView {
+                  CheckboxExamples()
+              }
+          }
+      }
