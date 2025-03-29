@@ -8,6 +8,36 @@
 import SwiftUI
 import CodetwelveUI
 
+// MARK: - Root View
+
+struct RootView: View {
+    @State private var isDarkMode = false
+    @Environment(\.colorScheme) private var colorScheme
+    @ObservedObject private var themeManager = CTThemeManager.shared
+    
+    var body: some View {
+        ContentView()
+            .onChange(of: colorScheme) { newColorScheme in
+                isDarkMode = newColorScheme == .dark
+                updateTheme()
+            }
+            .onAppear {
+                isDarkMode = colorScheme == .dark
+                updateTheme()
+            }
+    }
+    
+    private func updateTheme() {
+        if isDarkMode {
+            CTThemeManager.shared.setTheme(CTDarkTheme())
+        } else {
+            CTThemeManager.shared.setTheme(CTLightTheme())
+        }
+    }
+}
+
+// MARK: - App
+
 @main
 struct CodeTwelveExamplesApp: App {
     init() {
@@ -24,8 +54,7 @@ struct CodeTwelveExamplesApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .ctTheme(CTThemeManager.shared.currentTheme)
+            RootView()
                 .ctObserveThemeChanges()
         }
     }

@@ -9,6 +9,13 @@ import SwiftUI
 import CodetwelveUI
 
 struct ContentView: View {
+    // MARK: - State Properties
+    
+    @State private var isDarkMode = false
+    @ObservedObject private var themeManager = CTThemeManager.shared
+    
+    // MARK: - Body
+    
     var body: some View {
         NavigationStack {
             VStack(spacing: CTSpacing.l) {
@@ -78,6 +85,21 @@ struct ContentView: View {
             }
             .background(Color.ctBackground.edgesIgnoringSafeArea(.all))
             .navigationBarBackButtonHidden(true)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        isDarkMode.toggle()
+                        if isDarkMode {
+                            CTThemeManager.shared.setTheme(CTDarkTheme())
+                        } else {
+                            CTThemeManager.shared.setTheme(CTLightTheme())
+                        }
+                    }) {
+                        Image(systemName: isDarkMode ? "sun.max.fill" : "moon.fill")
+                            .foregroundColor(Color.ctPrimary)
+                    }
+                }
+            }
         }
     }
 }
@@ -85,6 +107,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .ctTheme(CTDefaultTheme())
     }
 }
