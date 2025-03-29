@@ -78,6 +78,16 @@ struct ComponentCatalog: View {
         ]
     }
     
+    // MARK: - Data Components
+  private var dataComponents: [Component] {
+        [
+            Component(name: "Avatar", destination: AvatarExamples()),
+            Component(name: "Tag", destination: TagExamples()),
+            Component(name: "Table", destination: TableExamples()),
+            Component(name: "Data Table", destination: DataTableExamples())
+        ]
+    }
+    
     // MARK: - Body
     
     var body: some View {
@@ -88,6 +98,7 @@ struct ComponentCatalog: View {
                 sectionView(title: "Form Components", components: formComponents)
                 sectionView(title: "Navigation Components", components: navigationComponents)
                 sectionView(title: "Feedback Components", components: feedbackComponents)
+                sectionView(title: "Data Components", components: dataComponents)
                 
                 Section(header: Text("Theme")) {
                     NavigationLink("Theme Explorer", destination: ThemeExplorer())
