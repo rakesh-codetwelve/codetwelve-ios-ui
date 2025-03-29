@@ -48,9 +48,10 @@ struct PaginationExamples: View {
                 edgeButtonsSection
                 interactiveSection
             }
-            .padding()
+            .padding(CTSpacing.m)
         }
         .navigationTitle("Pagination")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     // MARK: - Basic Usage Section
@@ -61,6 +62,8 @@ struct PaginationExamples: View {
             
             Text("Pagination enables navigation through multiple pages of content.")
                 .ctBody()
+                .foregroundColor(.ctTextSecondary)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, CTSpacing.s)
             
             PaginationContainer {
@@ -71,7 +74,7 @@ struct PaginationExamples: View {
             }
             
             if showBasicCode {
-              CodePreview("""
+                CodePreview("""
                 @State private var currentPage = 1
                 
                 CTPagination(
@@ -79,6 +82,7 @@ struct PaginationExamples: View {
                     totalPages: 10
                 )
                 """)
+                .frame(maxWidth: .infinity)
             }
         }
     }
@@ -550,12 +554,17 @@ struct PaginationContainer<Content: View>: View {
     }
     
     var body: some View {
-        HStack {
+        VStack {
             Spacer()
+                .frame(height: CTSpacing.xl)
+            
             content
+                .frame(maxWidth: .infinity)
+            
             Spacer()
+                .frame(height: CTSpacing.xl)
         }
-        .padding()
+        .frame(maxWidth: .infinity)
         .background(Color.ctBackground)
         .cornerRadius(12)
         .shadow(color: Color.ctShadow.opacity(0.05), radius: 2, x: 0, y: 1)

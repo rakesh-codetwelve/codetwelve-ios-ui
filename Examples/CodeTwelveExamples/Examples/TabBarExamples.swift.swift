@@ -59,9 +59,10 @@ struct TabBarExamples: View {
                 backgroundStylesSection
                 interactiveSection
             }
-            .padding()
+            .padding(CTSpacing.m)
         }
         .navigationTitle("Tab Bar")
+        .navigationBarTitleDisplayMode(.large)
     }
     
     // MARK: - Basic Usage Section
@@ -72,6 +73,8 @@ struct TabBarExamples: View {
             
             Text("A tab bar provides navigation between different sections of an app.")
                 .ctBody()
+                .foregroundColor(.ctTextSecondary)
+                .fixedSize(horizontal: false, vertical: true)
                 .padding(.bottom, CTSpacing.s)
             
             TabBarDemoContainer {
@@ -82,7 +85,7 @@ struct TabBarExamples: View {
             }
             
             if showBasicCode {
-              CodePreview("""
+                CodePreview("""
                 @State private var selectedTab = 0
 
                 CTTabBar(
@@ -95,6 +98,7 @@ struct TabBarExamples: View {
                     ]
                 )
                 """)
+                .frame(maxWidth: .infinity)
             }
         }
     }
@@ -612,10 +616,12 @@ struct TabBarDemoContainer<Content: View>: View {
         ZStack(alignment: .bottom) {
             Rectangle()
                 .fill(Color.ctSecondary.opacity(0.05))
+                .frame(maxWidth: .infinity)
                 .frame(height: 250)
                 .cornerRadius(12)
             
             content
+                .frame(maxWidth: .infinity)
         }
     }
 }
