@@ -40,7 +40,7 @@ public struct CTAvatar: View {
     }
     
     /// The size of the avatar.
-    public enum Size {
+    public enum Size: Hashable {
         /// Extra small avatar (24x24)
         case extraSmall
         

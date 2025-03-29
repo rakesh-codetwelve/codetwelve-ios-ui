@@ -8,6 +8,32 @@
 import SwiftUI
 import CodetwelveUI
 
+/// Transaction type enum
+public enum TransactionType: String {
+    case deposit = "Deposit"
+    case withdrawal = "Withdrawal"
+    case transfer = "Transfer"
+    case payment = "Payment"
+}
+
+/// Transaction status enum
+public enum TransactionStatus: String {
+    case completed = "Completed"
+    case pending = "Pending"
+    case failed = "Failed"
+    
+    var color: Color {
+        switch self {
+        case .completed:
+            return .ctSuccess
+        case .pending:
+            return .ctWarning
+        case .failed:
+            return .ctDestructive
+        }
+    }
+}
+
 /// A view showcasing various examples of the `CTDataTable` component.
 struct DataTableExamples: View {
     // MARK: - Data Models
@@ -68,30 +94,6 @@ struct DataTableExamples: View {
         let status: TransactionStatus
         let date: Date
         
-        enum TransactionType: String {
-            case deposit = "Deposit"
-            case withdrawal = "Withdrawal"
-            case transfer = "Transfer"
-            case payment = "Payment"
-        }
-        
-        enum TransactionStatus: String {
-            case completed = "Completed"
-            case pending = "Pending"
-            case failed = "Failed"
-            
-            var color: Color {
-                switch self {
-                case .completed:
-                    return .ctSuccess
-                case .pending:
-                    return .ctWarning
-                case .failed:
-                    return .ctDestructive
-                }
-            }
-        }
-        
         static let samples: [Transaction] = {
             // Create a date formatter for generating transaction dates
             let dateFormatter = DateFormatter()
@@ -141,7 +143,7 @@ struct DataTableExamples: View {
                     basicUsageSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Define columns
                         let columns = [
                             CTDataTable.Column<User, String>(
@@ -178,7 +180,7 @@ struct DataTableExamples: View {
                     sortingSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Define sortable columns
                         let columns = [
                             CTDataTable.Column<User, String>(
@@ -218,7 +220,7 @@ struct DataTableExamples: View {
                     filteringAndPaginationSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Define columns
                         let columns = [
                             // Column definitions...
@@ -248,7 +250,7 @@ struct DataTableExamples: View {
                     customCellRenderingSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Define columns with custom renderers
                         let columns = [
                             CTDataTable.Column<User, String>(
@@ -603,7 +605,7 @@ struct DataTableExamples: View {
                                   title: "Reference",
                                   keyPath: \.reference,
                                   isSortable: true,
-                                  cellRenderer: { transaction in
+                                  cellRenderer: { (transaction: Transaction) in
                                       AnyView(
                                           Text(transaction.reference)
                                               .fontWeight(.medium)
@@ -623,7 +625,7 @@ struct DataTableExamples: View {
                                   title: "Amount",
                                   keyPath: \.amount,
                                   isSortable: true,
-                                  cellRenderer: { transaction in
+                                  cellRenderer: { (transaction: Transaction) in
                                       AnyView(
                                           Text("$\(formatCurrency(transaction.amount))")
                                               .foregroundColor(.ctPrimary)
@@ -637,7 +639,7 @@ struct DataTableExamples: View {
                                   title: "Type",
                                   keyPath: \.type,
                                   isSortable: true,
-                                  cellRenderer: { transaction in
+                                  cellRenderer: { (transaction: Transaction) in
                                       AnyView(
                                           Text(transaction.type.rawValue)
                                       )
@@ -649,7 +651,7 @@ struct DataTableExamples: View {
                                   title: "Status",
                                   keyPath: \.status,
                                   isSortable: true,
-                                  cellRenderer: { transaction in
+                                  cellRenderer: { (transaction: Transaction) in
                                       AnyView(
                                           HStack {
                                               Circle()
@@ -667,7 +669,7 @@ struct DataTableExamples: View {
                                   title: "Date",
                                   keyPath: \.date,
                                   isSortable: true,
-                                  cellRenderer: { transaction in
+                                  cellRenderer: { (transaction: Transaction) in
                                       AnyView(
                                           Text(formatDate(transaction.date))
                                               .foregroundColor(.ctTextSecondary)

@@ -43,7 +43,7 @@ struct AvatarExamples: View {
                     basicUsageSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Avatar with initials
                         CTAvatar(initials: "AB")
                         
@@ -67,7 +67,7 @@ struct AvatarExamples: View {
                     sizesSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTAvatar(initials: "XS", size: .extraSmall)
                         CTAvatar(initials: "SM", size: .small)
                         CTAvatar(initials: "MD", size: .medium)
@@ -89,7 +89,7 @@ struct AvatarExamples: View {
                     shapesSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTAvatar(initials: "AB", shape: .circle)
                         CTAvatar(initials: "AB", shape: .rounded(cornerRadius: 8))
                         CTAvatar(initials: "AB", shape: .square)
@@ -108,7 +108,7 @@ struct AvatarExamples: View {
                     variantsSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // With border
                         CTAvatar(
                             initials: "AB", 
@@ -137,7 +137,7 @@ struct AvatarExamples: View {
                     interactiveSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTAvatar(
                             initials: "AB",
                             isInteractive: true
@@ -162,7 +162,7 @@ struct AvatarExamples: View {
                     generatedAvatar
                     
                     if showCode {
-                        CodePreview(code: generateAvatarCode())
+                        CodePreview(generateAvatarCode())
                     }
                 }
             }
@@ -543,14 +543,14 @@ struct AvatarExamples: View {
 // MARK: - Supporting Types
 
 /// Options for the avatar content type
-enum ContentType {
+enum ContentType: Hashable {
     case initials
     case icon
     case image
 }
 
 /// Options for the avatar shape
-enum ShapeOption {
+enum ShapeOption: Hashable {
     case circle
     case rounded
     case square

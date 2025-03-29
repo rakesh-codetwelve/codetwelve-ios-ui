@@ -508,33 +508,6 @@ struct ProgressExamples: View {
 
 // MARK: - Supporting Views
 
-/// A button that toggles the visibility of code examples
-struct ToggleCodeButton: View {
-    @Binding var isExpanded: Bool
-    
-    var body: some View {
-        Button(action: {
-            withAnimation {
-                isExpanded.toggle()
-            }
-        }) {
-            HStack {
-                Text(isExpanded ? "Hide Code" : "Show Code")
-                    .ctBodySmall()
-                    .foregroundColor(.ctPrimary)
-                
-                Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                    .font(.system(size: 12))
-                    .foregroundColor(.ctPrimary)
-            }
-            .padding(.vertical, CTSpacing.xs)
-            .padding(.horizontal, CTSpacing.s)
-            .background(Color.ctPrimary.opacity(0.1))
-            .cornerRadius(CTSpacing.xs)
-        }
-    }
-}
-
 // MARK: - Previews
 
 struct ProgressExamples_Previews: PreviewProvider {

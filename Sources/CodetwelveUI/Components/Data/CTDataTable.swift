@@ -102,24 +102,34 @@ where Data.Element: Identifiable, Data.Element: Hashable {
             self.cellRenderer = cellRenderer
         }
         
-        // Add a type-erasing wrapper
-        private struct AnyValueKeyPath<Root> {
-            let keyPath: KeyPath<Root, Any>
-            
-            init<Value>(_ keyPath: KeyPath<Root, Value>) {
-                self.keyPath = unsafeBitCast(keyPath, to: KeyPath<Root, Any>.self)
-            }
-        }
-        
-        func eraseToAnyColumn() -> Column<T, Any> {
-            let erasedKeyPath = AnyValueKeyPath(keyPath).keyPath
-            return Column<T, Any>(
+        /// Erases the column type to AnyColumn
+        public func eraseToAnyColumn() -> Column<T, Any> {
+            Column<T, Any>(
                 id: id,
                 title: title,
-                keyPath: erasedKeyPath,
+                keyPath: unsafeBitCast(keyPath, to: KeyPath<T, Any>.self),
                 isSortable: isSortable,
                 cellRenderer: cellRenderer
             )
+        }
+    }
+    
+    /// Type-erased column type
+    public struct AnyColumn: Identifiable {
+        public let id: String
+        public let title: String
+        public let keyPath: KeyPath<Data.Element, Any>
+        public let isSortable: Bool
+        public let cellRenderer: ((Data.Element) -> AnyView)?
+        
+        public init<T, Value>(_ column: Column<T, Value>) {
+            self.id = column.id
+            self.title = column.title
+            self.keyPath = unsafeBitCast(column.keyPath, to: KeyPath<Data.Element, Any>.self)
+            self.isSortable = column.isSortable
+            self.cellRenderer = column.cellRenderer.map { renderer in
+                { item in renderer(item as! T) }
+            }
         }
     }
     

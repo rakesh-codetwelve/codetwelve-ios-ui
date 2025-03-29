@@ -87,7 +87,7 @@ struct TableExamples: View {
                     basicUsageSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTTable(employees) { employee in
                             CTTableRow {
                                 CTTableCell(employee.name)
@@ -111,7 +111,7 @@ struct TableExamples: View {
                     styleOptionsSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Striped rows
                         CTTable(
                             employees,
@@ -152,7 +152,7 @@ struct TableExamples: View {
                     rowSelectionSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         @State private var selectedEmployee: Employee? = nil
                         
                         CTTable(
@@ -181,7 +181,7 @@ struct TableExamples: View {
                     customCellContentSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTTable(products) { product in
                             CTTableRow {
                                 // Name cell

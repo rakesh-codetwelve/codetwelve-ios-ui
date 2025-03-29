@@ -47,7 +47,7 @@ struct TagExamples: View {
                     basicUsageSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Basic tag
                         CTTag("Tag")
                         
@@ -73,7 +73,7 @@ struct TagExamples: View {
                     tagStylesSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTTag("Default", style: .default)
                         CTTag("Primary", style: .primary)
                         CTTag("Secondary", style: .secondary)
@@ -95,7 +95,7 @@ struct TagExamples: View {
                     tagSizesSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTTag("Small", size: .small)
                         CTTag("Medium", size: .medium)
                         CTTag("Large", size: .large)
@@ -114,7 +114,7 @@ struct TagExamples: View {
                     tagsWithIconsSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTTag("Design", icon: "pencil")
                         CTTag("Important", icon: "star.fill", style: .primary)
                         CTTag("Warning", icon: "exclamationmark.triangle.fill", style: .warning)
@@ -134,7 +134,7 @@ struct TagExamples: View {
                     removableTagsSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTTag("Remove Me", isRemovable: true) {
                             // Handle removal
                         }
@@ -153,7 +153,7 @@ struct TagExamples: View {
                     customTagsSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTTag("Custom", 
                               style: .custom(
                                 backgroundColor: Color.purple.opacity(0.1),
@@ -177,7 +177,7 @@ struct TagExamples: View {
                     generatedTag
                     
                     if showCode {
-                        CodePreview(code: generateTagCode())
+                        CodePreview(generateTagCode())
                     }
                 }
                 
@@ -574,7 +574,7 @@ struct TagExamples: View {
 
 // MARK: - Supporting Types
 
-enum TagStyle {
+enum TagStyle: Hashable {
     case `default`
     case primary
     case secondary

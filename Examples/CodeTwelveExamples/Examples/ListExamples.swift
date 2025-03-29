@@ -67,7 +67,7 @@ struct ListExamples: View {
                     basicUsageSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Simple list with string data
                         let items = ["Apple", "Banana", "Cherry", "Date", "Elderberry"]
                         
@@ -90,7 +90,7 @@ struct ListExamples: View {
                     listLayoutsSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Vertical layout (default)
                         CTList(items) { item in
                             Text(item)
@@ -131,7 +131,7 @@ struct ListExamples: View {
                     separatorsSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         // Default system separator
                         CTList(
                             people,
@@ -175,7 +175,7 @@ struct ListExamples: View {
                     selectionSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         @State private var selectedPerson: Person? = nil
                         
                         CTList(
@@ -213,7 +213,7 @@ struct ListExamples: View {
                     customStylingSection
                     
                     if showCode {
-                        CodePreview(code: """
+                        CodePreview("""
                         CTList(products) { product in
                             HStack {
                                 Image(systemName: product.image)

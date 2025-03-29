@@ -8,25 +8,6 @@
 import SwiftUI
 import CodetwelveUI
 
-/// A view that displays code examples in a monospaced font
-struct CodePreview: View {
-    let code: String
-    
-    init(_ code: String) {
-        self.code = code
-    }
-    
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            Text(code)
-                .font(.system(.footnote, design: .monospaced))
-                .padding(8)
-        }
-        .background(Color.secondary.opacity(0.1))
-        .cornerRadius(8)
-    }
-}
-
 /// Badge content enum for switching between numeric and text content
 enum BadgeContent: Equatable {
     case number(Int)
