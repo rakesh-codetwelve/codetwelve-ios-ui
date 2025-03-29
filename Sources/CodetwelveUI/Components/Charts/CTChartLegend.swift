@@ -208,8 +208,8 @@ public struct CTChartLegend: View {
         .padding(.vertical, 2)
         .background(
             isInteractive ?
-                theme.background.opacity(0.3)
-                .cornerRadius(theme.borderRadius / 4) :
+                RoundedRectangle(cornerRadius: theme.borderRadius / 4)
+              .fill(theme.background.opacity(0.3)) as! Color :
                 Color.clear
         )
         .onTapGesture {

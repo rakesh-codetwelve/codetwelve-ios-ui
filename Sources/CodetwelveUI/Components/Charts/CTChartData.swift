@@ -219,7 +219,7 @@ public struct CTSimpleChartData: CTChartDataProtocol {
         if let customLabels = customXTickLabels, !customLabels.isEmpty {
             return customLabels
         }
-        return super.xTickLabels
+        return xTicks.map { String(format: "%.0f", $0) }
     }
     
     /// The y-axis tick labels
@@ -227,7 +227,7 @@ public struct CTSimpleChartData: CTChartDataProtocol {
         if let customLabels = customYTickLabels, !customLabels.isEmpty {
             return customLabels
         }
-        return super.yTickLabels
+        return yTicks.map { String(format: "%.0f", $0) }
     }
 }
 
@@ -301,22 +301,59 @@ public struct CTRichChartData: CTChartDataProtocol {
     
     /// The x-axis domain
     public var xDomain: ClosedRange<Double> {
-        return customXDomain ?? super.xDomain
+        if let customDomain = customXDomain {
+            return customDomain
+        }
+        if series.isEmpty || series.allSatisfy({ $0.dataPoints.isEmpty }) {
+            return 0...1
+        }
+        
+        let allXValues = series.flatMap { $0.dataPoints.map { $0.x } }
+        let minX = allXValues.min() ?? 0
+        let maxX = allXValues.max() ?? 1
+        
+        if minX == maxX {
+            return (minX - 0.5)...(maxX + 0.5)
+        }
+        
+        return minX...maxX
     }
     
     /// The y-axis domain
     public var yDomain: ClosedRange<Double> {
-        return customYDomain ?? super.yDomain
+        if let customDomain = customYDomain {
+            return customDomain
+        }
+        if series.isEmpty || series.allSatisfy({ $0.dataPoints.isEmpty }) {
+            return 0...1
+        }
+        
+        let allYValues = series.flatMap { $0.dataPoints.map { $0.y } }
+        let minY = allYValues.min() ?? 0
+        let maxY = allYValues.max() ?? 1
+        
+        if minY == maxY {
+            return (minY - 0.5)...(minY + 0.5)
+        }
+        
+        let startAtZero = minY > 0 && minY < maxY * 0.2
+        return (startAtZero ? 0 : minY)...maxY
     }
     
     /// The x-axis tick values
     public var xTicks: [Double] {
-        return customXTicks ?? super.xTicks
+        if let customTicks = customXTicks {
+            return customTicks
+        }
+        return CTChartUtilities.generateTicks(domain: xDomain, count: 5)
     }
     
     /// The y-axis tick values
     public var yTicks: [Double] {
-        return customYTicks ?? super.yTicks
+        if let customTicks = customYTicks {
+            return customTicks
+        }
+        return CTChartUtilities.generateTicks(domain: yDomain, count: 5)
     }
     
     /// The x-axis tick labels
@@ -324,7 +361,7 @@ public struct CTRichChartData: CTChartDataProtocol {
         if let customLabels = customXTickLabels, !customLabels.isEmpty {
             return customLabels
         }
-        return super.xTickLabels
+        return xTicks.map { String(format: "%.0f", $0) }
     }
     
     /// The y-axis tick labels
@@ -332,12 +369,22 @@ public struct CTRichChartData: CTChartDataProtocol {
         if let customLabels = customYTickLabels, !customLabels.isEmpty {
             return customLabels
         }
-        return super.yTickLabels
+        return yTicks.map { String(format: "%.0f", $0) }
     }
     
     /// The accessibility description
     public var accessibilityDescription: String {
-        return customAccessibilityDescription ?? super.accessibilityDescription
+        if let customDescription = customAccessibilityDescription {
+            return customDescription
+        }
+        let seriesCount = series.count
+        let pointCount = series.first?.dataPoints.count ?? 0
+        
+        if seriesCount == 1 {
+            return "a single series with \(pointCount) data points"
+        } else {
+            return "\(seriesCount) series with approximately \(pointCount) data points each"
+        }
     }
 }
 

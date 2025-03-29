@@ -132,7 +132,7 @@ public struct CTChartAxis: View {
     ///   - label: The label for the tick
     /// - Returns: A view containing the tick mark and label
     private func tickMark(at value: Double, label: String) -> some View {
-        let position = calculateTickPosition(for: value)
+        let tickPosition = calculateTickPosition(for: value)
         
         return Group {
             if orientation == .horizontal {
@@ -151,11 +151,11 @@ public struct CTChartAxis: View {
                             .ctAccessibilityHidden(when: !config.showLabels)
                     }
                 }
-                .position(x: position, y: config.tickLabelSpacing + config.tickLength / 2)
+                .position(x: tickPosition, y: config.tickLabelSpacing + config.tickLength / 2)
             } else {
                 HStack(spacing: config.tickLabelSpacing) {
                     // Label (if leading position)
-                    if config.showLabels && position == .leading {
+                    if config.showLabels && (position == .leading) {
                         Text(label)
                             .font(config.labelFont ?? CTTypography.captionSmall())
                             .foregroundColor(config.labelColor ?? theme.textSecondary)
@@ -170,7 +170,7 @@ public struct CTChartAxis: View {
                         .frame(width: config.tickLength, height: config.tickLineWidth)
                     
                     // Label (if trailing position)
-                    if config.showLabels && position == .trailing {
+                    if config.showLabels && (position == .trailing) {
                         Text(label)
                             .font(config.labelFont ?? CTTypography.captionSmall())
                             .foregroundColor(config.labelColor ?? theme.textSecondary)
@@ -179,7 +179,7 @@ public struct CTChartAxis: View {
                             .ctAccessibilityHidden(when: !config.showLabels)
                     }
                 }
-                .position(y: position, x: config.tickLabelSpacing + config.tickLength / 2)
+                .position(x: config.tickLabelSpacing + config.tickLength / 2, y: tickPosition)
             }
         }
     }
